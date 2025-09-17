@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gate 7 Coffee Roastery | Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style-gate7.css">
+</head>
+<body>
+    <div class="gradient-background"></div>
+    
+    <main>
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/JayEmVey/jayemvey.github.io/d047814bca5830b3076f59872d569b3a71581da8/logo-tmp.png" alt="Gate 7 Coffee Roastery Logo" class="logo">
+        </div>
+        
+        <h1 class="animate-text">Gate 7 Coffee Roastery</h1>
+        
+        <div class="tagline-container">
+            <p class="animate-text-delay">Your new departure gate to great coffee is opening soon.</p>
+        </div>
+        
+        <div class="notify-container">
+            <form id="notify-form" class="animate-text-delay">
+                <input type="email" name="email" placeholder="Enter your email for updates" required>
+                <button type="submit" class="notify-btn">
+                    <span>Notify Me</span>
+                </button>
+            </form>
+            <p id="form-message" class="form-message"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p class="animate-text-delay">&copy; 2025 Gate 7 Coffee Roastery</p>
+    </footer>
+
+    <script>
+        // Simple form handler that shows success message
+        document.getElementById('notify-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const email = form.email.value;
+            const button = form.querySelector('button');
+            const messageEl = document.getElementById('form-message');
+
+            // Basic email validation
+            if (!email || !email.includes('@')) {
+                messageEl.textContent = 'Please enter a valid email address.';
+                messageEl.className = 'form-message error';
+                return;
+            }
+
+            // Show success message
+            messageEl.textContent = 'Thank you! We\'ll notify you when we open.';
+            messageEl.className = 'form-message success';
+            form.reset();
+        });
+    </script>
+</body>
+</html>
