@@ -6,6 +6,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gate7 - Tuyển Dụng Barista</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S72S3FXR6Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-S72S3FXR6Z');
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
         
@@ -255,7 +263,7 @@
                 </div>
             </div>
             
-            <button class="cta" onclick="window.open('https://gate7.vn/hiring/barista/', '_blank')">
+            <button class="cta" id="apply-button" onclick="window.open('https://gate7.vn/hiring/barista/', '_blank')">
                 ỨNG TUYỂN NGAY
             </button>
             
@@ -343,6 +351,21 @@
             }
         `;
         document.head.appendChild(rippleStyle);
+
+        // Google Analytics event tracking
+        function trackEvent(eventName, eventCategory, eventLabel) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, {
+                    'event_category': eventCategory,
+                    'event_label': eventLabel
+                });
+            }
+        }
+
+        // Track "ỨNG TUYỂN NGAY" button clicks
+        document.getElementById('apply-button').addEventListener('click', function() {
+            trackEvent('click', 'application', 'apply_now_button_banner');
+        });
     </script>
 </body>
 </html>
