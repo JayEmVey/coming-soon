@@ -16,6 +16,19 @@
     gtag('js', new Date());
 
     gtag('config', 'G-S72S3FXR6Z');
+
+    // Track Notify Me button click
+    document.addEventListener('DOMContentLoaded', function() {
+        const notifyBtn = document.querySelector('.notify-btn');
+        if (notifyBtn) {
+            notifyBtn.addEventListener('click', function() {
+                gtag('event', 'notify_me_click', {
+                    'event_category': 'engagement',
+                    'event_label': 'Notify Me Button'
+                });
+            });
+        }
+    });
     </script>
 </head>
 <body>
