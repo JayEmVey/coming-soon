@@ -269,7 +269,7 @@
             
             <div class="contact">
                 <strong>Vào xem menu job liền tay nào!</strong><br>
-                📍 Website: gate7.vn/hiring/barista
+                📍 Website: <a href="https://gate7.vn/hiring/barista" id="website-link" target="_blank" style="color: #D4AF37; text-decoration: none;">gate7.vn/hiring/barista</a>
             </div>
         </div>
     </div>
@@ -365,6 +365,11 @@
         // Track "ỨNG TUYỂN NGAY" button clicks
         document.getElementById('apply-button').addEventListener('click', function() {
             trackEvent('click', 'application', 'apply_now_button_banner');
+        });
+
+        // Track website link clicks
+        document.getElementById('website-link').addEventListener('click', function() {
+            trackEvent('click', 'navigation', 'website_link_banner');
         });
     </script>
 </body>
