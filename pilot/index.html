@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Gate 7 Coffee Roastery - Điểm dừng chân lý tưởng cho những tín đồ cà phê chất lượng</title>
+    <link rel="icon" type="image/png" href="../images/logo-color-white-bg1.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #221F20;
+            --accent-color: #C17817;
+            --text-color: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--primary-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(34, 31, 32, 0.95);
+            color: var(--text-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Hero carousel */
+        .hero {
+            margin-top: 84px;
+            min-height: 600px;
+            position: relative;
+            background: #C17817;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(8px * 6) calc(8px * 3);
+        }
+        .hero-inner {
+            max-width: 1400px;
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: calc(8px * 4);
+        }
+        .hero-media {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .carousel-track { display: flex; transition: transform .5s ease-in-out; }
+        .slide { min-width: 100%; display: flex; justify-content: center; }
+
+        /* Stacked photo frames */
+        .photo-stack {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+        }
+        .frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            border: 3px solid var(--text-color);
+            background: var(--text-color);
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        .frame:nth-child(1) { transform: rotate(-1deg); z-index: 1; }
+        .frame:nth-child(2) { transform: rotate(2deg); z-index: 2; }
+        .frame:nth-child(3) { transform: rotate(-0.5deg); z-index: 3; }
+        .frame.active { z-index: 4; transform: rotate(0deg); }
+        .frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .carousel-controls {
+            display: flex;
+            gap: calc(8px * 2);
+            margin-top: calc(8px * 3);
+            justify-content: center;
+        }
+        .c-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--text-color);
+            background: transparent;
+            color: var(--text-color);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            transition: all .2s;
+        }
+        .c-btn:hover {
+            background: var(--text-color);
+            color: var(--accent-color);
+        }
+
+        /* Hero text content */
+        .hero-content {
+            display: none;
+        }
+        .hero-welcome {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        .hero-title {
+            color: var(--accent-color);
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .coming-soon {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        /* Hello Section */
+        .hello-section {
+            background: rgba(245, 237, 231, 0.05);
+            padding: calc(8px * 10) calc(8px * 5);
+            text-align: center;
+        }
+        .hello-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hello-greeting {
+            color: var(--accent-color);
+            font-size: clamp(14px, 1.2vw, 16px);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: calc(8px * 3);
+        }
+        .hello-message {
+            color: var(--text-color);
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 400;
+            line-height: 1.3;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Scroll Animation Classes */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s var(--animation-timing),
+                        transform 0.8s var(--animation-timing);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s var(--animation-timing),
+                        transform 0.8s var(--animation-timing);
+        }
+
+        .scroll-reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s var(--animation-timing),
+                        transform 0.8s var(--animation-timing);
+        }
+
+        .scroll-reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s var(--animation-timing),
+                        transform 0.8s var(--animation-timing);
+        }
+
+        .scroll-reveal-scale.revealed {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger animation delays for grid items */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Menu */
+        .menu { 
+            padding: calc(8px * 12) calc(8px * 5); 
+            background: var(--primary-color); 
+        }
+        .menu .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .menu-section-title { 
+            text-align: center; 
+            color: var(--text-color); 
+            font-weight: 400; 
+            font-size: clamp(22px, 2.8vw, 27px); 
+            letter-spacing: -.02em; 
+        }
+        .menu-section-title::after { 
+            content: ''; 
+            display: block; 
+            width: 64px; 
+            height: 2px; 
+            background: var(--accent-color); 
+            margin: 16px auto 0; 
+        }
+        .menu-grid { 
+            margin-top: calc(8px * 8); 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: calc(8px * 6); 
+        }
+        .menu-cat h3 { 
+            color: var(--accent-color); 
+            font-weight: 500; 
+            margin-bottom: calc(8px * 3); 
+            letter-spacing: .03em; 
+        }
+        .menu-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: calc(8px);
+            padding: calc(8px * 2) 0;
+            border-bottom: 1px solid rgba(255,255,255,.2);
+            transition: transform 0.3s var(--animation-timing),
+                        background 0.3s var(--animation-timing);
+            border-radius: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item:hover {
+            transform: translateX(8px);
+            background: rgba(193, 120, 23, 0.1);
+        }
+        .mi-name { 
+            color: var(--text-color); 
+            font-weight: 500; 
+        }
+        .mi-desc { 
+            color: var(--text-secondary); 
+            font-size: 14px; 
+        }
+        .mi-price { 
+            color: var(--accent-color); 
+            font-weight: 600; 
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-color);
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            margin: 1.5rem auto 0;
+            opacity: 0.8;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.4s var(--animation-timing),
+                        box-shadow 0.4s var(--animation-timing),
+                        background 0.4s var(--animation-timing);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(193, 120, 23, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .card p {
+            color: var(--text-secondary);
+        }
+        
+        /* Story Section */
+        .story {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .story-text p {
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            transition: opacity 0.3s var(--animation-timing);
+        }
+
+        .story-text p:hover {
+            opacity: 1;
+        }
+
+        .story-image {
+            background: linear-gradient(135deg, #d4af37 0%, #c17817 100%);
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2c1810;
+            font-size: 1.2rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(193, 120, 23, 0.3);
+            transition: transform 0.4s var(--animation-timing),
+                        box-shadow 0.4s var(--animation-timing);
+        }
+
+        .story-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 50px rgba(193, 120, 23, 0.4);
+        }
+        
+        /* Footer */
+        .footer { 
+            background: var(--primary-color); 
+            color: var(--text-color); 
+            padding: calc(8px * 12) calc(8px * 5); 
+        }
+        .footer .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: calc(8px * 6); 
+        }
+        .footer h4 { 
+            color: var(--accent-color); 
+            font-weight: 500; 
+            letter-spacing: .04em; 
+            margin-bottom: calc(8px * 3); 
+        }
+        .footer p, .footer span { 
+            color: var(--text-secondary); 
+            opacity: .9; 
+            font-size: 14px; 
+        }
+        .footer .hours { 
+            display: grid; 
+            grid-template-columns: auto 1fr; 
+            gap: 6px 12px; 
+        }
+        .footer-bottom { 
+            text-align: center; 
+            margin-top: calc(8px * 8); 
+            padding-top: calc(8px * 4); 
+            border-top: 1px solid rgba(255,255,255,.12); 
+            opacity: .75; 
+            font-size: 14px; 
+        }
+        .footer iframe {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            border-radius: 8px;
+            margin-top: calc(8px * 2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .hero-inner {
+                width: 95%;
+            }
+            .photo-stack {
+                max-width: 700px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            .hero {
+                min-height: 400px;
+                padding: calc(8px * 4) calc(8px * 2);
+            }
+            .photo-stack {
+                max-width: 100%;
+                aspect-ratio: 4/3;
+            }
+            .hello-section {
+                padding: calc(8px * 6) calc(8px * 3);
+            }
+            .hello-message {
+                font-size: clamp(20px, 5vw, 32px);
+            }
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer .hours {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../images/logo-color-black-bg1.png" alt="Gate 7 Coffee Roastery Logo" style="height: 50px; width: auto;">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+                    <li><a href="#story" data-i18n="nav.story">Our Story</a></li>
+                    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+                    <li>
+                        <button id="langToggle" style="background: var(--accent-color); color: var(--primary-color); border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.9rem;">EN</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero carousel -->
+    <section id="home" class="hero" aria-label="Featured Images">
+        <div class="hero-inner">
+            <div class="hero-media">
+                <div class="photo-stack">
+                    <div class="frame active">
+                        <img src="../images/banner.png" alt="Gate 7 Coffee banner" />
+                    </div>
+                    <div class="frame">
+                        <img src="../images/front1.png" alt="Gate 7 Coffee front" />
+                    </div>
+                    <div class="frame">
+                        <img src="../images/signage1.png" alt="Gate 7 Coffee signage" />
+                    </div>
+                    <div class="frame">
+                        <img src="../images/signage2.png" alt="Gate 7 Coffee interior" />
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="c-btn" id="prevSlide" aria-label="Previous">&#8592;</button>
+                    <button class="c-btn" id="nextSlide" aria-label="Next">&#8594;</button>
+                </div>
+            </div>
+            <div class="hero-content">
+                <div class="coming-soon" data-i18n="hero.comingSoon">Opening Soon</div>
+                <div class="hero-welcome" data-i18n="hero.welcome">Welcome to Gate 7</div>
+                <h1 class="hero-title" data-i18n="hero.title">Your departure gate to exceptional coffee and community</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hello & Good Morning Section -->
+    <section class="hello-section scroll-reveal">
+        <div class="container">
+            <div class="hello-greeting" data-i18n="hello.greeting">HELLO & GOOD MORNING</div>
+            <h2 class="hello-message" id="helloMessage" data-i18n="hello.message">MONTE IS FOR LAIDBACK BREKKIES, CATCH-UPS WITH FRIENDS, TAKEAWAY GOODIES, & DAYS THAT YOU NEVER WANT TO END.</h2>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section id="menu" class="menu" aria-label="Menu">
+        <div class="container">
+            <h2 class="menu-section-title scroll-reveal" data-i18n="menu.title">All day menu</h2>
+            <div class="menu-grid scroll-reveal">
+                <div class="menu-cat">
+                    <h3 data-i18n="menu.coffee.title">Coffee</h3>
+                    <div class="menu-item">
+                        <div>
+                            <div class="mi-name" data-i18n="menu.coffee.espresso.name">Espresso</div>
+                            <div class="mi-desc" data-i18n="menu.coffee.espresso.desc">House blend, balanced and bright</div>
+                        </div>
+                        <div class="mi-price">₫45k</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="mi-name" data-i18n="menu.coffee.flatWhite.name">Flat white</div>
+                            <div class="mi-desc" data-i18n="menu.coffee.flatWhite.desc">Velvety milk, clean finish</div>
+                        </div>
+                        <div class="mi-price">₫55k</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="mi-name" data-i18n="menu.coffee.filter.name">Filter brew</div>
+                            <div class="mi-desc" data-i18n="menu.coffee.filter.desc">Rotating single‑origin</div>
+                        </div>
+                        <div class="mi-price">₫65k</div>
+                    </div>
+                </div>
+                <div class="menu-cat">
+                    <h3 data-i18n="menu.dining.title">All day dining</h3>
+                    <div class="menu-item">
+                        <div>
+                            <div class="mi-name" data-i18n="menu.dining.toast.name">Seasonal Toast</div>
+                            <div class="mi-desc" data-i18n="menu.dining.toast.desc">Sourdough with seasonal toppings</div>
+                        </div>
+                        <div class="mi-price">₫180k</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="mi-name" data-i18n="menu.dining.bowl.name">Grain bowl</div>
+                            <div class="mi-desc" data-i18n="menu.dining.bowl.desc">Ancient grains, market vegetables</div>
+                        </div>
+                        <div class="mi-price">₫220k</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="mi-name" data-i18n="menu.dining.granola.name">House Granola</div>
+                            <div class="mi-desc" data-i18n="menu.dining.granola.desc">Natural yoghurt, seasonal fruit</div>
+                        </div>
+                        <div class="mi-price">₫200k</div>
+                    </div>
+                </div>
+                <div class="menu-cat">
+                    <h3 data-i18n="menu.pastries.title">Pastries</h3>
+                    <div class="menu-item">
+                        <div>
+                            <div class="mi-name" data-i18n="menu.pastries.croissant.name">Croissant</div>
+                            <div class="mi-desc" data-i18n="menu.pastries.croissant.desc">Hand‑rolled, baked daily</div>
+                        </div>
+                        <div class="mi-price">₫70k</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="mi-name" data-i18n="menu.pastries.pain.name">Pain au chocolat</div>
+                            <div class="mi-desc" data-i18n="menu.pastries.pain.desc">Belgian chocolate</div>
+                        </div>
+                        <div class="mi-price">₫80k</div>
+                    </div>
+                </div>
+                <div class="menu-cat">
+                    <h3 data-i18n="menu.nonCoffee.title">Non‑coffee</h3>
+                    <div class="menu-item">
+                        <div>
+                            <div class="mi-name" data-i18n="menu.nonCoffee.mint.name">Fresh mint tea</div>
+                            <div class="mi-desc" data-i18n="menu.nonCoffee.mint.desc">Garden mint, hot or iced</div>
+                        </div>
+                        <div class="mi-price">₫55k</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="mi-name" data-i18n="menu.nonCoffee.chai.name">House chai</div>
+                            <div class="mi-desc" data-i18n="menu.nonCoffee.chai.desc">Whole spices, honey</div>
+                        </div>
+                        <div class="mi-price">₫65k</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="section story">
+        <div class="container">
+            <h2 class="section-title scroll-reveal" data-i18n="story.title">Our Journey Begins</h2>
+            <div class="story-content">
+                <div class="story-text scroll-reveal-left">
+                    <p data-i18n="story.p1">We're new to the coffee world, and we're not afraid to admit it. What we lack in years of experience, we make up for with genuine passion and an unwavering commitment to quality.</p>
+
+                    <p data-i18n="story.p2">Gate 7 Coffee Roastery was born from a simple belief: great coffee brings people together. Whether you're a freelancer seeking your perfect work spot, a student cramming for exams, or a coffee enthusiast exploring new flavors, we're creating a space where everyone belongs.</p>
+
+                    <p data-i18n="story.p3">We're learning every day – from our bean suppliers, from roasting masters, and most importantly, from our future community. This humility drives us to be better, to ask questions, and to never stop improving.</p>
+
+                    <p><strong data-i18n="story.p4">Gate 7 isn't just a coffee shop. It's your second home.</strong></p>
+                </div>
+                <div class="story-image scroll-reveal-right">
+                    <div>
+                        <p data-i18n="story.badge1">📍 Coming Soon</p>
+                        <p data-i18n="story.badge2">Coffee • Community • Quality</p>
+                        <p data-i18n="story.badge3">Your Second Home Awaits</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Offer Section -->
+    <section id="coffee" class="section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal" data-i18n="features.title">What Makes Us Different</h2>
+            <div class="grid">
+                <div class="card scroll-reveal-scale stagger-1">
+                    <h3 data-i18n="features.quality.title">☕ Quality First</h3>
+                    <p data-i18n="features.quality.desc">We're committed to sourcing exceptional beans and roasting them with care. Every cup reflects our dedication to craft – from farm to your hands.</p>
+                </div>
+
+                <div class="card scroll-reveal-scale stagger-2">
+                    <h3 data-i18n="features.home.title">🏡 Your Second Home</h3>
+                    <p data-i18n="features.home.desc">Comfortable seating, reliable WiFi, and a welcoming atmosphere. Whether you're working, studying, or catching up with friends, you belong here.</p>
+                </div>
+
+                <div class="card scroll-reveal-scale stagger-3">
+                    <h3 data-i18n="features.learning.title">📚 Learning Together</h3>
+                    <p data-i18n="features.learning.desc">New to specialty coffee? So are we! We'll share everything we learn about brewing, tasting, and appreciating great coffee. No pretense, just passion.</p>
+                </div>
+
+                <div class="card scroll-reveal-scale stagger-4">
+                    <h3 data-i18n="features.community.title">🤝 Community Focus</h3>
+                    <p data-i18n="features.community.desc">Built for freelancers, students, residents, and coffee lovers. We're creating connections one conversation at a time.</p>
+                </div>
+
+                <div class="card scroll-reveal-scale stagger-5">
+                    <h3 data-i18n="features.ethical.title">🌱 Ethical Sourcing</h3>
+                    <p data-i18n="features.ethical.desc">We believe great coffee starts with fair relationships. We're building partnerships with farms that share our values.</p>
+                </div>
+
+                <div class="card scroll-reveal-scale stagger-6">
+                    <h3 data-i18n="features.work.title">⚡ Work-Friendly</h3>
+                    <p data-i18n="features.work.desc">Power outlets everywhere, quiet zones for focus, and coffee that keeps you productive. Your mobile office just got an upgrade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Space Section -->
+    <section id="space" class="section story">
+        <div class="container">
+            <h2 class="section-title scroll-reveal" data-i18n="space.title">The Space</h2>
+            <div class="story-content">
+                <div class="story-image scroll-reveal-left">
+                    <div>
+                        <p data-i18n="space.badge1">🏗️ Design in Progress</p>
+                        <p data-i18n="space.badge2">Cozy • Productive • Welcoming</p>
+                        <p data-i18n="space.badge3">Every corner designed for you</p>
+                    </div>
+                </div>
+                <div class="story-text scroll-reveal-right">
+                    <h3 data-i18n="space.subtitle">Designed for How You Actually Work and Live</h3>
+
+                    <p><strong data-i18n="space.focused.title">For the Focused:</strong> <span data-i18n="space.focused.desc">Quiet corners with comfortable seating, plenty of natural light, and power outlets within reach.</span></p>
+
+                    <p><strong data-i18n="space.social.title">For the Social:</strong> <span data-i18n="space.social.desc">Community tables perfect for collaboration, casual meetings, or making new connections over great coffee.</span></p>
+
+                    <p><strong data-i18n="space.comfortable.title">For the Comfortable:</strong> <span data-i18n="space.comfortable.desc">Sofas and armchairs that invite you to stay a while, whether you're reading, working, or simply enjoying your coffee.</span></p>
+
+                    <p><strong data-i18n="space.everyone.title">For Everyone:</strong> <span data-i18n="space.everyone.desc">Fast WiFi, varied seating options, and an atmosphere that adapts to your needs throughout the day.</span></p>
+
+                    <p data-i18n="space.closing">We're not just opening a coffee shop – we're creating a space where your best work happens and authentic connections form.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Updates Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal" data-i18n="contact.title">Join Our Journey</h2>
+            <div class="grid">
+                <div class="card scroll-reveal-scale stagger-1">
+                    <h3 data-i18n="contact.updates.title">📧 Stay Updated</h3>
+                    <p data-i18n="contact.updates.desc">Be the first to know about our opening date, special events, and coffee education workshops.</p>
+                    <div style="margin-top: 1rem;">
+                        <input type="email" data-i18n-placeholder="contact.updates.placeholder" placeholder="your@email.com" style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+                        <button class="btn btn-primary" data-i18n="contact.updates.button" style="padding: 10px 20px;">Subscribe</button>
+                    </div>
+                </div>
+
+                <div class="card scroll-reveal-scale stagger-2">
+                    <h3 data-i18n="contact.location.title">📍 Location</h3>
+                    <p data-i18n="contact.location.desc">We're putting the finishing touches on our space. Located in the heart of the community, accessible for everyone.</p>
+                    <p><strong data-i18n="contact.location.address">Address:</strong> <span data-i18n="contact.location.addressValue">Coming Soon</span><br>
+                    <strong data-i18n="contact.location.hours">Hours:</strong> <span data-i18n="contact.location.hoursValue">Mon-Sun, 7am-9pm (projected)</span></p>
+                </div>
+
+                <div class="card scroll-reveal-scale stagger-3">
+                    <h3 data-i18n="contact.events.title">☕ Pre-Opening Events</h3>
+                    <p data-i18n="contact.events.desc">Want to be part of our soft opening? We'll be hosting cupping sessions and community previews for our early supporters.</p>
+                    <p><em data-i18n="contact.events.cta">Sign up above to get invited!</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer" aria-label="Footer">
+        <div class="container">
+            <div>
+                <h4 data-i18n="footer.location.title">Location</h4>
+                <p>162A Nguyễn Trường Tộ<br/>Phường Tân Thành, TP HCM</p>
+                <p>hello@gate7.vn<br/>0971091120</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.237932965956!2d106.63045397428787!3d10.793080158887879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529a8b3819463%3A0x5aec4a7508322c9d!2sGate%207%20Coffee%20Roastery!5e0!3m2!1sen!2s!4v1758699078419!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div>
+                <h4 data-i18n="footer.hours.title">Hours</h4>
+                <div class="hours">
+                    <span data-i18n="footer.hours.weekday">Mon – Fri</span><span>7:00am – 9:00pm</span>
+                    <span data-i18n="footer.hours.weekend">Sat – Sun</span><span>8:00am – 9:00pm</span>
+                </div>
+                <p style="margin-top: 12px;" data-i18n="footer.hours.note">Kitchen closes 30 minutes prior</p>
+            </div>
+            <div>
+                <h4 data-i18n="footer.follow.title">Follow</h4>
+                <p>@gate7coffeeroastery</p>
+                <p>Instagram • Facebook • Zalo</p>
+            </div>
+        </div>
+        <div class="footer-bottom" data-i18n="footer.copyright">© 2025 Gate 7 Coffee Roastery. Opening Soon.</div>
+    </footer>
+
+    <script>
+        // Language Translation System
+        const translations = {
+            vi: {
+                nav: {
+                    home: "Trang Chủ",
+                    menu: "Thực Đơn",
+                    story: "Câu Chuyện",
+                    contact: "Liên Hệ"
+                },
+                hero: {
+                    comingSoon: "Sắp Ra Mắt",
+                    welcome: "Chào mừng đến Gate 7",
+                    title: "Điểm dừng chân lý tưởng cho những tín đồ cà phê chất lượng và cộng đồng sôi động"
+                },
+                hello: {
+                    greeting: "XIN CHÀO & CHÀO BUỔI SÁNG",
+                    messages: [
+                        "XIN CHÀO BUỔI SÁNG! HÔM NAY BẠN SẼ KHÁM PHÁ ĐIỀU GÌ?",
+                        "XIN CHÀO BUỔI CHIỀU! BẠN ĐANG NGHĨ GÌ TRONG ĐẦU?",
+                        "GATE 7 LÀ NỠI CHO NHỮNG BỮA SÁNG THẢNH THƠI, GẶP GỠ BẠN BÈ, TAKEAWAY NGON LÀNH, VÀ NHỮNG NGÀY BẠN KHÔNG BAO GIỜ MUỐN KẾT THÚC.",
+                        "HÔM NAY, CHÚNG MÌNH MONG BẠN TÌM THẤY ĐIỀU GÌ ĐÓ ĐẶC BIỆT TẠI GATE 7.",
+                        "MỘT TẬP CÀ PHÊ NGON VÀ MỘT KHOẢNH KHẮC YÊN BÌNH – ĐÓ LÀ TẤT CẢ BẠN CẦN.",
+                        "CHỦ NHẬT NÀY, HÃY ĐỂ GATE 7 TRỞ THÀNH NƠI BẠN TẬN HƯỞNG THỜI GIAN.",
+                        "CÀ PHÊ NGON, KHÔNG GIAN ẤM CÚNG, VÀ NHỮNG CUỘC TRÒ CHUYỆN ĐỘC ĐÁO – ĐÓ LÀ GATE 7."
+                    ]
+                },
+                menu: {
+                    title: "Thực đơn cả ngày",
+                    coffee: {
+                        title: "Cà Phê",
+                        espresso: {
+                            name: "Espresso",
+                            desc: "Blend nhà rang, cân bằng và tươi sáng"
+                        },
+                        flatWhite: {
+                            name: "Flat White",
+                            desc: "Sữa mịn màng, hậu vị trong trẻo"
+                        },
+                        filter: {
+                            name: "Cà phê pha chậm",
+                            desc: "Single-origin luân phiên"
+                        }
+                    },
+                    dining: {
+                        title: "Đồ Ăn Cả Ngày",
+                        toast: {
+                            name: "Bánh Mì Nướng Theo Mùa",
+                            desc: "Bánh mì chua tự nhiên với topping theo mùa"
+                        },
+                        bowl: {
+                            name: "Grain Bowl",
+                            desc: "Ngũ cốc nguyên hạt, rau củ tươi"
+                        },
+                        granola: {
+                            name: "Granola Nhà Làm",
+                            desc: "Sữa chua tự nhiên, trái cây theo mùa"
+                        }
+                    },
+                    pastries: {
+                        title: "Bánh Ngọt",
+                        croissant: {
+                            name: "Croissant",
+                            desc: "Cuộn tay, nướng tươi mỗi ngày"
+                        },
+                        pain: {
+                            name: "Pain au Chocolat",
+                            desc: "Socola Bỉ nguyên chất"
+                        }
+                    },
+                    nonCoffee: {
+                        title: "Không Cà Phê",
+                        mint: {
+                            name: "Trà Bạc Hà Tươi",
+                            desc: "Bạc hà vườn nhà, nóng hoặc đá"
+                        },
+                        chai: {
+                            name: "Chai Gia Vị",
+                            desc: "Gia vị nguyên hạt, mật ong"
+                        }
+                    }
+                },
+                story: {
+                    title: "Hành Trình Khởi Đầu",
+                    p1: "Chúng mình là newbie trong làng cà phê, và chúng mình tự tin thừa nhận điều đó. Những gì thiếu về kinh nghiệm, chúng mình bù đắp bằng passion thực sự và cam kết chất lượng không lay chuyển.",
+                    p2: "Gate 7 Coffee Roastery ra đời từ một niềm tin đơn giản: cà phê ngon kết nối mọi người. Dù bạn là freelancer tìm không gian làm việc ưng ý, sinh viên cày cuốc deadline, hay coffee lover khám phá hương vị mới - chúng mình đang tạo ra một nơi mà mọi người đều thuộc về.",
+                    p3: "Chúng mình học hỏi mỗi ngày – từ nhà cung cấp hạt cà phê, từ các master rang, và quan trọng nhất là từ cộng đồng tương lai của mình. Sự khiêm tốn này thúc đẩy chúng mình trở nên tốt hơn, đặt câu hỏi và không bao giờ ngừng cải thiện.",
+                    p4: "Gate 7 không chỉ là quán cà phê. Đây là ngôi nhà thứ hai của bạn.",
+                    badge1: "📍 Sắp Ra Mắt",
+                    badge2: "Cà Phê • Cộng Đồng • Chất Lượng",
+                    badge3: "Ngôi Nhà Thứ Hai Đang Chờ Bạn"
+                },
+                features: {
+                    title: "Điểm Khác Biệt Của Chúng Mình",
+                    quality: {
+                        title: "☕ Chất Lượng Là Số 1",
+                        desc: "Chúng mình cam kết tìm nguồn hạt cà phê đỉnh và rang chúng cẩn thận. Mỗi tách cà phê phản ánh sự tận tâm của chúng mình – từ trang trại đến tay bạn."
+                    },
+                    home: {
+                        title: "🏡 Ngôi Nhà Thứ Hai Của Bạn",
+                        desc: "Chỗ ngồi thoải mái, WiFi ổn định, và không khí chào đón. Dù bạn đang làm việc, học tập, hay gặp gỡ bạn bè, bạn đều có chỗ ở đây."
+                    },
+                    learning: {
+                        title: "📚 Cùng Nhau Học Hỏi",
+                        desc: "Mới tiếp cận specialty coffee? Chúng mình cũng vậy! Chúng mình sẽ chia sẻ mọi thứ học được về pha chế, thưởng thức và yêu cà phê ngon. Không màu mè, chỉ có passion."
+                    },
+                    community: {
+                        title: "🤝 Tập Trung Vào Cộng Đồng",
+                        desc: "Được xây dựng cho freelancer, sinh viên, cư dân và coffee lover. Chúng mình tạo kết nối qua từng cuộc trò chuyện."
+                    },
+                    ethical: {
+                        title: "🌱 Nguồn Gốc Có Trách Nhiệm",
+                        desc: "Chúng mình tin rằng cà phê ngon bắt đầu từ mối quan hệ công bằng. Chúng mình đang xây dựng partnership với các trang trại chia sẻ giá trị của mình."
+                    },
+                    work: {
+                        title: "⚡ Thân Thiện Với Công Việc",
+                        desc: "Ổ cắm điện khắp nơi, không gian yên tĩnh để focus, và cà phê giữ bạn productive. Văn phòng di động của bạn vừa được nâng cấp."
+                    }
+                },
+                space: {
+                    title: "Không Gian",
+                    subtitle: "Thiết Kế Cho Cách Bạn Thực Sự Làm Việc và Sống",
+                    badge1: "🏗️ Đang Trong Quá Trình Thiết Kế",
+                    badge2: "Ấm Cúng • Hiệu Quả • Chào Đón",
+                    badge3: "Từng góc nhỏ được thiết kế cho bạn",
+                    focused: {
+                        title: "Cho Những Ai Cần Tập Trung:",
+                        desc: "Góc yên tĩnh với chỗ ngồi thoải mái, ánh sáng tự nhiên dồi dào, và ổ cắm điện trong tầm tay."
+                    },
+                    social: {
+                        title: "Cho Những Ai Thích Giao Lưu:",
+                        desc: "Bàn cộng đồng hoàn hảo cho collaboration, họp mặt thoải mái, hoặc kết bạn mới qua cà phê ngon."
+                    },
+                    comfortable: {
+                        title: "Cho Những Ai Yêu Sự Thoải Mái:",
+                        desc: "Sofa và ghế bành mời gọi bạn ở lại lâu hơn, dù đang đọc sách, làm việc hay đơn giản là thưởng thức cà phê."
+                    },
+                    everyone: {
+                        title: "Cho Tất Cả Mọi Người:",
+                        desc: "WiFi nhanh, nhiều lựa chọn chỗ ngồi, và không khí thích ứng với nhu cầu của bạn suốt cả ngày."
+                    },
+                    closing: "Chúng mình không chỉ mở một quán cà phê – chúng mình đang tạo ra không gian nơi công việc tốt nhất của bạn diễn ra và những kết nối chân thật được hình thành."
+                },
+                contact: {
+                    title: "Tham Gia Hành Trình",
+                    updates: {
+                        title: "📧 Nhận Thông Tin Mới",
+                        desc: "Là người đầu tiên biết về ngày mở cửa, sự kiện đặc biệt, và workshop giáo dục cà phê của chúng mình.",
+                        placeholder: "email@cua.ban",
+                        button: "Đăng Ký"
+                    },
+                    location: {
+                        title: "📍 Vị Trí",
+                        desc: "Chúng mình đang hoàn thiện những chi tiết cuối cùng cho không gian. Nằm ở trung tâm cộng đồng, dễ dàng tiếp cận cho mọi người.",
+                        address: "Địa chỉ:",
+                        addressValue: "Sắp công bố",
+                        hours: "Giờ mở cửa:",
+                        hoursValue: "Thứ 2-CN, 7am-9pm (dự kiến)"
+                    },
+                    events: {
+                        title: "☕ Sự Kiện Trước Khai Trương",
+                        desc: "Muốn là một phần của soft opening? Chúng mình sẽ tổ chức các buổi cupping và preview cộng đồng cho những supporter ban đầu.",
+                        cta: "Đăng ký ở trên để được mời!"
+                    }
+                },
+                footer: {
+                    location: {
+                        title: "Địa Điểm"
+                    },
+                    hours: {
+                        title: "Giờ Mở Cửa",
+                        weekday: "Thứ 2 – 6",
+                        weekend: "Thứ 7 – CN",
+                        note: "Bếp đóng cửa trước 30 phút"
+                    },
+                    follow: {
+                        title: "Theo Dõi"
+                    },
+                    copyright: "© 2025 Gate 7 Coffee Roastery. Sắp Ra Mắt."
+                }
+            },
+            en: {
+                nav: {
+                    home: "Home",
+                    menu: "Menu",
+                    story: "Our Story",
+                    contact: "Contact"
+                },
+                hero: {
+                    comingSoon: "Opening Soon",
+                    welcome: "Welcome to Gate 7",
+                    title: "Your departure gate to exceptional coffee and community"
+                },
+                hello: {
+                    greeting: "HELLO & GOOD MORNING",
+                    messages: [
+                        "HELLO GOOD MORNING! WHAT WILL YOU DISCOVER TODAY?",
+                        "HELLO GOOD AFTERNOON! WHAT'S ON YOUR MIND?",
+                        "GATE 7 IS FOR LAIDBACK BREKKIES, CATCH-UPS WITH FRIENDS, TAKEAWAY GOODIES, & DAYS THAT YOU NEVER WANT TO END.",
+                        "TODAY, WE HOPE YOU FIND SOMETHING SPECIAL AT GATE 7.",
+                        "A GREAT CUP OF COFFEE AND A PEACEFUL MOMENT – THAT'S ALL YOU NEED.",
+                        "THIS SUNDAY, LET GATE 7 BE YOUR PLACE TO ENJOY THE TIME.",
+                        "EXCEPTIONAL COFFEE, COZY SPACE, AND MEANINGFUL CONVERSATIONS – THAT'S GATE 7."
+                    ]
+                },
+                menu: {
+                    title: "All day menu",
+                    coffee: {
+                        title: "Coffee",
+                        espresso: {
+                            name: "Espresso",
+                            desc: "House blend, balanced and bright"
+                        },
+                        flatWhite: {
+                            name: "Flat white",
+                            desc: "Velvety milk, clean finish"
+                        },
+                        filter: {
+                            name: "Filter brew",
+                            desc: "Rotating single‑origin"
+                        }
+                    },
+                    dining: {
+                        title: "All day dining",
+                        toast: {
+                            name: "Seasonal Toast",
+                            desc: "Sourdough with seasonal toppings"
+                        },
+                        bowl: {
+                            name: "Grain bowl",
+                            desc: "Ancient grains, market vegetables"
+                        },
+                        granola: {
+                            name: "House Granola",
+                            desc: "Natural yoghurt, seasonal fruit"
+                        }
+                    },
+                    pastries: {
+                        title: "Pastries",
+                        croissant: {
+                            name: "Croissant",
+                            desc: "Hand‑rolled, baked daily"
+                        },
+                        pain: {
+                            name: "Pain au chocolat",
+                            desc: "Belgian chocolate"
+                        }
+                    },
+                    nonCoffee: {
+                        title: "Non‑coffee",
+                        mint: {
+                            name: "Fresh mint tea",
+                            desc: "Garden mint, hot or iced"
+                        },
+                        chai: {
+                            name: "House chai",
+                            desc: "Whole spices, honey"
+                        }
+                    }
+                },
+                story: {
+                    title: "Our Journey Begins",
+                    p1: "We're new to the coffee world, and we're not afraid to admit it. What we lack in years of experience, we make up for with genuine passion and an unwavering commitment to quality.",
+                    p2: "Gate 7 Coffee Roastery was born from a simple belief: great coffee brings people together. Whether you're a freelancer seeking your perfect work spot, a student cramming for exams, or a coffee enthusiast exploring new flavors, we're creating a space where everyone belongs.",
+                    p3: "We're learning every day – from our bean suppliers, from roasting masters, and most importantly, from our future community. This humility drives us to be better, to ask questions, and to never stop improving.",
+                    p4: "Gate 7 isn't just a coffee shop. It's your second home.",
+                    badge1: "📍 Coming Soon",
+                    badge2: "Coffee • Community • Quality",
+                    badge3: "Your Second Home Awaits"
+                },
+                features: {
+                    title: "What Makes Us Different",
+                    quality: {
+                        title: "☕ Quality First",
+                        desc: "We're committed to sourcing exceptional beans and roasting them with care. Every cup reflects our dedication to craft – from farm to your hands."
+                    },
+                    home: {
+                        title: "🏡 Your Second Home",
+                        desc: "Comfortable seating, reliable WiFi, and a welcoming atmosphere. Whether you're working, studying, or catching up with friends, you belong here."
+                    },
+                    learning: {
+                        title: "📚 Learning Together",
+                        desc: "New to specialty coffee? So are we! We'll share everything we learn about brewing, tasting, and appreciating great coffee. No pretense, just passion."
+                    },
+                    community: {
+                        title: "🤝 Community Focus",
+                        desc: "Built for freelancers, students, residents, and coffee lovers. We're creating connections one conversation at a time."
+                    },
+                    ethical: {
+                        title: "🌱 Ethical Sourcing",
+                        desc: "We believe great coffee starts with fair relationships. We're building partnerships with farms that share our values."
+                    },
+                    work: {
+                        title: "⚡ Work-Friendly",
+                        desc: "Power outlets everywhere, quiet zones for focus, and coffee that keeps you productive. Your mobile office just got an upgrade."
+                    }
+                },
+                space: {
+                    title: "The Space",
+                    subtitle: "Designed for How You Actually Work and Live",
+                    badge1: "🏗️ Design in Progress",
+                    badge2: "Cozy • Productive • Welcoming",
+                    badge3: "Every corner designed for you",
+                    focused: {
+                        title: "For the Focused:",
+                        desc: "Quiet corners with comfortable seating, plenty of natural light, and power outlets within reach."
+                    },
+                    social: {
+                        title: "For the Social:",
+                        desc: "Community tables perfect for collaboration, casual meetings, or making new connections over great coffee."
+                    },
+                    comfortable: {
+                        title: "For the Comfortable:",
+                        desc: "Sofas and armchairs that invite you to stay a while, whether you're reading, working, or simply enjoying your coffee."
+                    },
+                    everyone: {
+                        title: "For Everyone:",
+                        desc: "Fast WiFi, varied seating options, and an atmosphere that adapts to your needs throughout the day."
+                    },
+                    closing: "We're not just opening a coffee shop – we're creating a space where your best work happens and authentic connections form."
+                },
+                contact: {
+                    title: "Join Our Journey",
+                    updates: {
+                        title: "📧 Stay Updated",
+                        desc: "Be the first to know about our opening date, special events, and coffee education workshops.",
+                        placeholder: "your@email.com",
+                        button: "Subscribe"
+                    },
+                    location: {
+                        title: "📍 Location",
+                        desc: "We're putting the finishing touches on our space. Located in the heart of the community, accessible for everyone.",
+                        address: "Address:",
+                        addressValue: "Coming Soon",
+                        hours: "Hours:",
+                        hoursValue: "Mon-Sun, 7am-9pm (projected)"
+                    },
+                    events: {
+                        title: "☕ Pre-Opening Events",
+                        desc: "Want to be part of our soft opening? We'll be hosting cupping sessions and community previews for our early supporters.",
+                        cta: "Sign up above to get invited!"
+                    }
+                },
+                footer: {
+                    location: {
+                        title: "Location"
+                    },
+                    hours: {
+                        title: "Hours",
+                        weekday: "Mon – Fri",
+                        weekend: "Sat – Sun",
+                        note: "Kitchen closes 30 minutes prior"
+                    },
+                    follow: {
+                        title: "Follow"
+                    },
+                    copyright: "© 2025 Gate 7 Coffee Roastery. Opening Soon."
+                }
+            }
+        };
+
+        // Language switching functionality
+        let currentLang = localStorage.getItem('gate7-language') || 'vi';
+
+        function getRandomMessage(lang) {
+            const messages = translations[lang].hello.messages;
+            const today = new Date().toDateString();
+            const savedDate = localStorage.getItem('gate7-hello-date');
+            let messageIndex = parseInt(localStorage.getItem('gate7-hello-index') || '0');
+
+            // Check if we need a new message (new day)
+            if (savedDate !== today) {
+                messageIndex = Math.floor(Math.random() * messages.length);
+                localStorage.setItem('gate7-hello-date', today);
+                localStorage.setItem('gate7-hello-index', messageIndex.toString());
+            }
+
+            return messages[messageIndex];
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('gate7-language', lang);
+
+            // Update document language
+            document.documentElement.lang = lang === 'vi' ? 'vi' : 'en';
+
+            // Update page title
+            const pageTitle = document.getElementById('pageTitle');
+            if (pageTitle) {
+                pageTitle.textContent = lang === 'vi'
+                    ? 'Gate 7 Coffee Roastery - Điểm dừng chân lý tưởng cho những tín đồ cà phê chất lượng'
+                    : 'Gate 7 Coffee Roastery - Your Departure Gate to Great Coffee';
+            }
+
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+
+                // Skip hello.message as it will be handled separately
+                if (key === 'hello.message') return;
+
+                const keys = key.split('.');
+                let value = translations[lang];
+
+                for (const k of keys) {
+                    value = value[k];
+                    if (!value) break;
+                }
+
+                if (value) {
+                    element.textContent = value;
+                }
+            });
+
+            // Update hello message with random message
+            const helloMessage = document.getElementById('helloMessage');
+            if (helloMessage) {
+                helloMessage.textContent = getRandomMessage(lang);
+            }
+
+            // Update placeholder for email input
+            const emailInput = document.querySelector('[data-i18n-placeholder]');
+            if (emailInput) {
+                const key = emailInput.getAttribute('data-i18n-placeholder');
+                const keys = key.split('.');
+                let value = translations[lang];
+
+                for (const k of keys) {
+                    value = value[k];
+                    if (!value) break;
+                }
+
+                if (value) {
+                    emailInput.placeholder = value;
+                }
+            }
+
+            // Update language toggle button
+            const langBtn = document.getElementById('langToggle');
+            if (langBtn) {
+                langBtn.textContent = lang === 'vi' ? 'EN' : 'VI';
+            }
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setLanguage(currentLang);
+
+            // Language toggle button
+            const langBtn = document.getElementById('langToggle');
+            if (langBtn) {
+                langBtn.addEventListener('click', function() {
+                    const newLang = currentLang === 'vi' ? 'en' : 'vi';
+                    setLanguage(newLang);
+                });
+            }
+
+            // Scroll animations using Intersection Observer
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        // Optionally unobserve after revealing to improve performance
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe all elements with scroll-reveal classes
+            document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale').forEach(element => {
+                revealObserver.observe(element);
+            });
+        });
+
+        // Hero carousel with stacked frames
+        (function() {
+            const frames = document.querySelectorAll('.frame');
+            const prev = document.getElementById('prevSlide');
+            const next = document.getElementById('nextSlide');
+            let currentIndex = 0;
+            const total = frames.length;
+
+            function updateFrames() {
+                frames.forEach((frame, index) => {
+                    frame.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function goNext() {
+                currentIndex = (currentIndex + 1) % total;
+                updateFrames();
+            }
+
+            function goPrev() {
+                currentIndex = (currentIndex - 1 + total) % total;
+                updateFrames();
+            }
+
+            prev.addEventListener('click', goPrev);
+            next.addEventListener('click', goNext);
+            
+            // Auto-advance every 5 seconds
+            setInterval(goNext, 5000);
+        })();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Email subscription (placeholder functionality)
+        const subscribeBtn = document.querySelector('button');
+        if (subscribeBtn) {
+            subscribeBtn.addEventListener('click', function() {
+                const email = document.querySelector('input[type="email"]').value;
+                if(email) {
+                    alert('Thank you for subscribing! We\'ll keep you updated on our opening.');
+                    document.querySelector('input[type="email"]').value = '';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
