@@ -85,16 +85,21 @@
             color: var(--accent-color);
         }
         
-        /* Hero carousel */
+        /* Hero Section - Combined Hero & Hello */
         .hero {
             margin-top: 84px;
-            min-height: 600px;
+            min-height: 100vh;
             position: relative;
-            background: #C17817;
+            background: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: calc(8px * 6) calc(8px * 3);
+            padding: calc(8px * 8) calc(8px * 3);
+            text-align: center;
+        }
+
+        .hero-content-wrapper {
+            margin-bottom: calc(8px * 6);
         }
         .hero-inner {
             max-width: 1400px;
@@ -321,7 +326,32 @@
         /* Menu */
         .menu { 
             padding: calc(8px * 12) calc(8px * 5); 
-            background: var(--primary-color); 
+            background: var(--primary-color);
+            position: relative;
+            filter: blur(2px);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .menu::after {
+            content: "🚧 MENU PREVIEW - SHOP OPENING SOON 🚧";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: var(--accent-color);
+            padding: 20px 40px;
+            border-radius: 12px;
+            border: 2px solid var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            max-width: 400px;
+            line-height: 1.4;
+            pointer-events: all;
         }
         .menu .container { 
             max-width: 1200px; 
@@ -384,6 +414,144 @@
         .mi-price { 
             color: var(--accent-color); 
             font-weight: 600; 
+        }
+
+        /* Story Section - New Layout */
+        .story {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Title */
+        .story-main-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+            color: var(--text-color);
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            max-width: 800px;
+        }
+
+        .story-main-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+            margin: 1rem 0 0 0;
+            opacity: 0.8;
+        }
+
+        /* Lead Paragraph */
+        .story-lead-paragraph {
+            max-width: 800px;
+            margin: 0 0 3rem 0;
+        }
+
+        .story-lead-paragraph p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            opacity: 0.95;
+            text-align: left;
+        }
+
+        /* Visual Anchor - Full Width Image */
+        .story-visual-anchor {
+            width: 100%;
+            margin: 3rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .story-visual-anchor .story-photo-stack {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+        }
+
+        /* Remaining Content */
+        .story-remaining-content {
+            max-width: 800px;
+            margin: 3rem 0 0 0;
+        }
+
+        .story-remaining-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .story-remaining-content p:hover {
+            opacity: 1;
+        }
+
+        .story-closing {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(193, 120, 23, 0.3);
+        }
+
+        .story-frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            border: 2px solid var(--text-color);
+            background: var(--text-color);
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s var(--animation-timing),
+                        box-shadow 0.3s var(--animation-timing);
+        }
+
+        .story-frame:nth-child(1) { transform: rotate(-1deg); z-index: 1; }
+        .story-frame:nth-child(2) { transform: rotate(1.5deg); z-index: 2; }
+        .story-frame:nth-child(3) { transform: rotate(-0.8deg); z-index: 3; }
+        .story-frame.active { 
+            z-index: 4; 
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 12px 40px rgba(193, 120, 23, 0.3);
+        }
+
+        .story-frame img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+        }
+
+        .story-carousel-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .story-c-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            background: rgba(193, 120, 23, 0.1);
+            color: var(--accent-color);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 14px;
+            transition: all 0.3s var(--animation-timing);
+            backdrop-filter: blur(10px);
+        }
+
+        .story-c-btn:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            transform: scale(1.1);
         }
 
         /* Sections */
@@ -580,9 +748,37 @@
             }
         }
         
+        @media (max-width: 900px) {
+            .story-main-title {
+                font-size: 2rem;
+                text-align: center;
+            }
+            .story-lead-paragraph,
+            .story-remaining-content {
+                max-width: 100%;
+            }
+            .story-visual-anchor .story-photo-stack {
+                max-width: 600px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .story-content {
-                grid-template-columns: 1fr;
+            .story-main-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            .story-lead-paragraph p {
+                font-size: 1.1rem;
+            }
+            .story-remaining-content p {
+                font-size: 1rem;
+            }
+            .story-visual-anchor .story-photo-stack {
+                max-width: 450px;
+                aspect-ratio: 4/3;
+            }
+            .story-visual-anchor {
+                margin: 2rem 0;
             }
         }
 
@@ -598,9 +794,9 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="#home" data-i18n="nav.home">Home</a></li>
-                    <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+                    <!-- <li><a href="#menu" data-i18n="nav.menu">Menu</a></li> --><!-- Temporarily hidden until shop opening -->
                     <li><a href="#story" data-i18n="nav.story">Our Story</a></li>
-                    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+                    <li><a href="#space" data-i18n="nav.space">The Space</a></li>
                     <li>
                         <button id="langToggle" style="background: var(--accent-color); color: var(--primary-color); border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.9rem;">EN</button>
                     </li>
@@ -609,46 +805,21 @@
         </div>
     </nav>
 
-    <!-- Hero carousel -->
-    <section id="home" class="hero" aria-label="Featured Images">
-        <div class="hero-inner">
-            <div class="hero-media">
-                <div class="photo-stack">
-                    <div class="frame active">
-                        <img src="../images/banner.png" alt="Gate 7 Coffee banner" />
-                    </div>
-                    <div class="frame">
-                        <img src="../images/front1.png" alt="Gate 7 Coffee front" />
-                    </div>
-                    <div class="frame">
-                        <img src="../images/signage1.png" alt="Gate 7 Coffee signage" />
-                    </div>
-                    <div class="frame">
-                        <img src="../images/signage2.png" alt="Gate 7 Coffee interior" />
-                    </div>
-                </div>
-                <div class="carousel-controls">
-                    <button class="c-btn" id="prevSlide" aria-label="Previous">&#8592;</button>
-                    <button class="c-btn" id="nextSlide" aria-label="Next">&#8594;</button>
-                </div>
-            </div>
-            <div class="hero-content">
+    <!-- Hero Section - Hello & Good Morning -->
+    <section id="home" class="hero hello-section" aria-label="Welcome">
+        <div class="container">
+            <div class="hero-content-wrapper">
                 <div class="coming-soon" data-i18n="hero.comingSoon">Opening Soon</div>
                 <div class="hero-welcome" data-i18n="hero.welcome">Welcome to Gate 7</div>
                 <h1 class="hero-title" data-i18n="hero.title">Your departure gate to exceptional coffee and community</h1>
             </div>
-        </div>
-    </section>
-
-    <!-- Hello & Good Morning Section -->
-    <section class="hello-section scroll-reveal">
-        <div class="container">
             <div class="hello-greeting" data-i18n="hello.greeting">HELLO & GOOD MORNING</div>
             <h2 class="hello-message" id="helloMessage" data-i18n="hello.message">MONTE IS FOR LAIDBACK BREKKIES, CATCH-UPS WITH FRIENDS, TAKEAWAY GOODIES, & DAYS THAT YOU NEVER WANT TO END.</h2>
         </div>
     </section>
 
-    <!-- Menu -->
+    <!-- Menu - Temporarily hidden until shop opening -->
+    <!--
     <section id="menu" class="menu" aria-label="Menu">
         <div class="container">
             <h2 class="menu-section-title scroll-reveal" data-i18n="menu.title">All day menu</h2>
@@ -738,131 +909,109 @@
             </div>
         </div>
     </section>
+    -->
 
     <!-- Our Story Section -->
     <section id="story" class="section story">
         <div class="container">
-            <h2 class="section-title scroll-reveal" data-i18n="story.title">Our Journey Begins</h2>
-            <div class="story-content">
-                <div class="story-text scroll-reveal-left">
-                    <p data-i18n="story.p1">We're new to the coffee world, and we're not afraid to admit it. What we lack in years of experience, we make up for with genuine passion and an unwavering commitment to quality.</p>
+            <!-- Main Title -->
+            <h2 class="story-main-title scroll-reveal" data-i18n="story.title">Hành Trình Khởi Đầu</h2>
+            
+            <!-- Lead Paragraph -->
+            <div class="story-lead-paragraph scroll-reveal">
+                <p data-i18n="story.welcome">Chào mừng bạn đến với Gate 7—chính là <strong>cổng khởi hành (departure gate) của bạn đến với cà phê chất lượng đỉnh cao và cộng đồng cực xịn</strong>! Đây không chỉ là ngưỡng cửa bạn băng qua, mà là lời mời đến sự chuyển mình (<em>transformation</em>), nơi số bảy đánh dấu sự hoàn thành và cũng là một khởi đầu mới.</p>
+            </div>
 
-                    <p data-i18n="story.p2">Gate 7 Coffee Roastery was born from a simple belief: great coffee brings people together. Whether you're a freelancer seeking your perfect work spot, a student cramming for exams, or a coffee enthusiast exploring new flavors, we're creating a space where everyone belongs.</p>
-
-                    <p data-i18n="story.p3">We're learning every day – from our bean suppliers, from roasting masters, and most importantly, from our future community. This humility drives us to be better, to ask questions, and to never stop improving.</p>
-
-                    <p><strong data-i18n="story.p4">Gate 7 isn't just a coffee shop. It's your second home.</strong></p>
-                </div>
-                <div class="story-image scroll-reveal-right">
-                    <div>
-                        <p data-i18n="story.badge1">📍 Coming Soon</p>
-                        <p data-i18n="story.badge2">Coffee • Community • Quality</p>
-                        <p data-i18n="story.badge3">Your Second Home Awaits</p>
+            <!-- Visual Anchor - Full Width Image Carousel -->
+            <div class="story-visual-anchor scroll-reveal-scale">
+                <div class="story-photo-stack">
+                    <div class="story-frame active">
+                        <img src="../images/banner.png" alt="Gate 7 Coffee banner" />
+                    </div>
+                    <div class="story-frame">
+                        <img src="../images/front1.png" alt="Gate 7 Coffee front" />
+                    </div>
+                    <div class="story-frame">
+                        <img src="../images/signage1.png" alt="Gate 7 Coffee signage" />
+                    </div>
+                    <div class="story-frame">
+                        <img src="../images/signage2.png" alt="Gate 7 Coffee interior" />
                     </div>
                 </div>
+                <div class="story-carousel-controls">
+                    <button class="story-c-btn" id="storyPrevSlide" aria-label="Previous">&#8592;</button>
+                    <button class="story-c-btn" id="storyNextSlide" aria-label="Next">&#8594;</button>
+                </div>
+            </div>
+
+            <!-- Remaining Content Below Image -->
+            <div class="story-remaining-content scroll-reveal-left">
+                <p data-i18n="story.admission">Tụi mình thẳng thắn thừa nhận, Gate 7 là những gương mặt mới toanh trong thế giới cà phê, nhưng thứ tụi mình dùng để bù đắp là <strong>đam mê chân thật và cam kết không lay chuyển với chất lượng</strong>. Tụi mình cam kết tìm nguồn hạt đặc biệt và rang xay tỉ mỉ, đảm bảo mỗi tách cà phê bạn cầm trên tay đều phản ánh sự tận tâm—<strong>từ nông trại đến tận tay bạn</strong>.</p>
+
+                <p data-i18n="story.journey">Tuy nhiên, điều khiến Gate 7 khác biệt là tinh thần <strong>hành trình đi tìm điều mới mẻ cùng nhau</strong>: Tụi mình đang học hỏi mỗi ngày—từ nhà cung cấp đến chính cộng đồng tương lai. Gate 7 không phải là một quán đã biết tuốt, mà là nơi đang cùng nhau "figure out" mọi thứ với bạn.</p>
+
+                <p data-i18n="story.experimentation">Tại đây, <strong>sự thử nghiệm không chỉ được chào đón, mà còn được tôn vinh</strong>, vì sự tò mò của bạn chính là thứ thúc đẩy thí nghiệm tiếp theo của tụi mình. Gate 7 được thiết kế để trở thành ngôi nhà thứ hai (<em>Your second home</em>) của bạn, nơi bạn đến như bạn vốn có và rời đi với sự thay đổi, dù chỉ là một chút.</p>
+
+                <p class="story-closing"><strong data-i18n="story.invitation">Hãy cùng nhau vượt qua ngưỡng cửa (Cross the Threshold) và khám phá những điều mới mẻ. Hẹn gặp bạn ở Gate 7: Your second home for coffee adventure!</strong></p>
             </div>
         </div>
     </section>
 
-    <!-- What We Offer Section -->
-    <section id="coffee" class="section">
-        <div class="container">
-            <h2 class="section-title scroll-reveal" data-i18n="features.title">What Makes Us Different</h2>
-            <div class="grid">
-                <div class="card scroll-reveal-scale stagger-1">
-                    <h3 data-i18n="features.quality.title">☕ Quality First</h3>
-                    <p data-i18n="features.quality.desc">We're committed to sourcing exceptional beans and roasting them with care. Every cup reflects our dedication to craft – from farm to your hands.</p>
-                </div>
 
-                <div class="card scroll-reveal-scale stagger-2">
-                    <h3 data-i18n="features.home.title">🏡 Your Second Home</h3>
-                    <p data-i18n="features.home.desc">Comfortable seating, reliable WiFi, and a welcoming atmosphere. Whether you're working, studying, or catching up with friends, you belong here.</p>
-                </div>
-
-                <div class="card scroll-reveal-scale stagger-3">
-                    <h3 data-i18n="features.learning.title">📚 Learning Together</h3>
-                    <p data-i18n="features.learning.desc">New to specialty coffee? So are we! We'll share everything we learn about brewing, tasting, and appreciating great coffee. No pretense, just passion.</p>
-                </div>
-
-                <div class="card scroll-reveal-scale stagger-4">
-                    <h3 data-i18n="features.community.title">🤝 Community Focus</h3>
-                    <p data-i18n="features.community.desc">Built for freelancers, students, residents, and coffee lovers. We're creating connections one conversation at a time.</p>
-                </div>
-
-                <div class="card scroll-reveal-scale stagger-5">
-                    <h3 data-i18n="features.ethical.title">🌱 Ethical Sourcing</h3>
-                    <p data-i18n="features.ethical.desc">We believe great coffee starts with fair relationships. We're building partnerships with farms that share our values.</p>
-                </div>
-
-                <div class="card scroll-reveal-scale stagger-6">
-                    <h3 data-i18n="features.work.title">⚡ Work-Friendly</h3>
-                    <p data-i18n="features.work.desc">Power outlets everywhere, quiet zones for focus, and coffee that keeps you productive. Your mobile office just got an upgrade.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- The Space Section -->
     <section id="space" class="section story">
         <div class="container">
             <h2 class="section-title scroll-reveal" data-i18n="space.title">The Space</h2>
-            <div class="story-content">
-                <div class="story-image scroll-reveal-left">
-                    <div>
+            <div class="hero-inner">
+                <div class="hero-media">
+                    <div class="photo-stack">
+                        <div class="frame active">
+                            <img src="../images/signage1.png" alt="Gate 7 Space design" />
+                        </div>
+                        <div class="frame">
+                            <img src="../images/signage2.png" alt="Gate 7 Interior concept" />
+                        </div>
+                        <div class="frame">
+                            <img src="../images/front1.png" alt="Gate 7 Front view" />
+                        </div>
+                        <div class="frame">
+                            <img src="../images/banner.png" alt="Gate 7 Space banner" />
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="c-btn" id="spacePrevSlide" aria-label="Previous">&#8592;</button>
+                        <button class="c-btn" id="spaceNextSlide" aria-label="Next">&#8594;</button>
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <div class="story-text">
+                        <h3 data-i18n="space.subtitle">Designed for How You Actually Work and Live</h3>
+
+                        <p><strong data-i18n="space.focused.title">For the Focused:</strong> <span data-i18n="space.focused.desc">Quiet corners with comfortable seating, plenty of natural light, and power outlets within reach.</span></p>
+
+                        <p><strong data-i18n="space.social.title">For the Social:</strong> <span data-i18n="space.social.desc">Community tables perfect for collaboration, casual meetings, or making new connections over great coffee.</span></p>
+
+                        <p><strong data-i18n="space.comfortable.title">For the Comfortable:</strong> <span data-i18n="space.comfortable.desc">Sofas and armchairs that invite you to stay a while, whether you're reading, working, or simply enjoying your coffee.</span></p>
+
+                        <p><strong data-i18n="space.everyone.title">For Everyone:</strong> <span data-i18n="space.everyone.desc">Fast WiFi, varied seating options, and an atmosphere that adapts to your needs throughout the day.</span></p>
+
+                        <p data-i18n="space.closing">We're not just opening a coffee shop – we're creating a space where your best work happens and authentic connections form.</p>
+                    </div>
+                    <div class="story-badges">
                         <p data-i18n="space.badge1">🏗️ Design in Progress</p>
                         <p data-i18n="space.badge2">Cozy • Productive • Welcoming</p>
                         <p data-i18n="space.badge3">Every corner designed for you</p>
                     </div>
                 </div>
-                <div class="story-text scroll-reveal-right">
-                    <h3 data-i18n="space.subtitle">Designed for How You Actually Work and Live</h3>
-
-                    <p><strong data-i18n="space.focused.title">For the Focused:</strong> <span data-i18n="space.focused.desc">Quiet corners with comfortable seating, plenty of natural light, and power outlets within reach.</span></p>
-
-                    <p><strong data-i18n="space.social.title">For the Social:</strong> <span data-i18n="space.social.desc">Community tables perfect for collaboration, casual meetings, or making new connections over great coffee.</span></p>
-
-                    <p><strong data-i18n="space.comfortable.title">For the Comfortable:</strong> <span data-i18n="space.comfortable.desc">Sofas and armchairs that invite you to stay a while, whether you're reading, working, or simply enjoying your coffee.</span></p>
-
-                    <p><strong data-i18n="space.everyone.title">For Everyone:</strong> <span data-i18n="space.everyone.desc">Fast WiFi, varied seating options, and an atmosphere that adapts to your needs throughout the day.</span></p>
-
-                    <p data-i18n="space.closing">We're not just opening a coffee shop – we're creating a space where your best work happens and authentic connections form.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact/Updates Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title scroll-reveal" data-i18n="contact.title">Join Our Journey</h2>
-            <div class="grid">
-                <div class="card scroll-reveal-scale stagger-1">
-                    <h3 data-i18n="contact.updates.title">📧 Stay Updated</h3>
-                    <p data-i18n="contact.updates.desc">Be the first to know about our opening date, special events, and coffee education workshops.</p>
-                    <div style="margin-top: 1rem;">
-                        <input type="email" data-i18n-placeholder="contact.updates.placeholder" placeholder="your@email.com" style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
-                        <button class="btn btn-primary" data-i18n="contact.updates.button" style="padding: 10px 20px;">Subscribe</button>
-                    </div>
-                </div>
 
-                <div class="card scroll-reveal-scale stagger-2">
-                    <h3 data-i18n="contact.location.title">📍 Location</h3>
-                    <p data-i18n="contact.location.desc">We're putting the finishing touches on our space. Located in the heart of the community, accessible for everyone.</p>
-                    <p><strong data-i18n="contact.location.address">Address:</strong> <span data-i18n="contact.location.addressValue">Coming Soon</span><br>
-                    <strong data-i18n="contact.location.hours">Hours:</strong> <span data-i18n="contact.location.hoursValue">Mon-Sun, 7am-9pm (projected)</span></p>
-                </div>
-
-                <div class="card scroll-reveal-scale stagger-3">
-                    <h3 data-i18n="contact.events.title">☕ Pre-Opening Events</h3>
-                    <p data-i18n="contact.events.desc">Want to be part of our soft opening? We'll be hosting cupping sessions and community previews for our early supporters.</p>
-                    <p><em data-i18n="contact.events.cta">Sign up above to get invited!</em></p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
-    <footer id="contact" class="footer" aria-label="Footer">
+    <footer class="footer" aria-label="Footer">
         <div class="container">
             <div>
                 <h4 data-i18n="footer.location.title">Location</h4>
@@ -895,7 +1044,7 @@
                     home: "Trang Chủ",
                     menu: "Thực Đơn",
                     story: "Câu Chuyện",
-                    contact: "Liên Hệ"
+                    space: "Không Gian"
                 },
                 hero: {
                     comingSoon: "Sắp Ra Mắt",
@@ -971,13 +1120,11 @@
                 },
                 story: {
                     title: "Hành Trình Khởi Đầu",
-                    p1: "Chúng mình là newbie trong làng cà phê, và chúng mình tự tin thừa nhận điều đó. Những gì thiếu về kinh nghiệm, chúng mình bù đắp bằng passion thực sự và cam kết chất lượng không lay chuyển.",
-                    p2: "Gate 7 Coffee Roastery ra đời từ một niềm tin đơn giản: cà phê ngon kết nối mọi người. Dù bạn là freelancer tìm không gian làm việc ưng ý, sinh viên cày cuốc deadline, hay coffee lover khám phá hương vị mới - chúng mình đang tạo ra một nơi mà mọi người đều thuộc về.",
-                    p3: "Chúng mình học hỏi mỗi ngày – từ nhà cung cấp hạt cà phê, từ các master rang, và quan trọng nhất là từ cộng đồng tương lai của mình. Sự khiêm tốn này thúc đẩy chúng mình trở nên tốt hơn, đặt câu hỏi và không bao giờ ngừng cải thiện.",
-                    p4: "Gate 7 không chỉ là quán cà phê. Đây là ngôi nhà thứ hai của bạn.",
-                    badge1: "📍 Sắp Ra Mắt",
-                    badge2: "Cà Phê • Cộng Đồng • Chất Lượng",
-                    badge3: "Ngôi Nhà Thứ Hai Đang Chờ Bạn"
+                    welcome: "Chào mừng bạn đến với Gate 7—chính là cổng khởi hành (departure gate) của bạn đến với cà phê chất lượng đỉnh cao và cộng đồng cực xịn! Đây không chỉ là ngưỡng cửa bạn băng qua, mà là lời mời đến sự chuyển mình (transformation), nơi số bảy đánh dấu sự hoàn thành và cũng là một khởi đầu mới.",
+                    admission: "Tụi mình thẳng thắn thừa nhận, Gate 7 là những gương mặt mới toanh trong thế giới cà phê, nhưng thứ tụi mình dùng để bù đắp là đam mê chân thật và cam kết không lay chuyển với chất lượng. Tụi mình cam kết tìm nguồn hạt đặc biệt và rang xay tỉ mỉ, đảm bảo mỗi tách cà phê bạn cầm trên tay đều phản ánh sự tận tâm—từ nông trại đến tận tay bạn.",
+                    journey: "Tuy nhiên, điều khiến Gate 7 khác biệt là tinh thần hành trình đi tìm điều mới mẻ cùng nhau: Tụi mình đang học hỏi mỗi ngày—từ nhà cung cấp đến chính cộng đồng tương lai. Gate 7 không phải là một quán đã biết tuốt, mà là nơi đang cùng nhau \"figure out\" mọi thứ với bạn.",
+                    experimentation: "Tại đây, sự thử nghiệm không chỉ được chào đón, mà còn được tôn vinh, vì sự tò mò của bạn chính là thứ thúc đẩy thí nghiệm tiếp theo của tụi mình. Gate 7 được thiết kế để trở thành ngôi nhà thứ hai (Your second home) của bạn, nơi bạn đến như bạn vốn có và rời đi với sự thay đổi, dù chỉ là một chút.",
+                    invitation: "Hãy cùng nhau vượt qua ngưỡng cửa (Cross the Threshold) và khám phá những điều mới mẻ. Hẹn gặp bạn ở Gate 7: Your second home for coffee adventure!"
                 },
                 features: {
                     title: "Điểm Khác Biệt Của Chúng Mình",
@@ -1073,7 +1220,7 @@
                     home: "Home",
                     menu: "Menu",
                     story: "Our Story",
-                    contact: "Contact"
+                    space: "The Space"
                 },
                 hero: {
                     comingSoon: "Opening Soon",
@@ -1149,13 +1296,11 @@
                 },
                 story: {
                     title: "Our Journey Begins",
-                    p1: "We're new to the coffee world, and we're not afraid to admit it. What we lack in years of experience, we make up for with genuine passion and an unwavering commitment to quality.",
-                    p2: "Gate 7 Coffee Roastery was born from a simple belief: great coffee brings people together. Whether you're a freelancer seeking your perfect work spot, a student cramming for exams, or a coffee enthusiast exploring new flavors, we're creating a space where everyone belongs.",
-                    p3: "We're learning every day – from our bean suppliers, from roasting masters, and most importantly, from our future community. This humility drives us to be better, to ask questions, and to never stop improving.",
-                    p4: "Gate 7 isn't just a coffee shop. It's your second home.",
-                    badge1: "📍 Coming Soon",
-                    badge2: "Coffee • Community • Quality",
-                    badge3: "Your Second Home Awaits"
+                    welcome: "Welcome to Gate 7—which is your departure gate to exceptional coffee and community! This isn't just a threshold you cross, but an invitation to transformation, where the number seven marks both completion and a new beginning.",
+                    admission: "We frankly admit that Gate 7 is new to the coffee world, but what we make up for is genuine passion and an unwavering commitment to quality. We are committed to sourcing exceptional beans and roasting them with care, ensuring every cup of coffee in your hands reflects our dedication—from farm to your hands.",
+                    journey: "However, what makes Gate 7 different is the spirit of a shared journey of discovery: We are learning every day—from our bean suppliers, from roasting masters, and most importantly, from our future community. Gate 7 isn't just a coffee shop that has it all figured out; we're one that's figuring it out together with you.",
+                    experimentation: "Here, experimentation isn't just welcome, it's celebrated, because your curiosity drives our next experiment. Gate 7 is designed to become your second home, where you come as you are and leave changed, even if just a little.",
+                    invitation: "Let's Cross the Threshold together and discover new possibilities. See you at Gate 7: Your second home for coffee adventure!"
                 },
                 features: {
                     title: "What Makes Us Different",
@@ -1365,35 +1510,70 @@
             });
         });
 
-        // Hero carousel with stacked frames
+        // Story carousel with stacked frames
         (function() {
-            const frames = document.querySelectorAll('.frame');
-            const prev = document.getElementById('prevSlide');
-            const next = document.getElementById('nextSlide');
-            let currentIndex = 0;
-            const total = frames.length;
+            const storyFrames = document.querySelectorAll('.story-frame');
+            const storyPrev = document.getElementById('storyPrevSlide');
+            const storyNext = document.getElementById('storyNextSlide');
+            let storyCurrentIndex = 0;
+            const storyTotal = storyFrames.length;
 
-            function updateFrames() {
-                frames.forEach((frame, index) => {
-                    frame.classList.toggle('active', index === currentIndex);
+            function updateStoryFrames() {
+                storyFrames.forEach((frame, index) => {
+                    frame.classList.toggle('active', index === storyCurrentIndex);
                 });
             }
 
-            function goNext() {
-                currentIndex = (currentIndex + 1) % total;
-                updateFrames();
+            function goStoryNext() {
+                storyCurrentIndex = (storyCurrentIndex + 1) % storyTotal;
+                updateStoryFrames();
             }
 
-            function goPrev() {
-                currentIndex = (currentIndex - 1 + total) % total;
-                updateFrames();
+            function goStoryPrev() {
+                storyCurrentIndex = (storyCurrentIndex - 1 + storyTotal) % storyTotal;
+                updateStoryFrames();
             }
 
-            prev.addEventListener('click', goPrev);
-            next.addEventListener('click', goNext);
-            
-            // Auto-advance every 5 seconds
-            setInterval(goNext, 5000);
+            if (storyPrev && storyNext) {
+                storyPrev.addEventListener('click', goStoryPrev);
+                storyNext.addEventListener('click', goStoryNext);
+                
+                // Auto-advance every 5 seconds
+                setInterval(goStoryNext, 5000);
+            }
+        })();
+
+        // Space carousel with stacked frames
+        (function() {
+            const spaceFrames = document.querySelectorAll('#space .frame');
+            const spacePrev = document.getElementById('spacePrevSlide');
+            const spaceNext = document.getElementById('spaceNextSlide');
+            let spaceCurrentIndex = 0;
+            const spaceTotal = spaceFrames.length;
+
+            function updateSpaceFrames() {
+                spaceFrames.forEach((frame, index) => {
+                    frame.classList.toggle('active', index === spaceCurrentIndex);
+                });
+            }
+
+            function goSpaceNext() {
+                spaceCurrentIndex = (spaceCurrentIndex + 1) % spaceTotal;
+                updateSpaceFrames();
+            }
+
+            function goSpacePrev() {
+                spaceCurrentIndex = (spaceCurrentIndex - 1 + spaceTotal) % spaceTotal;
+                updateSpaceFrames();
+            }
+
+            if (spacePrev && spaceNext) {
+                spacePrev.addEventListener('click', goSpacePrev);
+                spaceNext.addEventListener('click', goSpaceNext);
+                
+                // Auto-advance every 6 seconds (offset from story)
+                setInterval(goSpaceNext, 6000);
+            }
         })();
 
         // Smooth scrolling for navigation links
