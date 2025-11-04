@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gate 7 Coffee - Playlist Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9f7;
+            color: #2c2c2c;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e8e6e1;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .header p {
+            font-size: 0.95em;
+            color: #6b6b6b;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* Playlist Grid */
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin-bottom: 60px;
+        }
+
+        .time-slot {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            border: 1px solid #e8e6e1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time-slot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8b6f47 0%, #a89968 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .time-slot:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            border-color: #d4cfc7;
+        }
+
+        .time-slot:hover::before {
+            opacity: 1;
+        }
+
+        .time-period {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25em;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+
+        .audience {
+            color: #8b8b8b;
+            font-size: 0.85em;
+            margin-bottom: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .vibe-description {
+            background: #fef9f4;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            font-size: 0.85em;
+            color: #6b6b6b;
+            border-left: 3px solid #c9a876;
+            line-height: 1.5;
+        }
+
+        .playlist-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            background: #fef9f4;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .playlist-item:hover {
+            background: #fdf5ed;
+            border-color: #e8ddd0;
+            transform: translateX(4px);
+        }
+
+        .spotify-icon {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: #1DB954;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .playlist-link {
+            flex: 1;
+            text-decoration: none;
+            color: #2c2c2c;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.2s ease;
+        }
+
+        .playlist-item:hover .playlist-link {
+            color: #8b6f47;
+        }
+
+        /* Footer Section */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 16px;
+            font-size: 1.3em;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .footer-text {
+            font-size: 0.9em;
+            line-height: 1.8;
+            color: #d4d4d4;
+            margin-bottom: 20px;
+        }
+
+        .footer-highlight {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #404040;
+        }
+
+        .highlight-item {
+            font-size: 0.85em;
+        }
+
+        .highlight-label {
+            color: #a89968;
+            font-weight: 600;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .highlight-value {
+            color: #d4d4d4;
+            line-height: 1.4;
+        }
+
+        /* Brand accent color */
+        .accent-brown {
+            color: #8b6f47;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6em;
+            }
+
+            .header p {
+                font-size: 0.9em;
+            }
+
+            .playlist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .time-slot {
+                padding: 20px;
+            }
+
+            .footer {
+                padding: 28px 20px;
+            }
+
+            .footer-highlight {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 16px;
+            }
+
+            .header h1 {
+                font-size: 1.4em;
+            }
+
+            .time-period {
+                font-size: 1.1em;
+            }
+
+            .playlist-grid {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">GATE 7</div>
+            <h1>Your Soundtrack</h1>
+            <p>Curated playlists for every moment of your day at Gate 7. Click any playlist to open it in Spotify and set the mood.</p>
+        </div>
+
+        <div class="playlist-grid">
+            <!-- Morning Slot: 6 AM - 9 AM -->
+            <div class="time-slot">
+                <div class="time-period">6 AM – 9 AM</div>
+                <div class="audience">Morning Regulars</div>
+                <div class="vibe-description">
+                    Smooth awakening. Jazz and indie tracks to energize your morning ritual.
+                </div>
+                <div class="playlist-list">
+                    <a onclick="openSpotifyPlaylist('37i9dQZF1DXdwTUxmGKrdN'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">Coffee Table Jazz</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('1JJgzNrj8GZhgPkGpKXI2s'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">Jazz Cafe Playlist</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('5kHQ3Cp945yye3pKQMnPg2'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">Morning Coffee Music</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Golden Age Slot: 9 AM - 11 AM -->
+            <div class="time-slot">
+                <div class="time-period">9 AM – 11 AM</div>
+                <div class="audience">Afternoon Community</div>
+                <div class="vibe-description">
+                    Refined and relaxed. Classic jazz for conversation and connection.
+                </div>
+                <div class="playlist-list">
+                    <a onclick="openSpotifyPlaylist('37i9dQZF1DXbITWG1ZJKYt'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">Jazz Classics</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('37i9dQZF1DWSSSls9eK29h'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">Smooth Jazz Classics</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('2XgAG7lLZ4w9atuENOthbA'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">Old Jazz Classics</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('3ywHgnkZYffTgfiZ0tcaXs'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">Classic Film Noir Jazz</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Lunch Slot: 11 AM - 3 PM -->
+            <div class="time-slot">
+                <div class="time-period">11 AM – 3 PM</div>
+                <div class="audience">Lunch & Afternoon</div>
+                <div class="vibe-description">
+                    Diverse and dynamic. Lo-fi and indie blends for every mood during the day.
+                </div>
+                <div class="playlist-list">
+                    <a onclick="openSpotifyPlaylist('37i9dQZF1DWYoYGBbGKurt'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">lofi chill</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('37i9dQZF1DX0CIO5EOSHeD'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">Lofi Indie</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('0I3GwneqvQlrFhIsDxz9IF'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">lofi Indie Pop 2025</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('37i9dQZF1DX9RwfGbeGQwP'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">lofi cafe</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Evening Slot: 3 PM - 10 PM -->
+            <div class="time-slot">
+                <div class="time-period">3 PM – 10 PM</div>
+                <div class="audience">Evening Vibes</div>
+                <div class="vibe-description">
+                    Contemporary and energetic. Trending tracks for our younger community.
+                </div>
+                <div class="playlist-list">
+                    <a onclick="openSpotifyPlaylist('0I3GwneqvQlrFhIsDxz9IF'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">lofi Indie Pop 2025</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('37i9dQZF1DWYoYGBbGKurt'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">lofi chill</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('37i9dQZF1DWSoyxGghlqv5'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">hot girl bops</span>
+                    </a>
+                    <a onclick="openSpotifyPlaylist('37i9dQZF1DXcBCFG2DAqO7'); return false;" class="playlist-item">
+                        <div class="spotify-icon">♪</div>
+                        <span class="playlist-link">Today's Top Hits</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-content">
+                <h3>Your Second Home, Your Soundtrack</h3>
+                <p class="footer-text">
+                    At Gate 7, we believe music is part of what makes a space feel like home. These playlists are carefully curated for each moment of your day – whether you're starting your morning ritual, settling in for work, catching up with friends, or unwinding in the evening.
+                </p>
+                <div class="footer-highlight">
+                    <div class="highlight-item">
+                        <div class="highlight-label">Smooth Transitions</div>
+                        <div class="highlight-value">Switch playlists 15 minutes before each time slot for a natural flow</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Community Feel</div>
+                        <div class="highlight-value">Music that complements conversation and connection at every hour</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Quality Curation</div>
+                        <div class="highlight-value">Playlists that evolve with Spotify's regular updates</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Personal Touch</div>
+                        <div class="highlight-value">Mix your own blend from multiple playlists for a custom Gate 7 sound</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to open Spotify desktop app with a playlist
+        function openSpotifyPlaylist(playlistId) {
+            // Create the Spotify URI
+            const spotifyUri = `spotify:playlist:${playlistId}`;
+            
+            // Open the URI directly - this will launch Spotify desktop app
+            window.location.href = spotifyUri;
+        }
+    </script>
+</body>
+</html>
