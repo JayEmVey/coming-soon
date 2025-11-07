@@ -25,15 +25,83 @@
             margin: 0 auto;
         }
 
+        /* Welcome Message */
+        .welcome-message {
+            background: linear-gradient(135deg, #8b6f47 0%, #a89968 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(139, 111, 71, 0.2);
+        }
+
+        .welcome-message h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .welcome-message .datetime {
+            font-size: 0.95em;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+            background: white;
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e8e6e1;
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            background: transparent;
+            color: #6b6b6b;
+            font-weight: 600;
+            font-size: 0.85em;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lang-btn.active {
+            background: #8b6f47;
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: #f5f5f5;
+            color: #2c2c2c;
+        }
+
         /* Header Section */
         .header {
             text-align: center;
             margin-bottom: 60px;
             padding-bottom: 40px;
             border-bottom: 1px solid #e8e6e1;
+            position: relative;
         }
 
         .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .logo-text {
             font-family: 'Playfair Display', serif;
             font-size: 2em;
             font-weight: 700;
@@ -245,6 +313,24 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .language-switcher {
+                position: static;
+                margin: 0 auto 20px;
+                width: fit-content;
+            }
+
+            .welcome-message {
+                padding: 20px 24px;
+            }
+
+            .welcome-message h2 {
+                font-size: 1.2em;
+            }
+
+            .welcome-message .datetime {
+                font-size: 0.85em;
+            }
+
             .header h1 {
                 font-size: 1.6em;
             }
@@ -290,19 +376,30 @@
     </style>
 </head>
 <body>
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLanguage('en')">ENG</button>
+        <button class="lang-btn" onclick="switchLanguage('vn')">VNE</button>
+    </div>
+
     <div class="container">
+        <div class="welcome-message">
+            <h2 data-en="Gate 7 Welcome!" data-vn="Gate 7 Xin Chào!">Gate 7 Welcome!</h2>
+            <div class="datetime" id="datetime"></div>
+        </div>
+
         <div class="header">
-            <div class="logo">GATE 7</div>
-            <h1>Your Soundtrack</h1>
-            <p>Curated playlists for every moment of your day at Gate 7. Click any playlist to open it in Spotify and set the mood.</p>
+            <img src="../assets/gate7-logo.png" alt="Gate 7 Logo" class="logo" onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='block'">
+            <div class="logo-text" style="display: none;">GATE 7</div>
+            <h1 data-en="Your Soundtrack" data-vn="Nhạc Của Bạn">Your Soundtrack</h1>
+            <p data-en="Curated playlists for every moment of your day at Gate 7. Click any playlist to open it in Spotify and set the mood." data-vn="Danh sách nhạc được tuyển chọn cho mọi khoảnh khắc trong ngày tại Gate 7. Nhấp vào bất kỳ danh sách nào để mở trong Spotify và tạo không khí.">Curated playlists for every moment of your day at Gate 7. Click any playlist to open it in Spotify and set the mood.</p>
         </div>
 
         <div class="playlist-grid">
             <!-- Morning Slot: 6 AM - 9 AM -->
             <div class="time-slot">
                 <div class="time-period">6 AM – 9 AM</div>
-                <div class="audience">Morning Regulars</div>
-                <div class="vibe-description">
+                <div class="audience" data-en="Morning Regulars" data-vn="Khách Buổi Sáng">Morning Regulars</div>
+                <div class="vibe-description" data-en="Smooth awakening. Jazz and indie tracks to energize your morning ritual." data-vn="Thức dậy nhẹ nhàng. Nhạc jazz và indie để tràn đầy năng lượng cho buổi sáng của bạn.">
                     Smooth awakening. Jazz and indie tracks to energize your morning ritual.
                 </div>
                 <div class="playlist-list">
@@ -324,8 +421,8 @@
             <!-- Golden Age Slot: 9 AM - 11 AM -->
             <div class="time-slot">
                 <div class="time-period">9 AM – 11 AM</div>
-                <div class="audience">Afternoon Community</div>
-                <div class="vibe-description">
+                <div class="audience" data-en="Afternoon Community" data-vn="Cộng Đồng Buổi Chiều">Afternoon Community</div>
+                <div class="vibe-description" data-en="Refined and relaxed. Classic jazz for conversation and connection." data-vn="Tinh tế và thư giãn. Nhạc jazz cổ điển cho cuộc trò chuyện và kết nối.">
                     Refined and relaxed. Classic jazz for conversation and connection.
                 </div>
                 <div class="playlist-list">
@@ -351,8 +448,8 @@
             <!-- Lunch Slot: 11 AM - 3 PM -->
             <div class="time-slot">
                 <div class="time-period">11 AM – 3 PM</div>
-                <div class="audience">Lunch & Afternoon</div>
-                <div class="vibe-description">
+                <div class="audience" data-en="Lunch & Afternoon" data-vn="Trưa & Chiều">Lunch & Afternoon</div>
+                <div class="vibe-description" data-en="Diverse and dynamic. Lo-fi and indie blends for every mood during the day." data-vn="Đa dạng và năng động. Sự kết hợp lo-fi và indie cho mọi tâm trạng trong ngày.">
                     Diverse and dynamic. Lo-fi and indie blends for every mood during the day.
                 </div>
                 <div class="playlist-list">
@@ -378,8 +475,8 @@
             <!-- Evening Slot: 3 PM - 10 PM -->
             <div class="time-slot">
                 <div class="time-period">3 PM – 10 PM</div>
-                <div class="audience">Evening Vibes</div>
-                <div class="vibe-description">
+                <div class="audience" data-en="Evening Vibes" data-vn="Không Khí Buổi Tối">Evening Vibes</div>
+                <div class="vibe-description" data-en="Contemporary and energetic. Trending tracks for our younger community." data-vn="Hiện đại và năng động. Những ca khúc thịnh hành cho cộng đồng trẻ của chúng tôi.">
                     Contemporary and energetic. Trending tracks for our younger community.
                 </div>
                 <div class="playlist-list">
@@ -395,7 +492,7 @@
                         <div class="spotify-icon">♪</div>
                         <span class="playlist-link">hot girl bops</span>
                     </a>
-                    <a onclick="openSpotifyPlaylist('37i9dQZF1DXcBCFG2DAqO7'); return false;" class="playlist-item">
+                    <a onclick="openSpotifyPlaylist('37i9dQZF1DX0XUsuxWHRQd'); return false;" class="playlist-item">
                         <div class="spotify-icon">♪</div>
                         <span class="playlist-link">Today's Top Hits</span>
                     </a>
@@ -405,26 +502,26 @@
 
         <div class="footer">
             <div class="footer-content">
-                <h3>Your Second Home, Your Soundtrack</h3>
-                <p class="footer-text">
+                <h3 data-en="Your Second Home, Your Soundtrack" data-vn="Ngôi Nhà Thứ Hai, Nhạc Của Bạn">Your Second Home, Your Soundtrack</h3>
+                <p class="footer-text" data-en="At Gate 7, we believe music is part of what makes a space feel like home. These playlists are carefully curated for each moment of your day – whether you're starting your morning ritual, settling in for work, catching up with friends, or unwinding in the evening." data-vn="Tại Gate 7, chúng tôi tin rằng âm nhạc là một phần tạo nên cảm giác như ở nhà. Các danh sách phát này được tuyển chọn cẩn thận cho từng khoảnh khắc trong ngày của bạn – dù bạn đang bắt đầu nghi lễ buổi sáng, làm việc, gặp gỡ bạn bè, hay thư giãn vào buổi tối.">
                     At Gate 7, we believe music is part of what makes a space feel like home. These playlists are carefully curated for each moment of your day – whether you're starting your morning ritual, settling in for work, catching up with friends, or unwinding in the evening.
                 </p>
                 <div class="footer-highlight">
                     <div class="highlight-item">
-                        <div class="highlight-label">Smooth Transitions</div>
-                        <div class="highlight-value">Switch playlists 15 minutes before each time slot for a natural flow</div>
+                        <div class="highlight-label" data-en="Smooth Transitions" data-vn="Chuyển Đổi Mượt Mà">Smooth Transitions</div>
+                        <div class="highlight-value" data-en="Switch playlists 15 minutes before each time slot for a natural flow" data-vn="Chuyển danh sách phát trước 15 phút mỗi khung giờ để chuyển tiếp tự nhiên">Switch playlists 15 minutes before each time slot for a natural flow</div>
                     </div>
                     <div class="highlight-item">
-                        <div class="highlight-label">Community Feel</div>
-                        <div class="highlight-value">Music that complements conversation and connection at every hour</div>
+                        <div class="highlight-label" data-en="Community Feel" data-vn="Cảm Giác Cộng Đồng">Community Feel</div>
+                        <div class="highlight-value" data-en="Music that complements conversation and connection at every hour" data-vn="Âm nhạc bổ trợ cho cuộc trò chuyện và kết nối mọi lúc">Music that complements conversation and connection at every hour</div>
                     </div>
                     <div class="highlight-item">
-                        <div class="highlight-label">Quality Curation</div>
-                        <div class="highlight-value">Playlists that evolve with Spotify's regular updates</div>
+                        <div class="highlight-label" data-en="Quality Curation" data-vn="Tuyển Chọn Chất Lượng">Quality Curation</div>
+                        <div class="highlight-value" data-en="Playlists that evolve with Spotify's regular updates" data-vn="Danh sách phát được cập nhật thường xuyên từ Spotify">Playlists that evolve with Spotify's regular updates</div>
                     </div>
                     <div class="highlight-item">
-                        <div class="highlight-label">Personal Touch</div>
-                        <div class="highlight-value">Mix your own blend from multiple playlists for a custom Gate 7 sound</div>
+                        <div class="highlight-label" data-en="Personal Touch" data-vn="Nét Cá Nhân">Personal Touch</div>
+                        <div class="highlight-value" data-en="Mix your own blend from multiple playlists for a custom Gate 7 sound" data-vn="Trộn các danh sách phát để tạo âm thanh Gate 7 riêng của bạn">Mix your own blend from multiple playlists for a custom Gate 7 sound</div>
                     </div>
                 </div>
             </div>
@@ -432,14 +529,64 @@
     </div>
 
     <script>
+        // Current language (default: English)
+        let currentLang = 'en';
+
         // Function to open Spotify desktop app with a playlist
         function openSpotifyPlaylist(playlistId) {
             // Create the Spotify URI
             const spotifyUri = `spotify:playlist:${playlistId}`;
-            
+
             // Open the URI directly - this will launch Spotify desktop app
             window.location.href = spotifyUri;
         }
+
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+
+            let dateTimeStr;
+            if (currentLang === 'vn') {
+                dateTimeStr = now.toLocaleDateString('vi-VN', options);
+            } else {
+                dateTimeStr = now.toLocaleDateString('en-US', options);
+            }
+
+            document.getElementById('datetime').textContent = dateTimeStr;
+        }
+
+        // Function to switch language
+        function switchLanguage(lang) {
+            currentLang = lang;
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en]').forEach(element => {
+                const text = lang === 'en' ? element.getAttribute('data-en') : element.getAttribute('data-vn');
+                element.textContent = text;
+            });
+
+            // Update date/time format
+            updateDateTime();
+        }
+
+        // Initialize date/time and update every second
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
     </script>
 </body>
 </html>
