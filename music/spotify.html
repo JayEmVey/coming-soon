@@ -532,6 +532,60 @@
         // Current language (default: English)
         let currentLang = 'en';
 
+        // Playlist data for different languages and time slots
+        const playlists = {
+            en: {
+                morning: [
+                    { id: '37i9dQZF1DXdwTUxmGKrdN', name: 'Coffee Table Jazz' },
+                    { id: '1JJgzNrj8GZhgPkGpKXI2s', name: 'Jazz Cafe Playlist' },
+                    { id: '5kHQ3Cp945yye3pKQMnPg2', name: 'Morning Coffee Music' }
+                ],
+                afternoon: [
+                    { id: '37i9dQZF1DXbITWG1ZJKYt', name: 'Jazz Classics' },
+                    { id: '37i9dQZF1DWSSSls9eK29h', name: 'Smooth Jazz Classics' },
+                    { id: '2XgAG7lLZ4w9atuENOthbA', name: 'Old Jazz Classics' },
+                    { id: '3ywHgnkZYffTgfiZ0tcaXs', name: 'Classic Film Noir Jazz' }
+                ],
+                lunch: [
+                    { id: '37i9dQZF1DWYoYGBbGKurt', name: 'lofi chill' },
+                    { id: '37i9dQZF1DX0CIO5EOSHeD', name: 'Lofi Indie' },
+                    { id: '0I3GwneqvQlrFhIsDxz9IF', name: 'lofi Indie Pop 2025' },
+                    { id: '37i9dQZF1DX9RwfGbeGQwP', name: 'lofi cafe' }
+                ],
+                evening: [
+                    { id: '0I3GwneqvQlrFhIsDxz9IF', name: 'lofi Indie Pop 2025' },
+                    { id: '37i9dQZF1DWYoYGBbGKurt', name: 'lofi chill' },
+                    { id: '37i9dQZF1DWSoyxGghlqv5', name: 'hot girl bops' },
+                    { id: '37i9dQZF1DX0XUsuxWHRQd', name: 'Today\'s Top Hits' }
+                ]
+            },
+            vn: {
+                morning: [
+                    { id: '37i9dQZF1DX4PP3DA4J0N8', name: 'Chill Hits Việt Nam' },
+                    { id: '37i9dQZF1DX0XUfEo1d0IQ', name: 'Nhạc Việt Nam Hay Nhất' },
+                    { id: '37i9dQZF1DX4jP4eebSNFH', name: 'Coffee & Chill' }
+                ],
+                afternoon: [
+                    { id: '37i9dQZF1DX0XUfEo1d0IQ', name: 'Nhạc Việt Nam Hay Nhất' },
+                    { id: '37i9dQZF1DWZrc3lwvImLj', name: 'V-Pop Không Thể Thiếu' },
+                    { id: '37i9dQZF1DX4jP4eebSNFH', name: 'Coffee & Chill' },
+                    { id: '37i9dQZF1DX4PP3DA4J0N8', name: 'Chill Hits Việt Nam' }
+                ],
+                lunch: [
+                    { id: '37i9dQZF1DWZrc3lwvImLj', name: 'V-Pop Không Thể Thiếu' },
+                    { id: '37i9dQZF1DX4PP3DA4J0N8', name: 'Chill Hits Việt Nam' },
+                    { id: '37i9dQZF1DX0XUfEo1d0IQ', name: 'Nhạc Việt Nam Hay Nhất' },
+                    { id: '37i9dQZF1DX4jP4eebSNFH', name: 'Coffee & Chill' }
+                ],
+                evening: [
+                    { id: '37i9dQZF1DWZrc3lwvImLj', name: 'V-Pop Không Thể Thiếu' },
+                    { id: '37i9dQZF1DX0XUfEo1d0IQ', name: 'Nhạc Việt Nam Hay Nhất' },
+                    { id: '37i9dQZF1DX4PP3DA4J0N8', name: 'Chill Hits Việt Nam' },
+                    { id: '37i9dQZF1DX6GwdWRQMQpq', name: 'Trending Việt Nam' }
+                ]
+            }
+        };
+
         // Function to open Spotify desktop app with a playlist
         function openSpotifyPlaylist(playlistId) {
             // Create the Spotify URI
@@ -564,6 +618,30 @@
             document.getElementById('datetime').textContent = dateTimeStr;
         }
 
+        // Function to update playlists based on current language
+        function updatePlaylists() {
+            const timeSlots = ['morning', 'afternoon', 'lunch', 'evening'];
+            const slotSelectors = ['.time-slot:nth-child(1) .playlist-list', '.time-slot:nth-child(2) .playlist-list', '.time-slot:nth-child(3) .playlist-list', '.time-slot:nth-child(4) .playlist-list'];
+
+            timeSlots.forEach((slot, index) => {
+                const playlistList = document.querySelector(slotSelectors[index]);
+                if (playlistList && playlists[currentLang][slot]) {
+                    const playlistItems = playlistList.querySelectorAll('.playlist-item');
+                    playlists[currentLang][slot].forEach((playlist, i) => {
+                        if (playlistItems[i]) {
+                            // Update onclick attribute
+                            playlistItems[i].setAttribute('onclick', `openSpotifyPlaylist('${playlist.id}'); return false;`);
+                            // Update playlist name
+                            const linkSpan = playlistItems[i].querySelector('.playlist-link');
+                            if (linkSpan) {
+                                linkSpan.textContent = playlist.name;
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
         // Function to switch language
         function switchLanguage(lang) {
             currentLang = lang;
@@ -580,12 +658,16 @@
                 element.textContent = text;
             });
 
+            // Update playlists for the new language
+            updatePlaylists();
+
             // Update date/time format
             updateDateTime();
         }
 
-        // Initialize date/time and update every second
+        // Initialize date/time and playlists, update every second
         updateDateTime();
+        updatePlaylists();
         setInterval(updateDateTime, 1000);
     </script>
 </body>
