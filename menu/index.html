@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gate 7 Coffee - Menu</title>
-    <link rel="icon" type="image/png" href="../images/logo-color-black-bg.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/logo-only-white.png">
+    <link rel="stylesheet" href="../css/style-gate7.css">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S72S3FXR6Z"></script>
     <script>
@@ -16,16 +16,27 @@
     gtag('config', 'G-S72S3FXR6Z');
     </script>
     <style>
+
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+:root {
+    /*--primary-color: #0B0C06;*/
+    --primary-color: #202020;
+    --accent-color: #FEBC11;
+    --text-color: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #faf9f7;
-            color: #2c2c2c;
+            font-family: 'Averta', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
             min-height: 100vh;
             line-height: 1.6;
         }
@@ -42,7 +53,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 40px 0;
-            border-bottom: 1px solid #e8e6e1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
@@ -61,9 +72,9 @@
         }
 
         .welcome-message h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Averta', sans-serif;
             font-size: 2.2em;
-            color: #1a1a1a;
+            color: var(--accent-color);
             margin-bottom: 12px;
             font-weight: 600;
             letter-spacing: -0.3px;
@@ -71,7 +82,7 @@
 
         .welcome-message p {
             font-size: 0.95em;
-            color: #6b6b6b;
+            color: var(--text-secondary);
             line-height: 1.6;
             margin: 0;
         }
@@ -93,9 +104,10 @@
 
         /* Footer Section */
         .footer {
-            background: #faf9f7;
-            color: #6b6b6b;
+            background: var(--primary-color);
+            color: var(--text-secondary);
             padding: 40px 0;
+            opacity: 1;
         }
 
         .footer .container {
@@ -111,7 +123,7 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            color: #a89968;
+            color: var(--accent-color);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -119,10 +131,11 @@
         .footer p {
             margin-bottom: 0.95em;
             line-height: 1.6;
+            color: var(--text-secondary);
         }
 
         .footer a {
-            color: #a89968;
+            color: var(--accent-color);
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -142,14 +155,14 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #d4d4d4;
+            color: var(--text-secondary);
             font-weight: 500;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            color: #a89968;
+            color: var(--accent-color);
             transform: translateY(-2px);
         }
 
@@ -185,17 +198,57 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 2rem;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             max-width: 1200px;
             margin: 0 auto;
             padding-left: 20px;
             padding-right: 20px;
-            color: #6b6b6b;
+            color: var(--text-secondary);
         }
 
-        /* Responsive Design */
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .lang-btn.active {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .lang-btn:hover {
+            color: var(--accent-color);
+        }
+
+        /* Animations */
+        .menu-section,
+        .footer {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 padding: 0 16px;
@@ -241,6 +294,12 @@
             .footer {
                 padding: 20px 0;
             }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -249,11 +308,11 @@
         <!-- Header -->
         <header class="header">
             <div class="logo">
-                <img src="../images/logo-color-white-bg1.png" alt="Gate 7 Coffee Logo">
+                <img src="../images/logo-color-black-bg1.png" alt="Gate 7 Coffee Logo">
             </div>
             <div class="welcome-message">
-                <h1>Chào bạn!</h1>
-                <p>Thưởng thức cà phê mọi nơi mọi lúc, có Gate lo ^^</p>
+                <h1 data-en="Hello!" data-vn="Chào bạn!">Chào bạn!</h1>
+                <p data-en="Delight in every sip, anytime, anywhere">Thưởng thức cà phê mọi lúc mọi nơi</p>
             </div>
         </header>
 
@@ -262,39 +321,107 @@
             <img src="../images/Menu_Final.png" alt="Gate 7 Coffee Menu" class="menu-image">
         </main>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div>
-                    <h4>Địa Chỉ</h4>
-                    <p>162A Nguyễn Trường Tộ<br/>Phường Phú Thọ Hòa, TP HCM</p>
-                    <p>hello@gate7.vn<br/>0971091120</p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.237932965956!2d106.63045397428787!3d10.793080158887879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529a8b3819463%3A0x5aec4a7508322c9d!2sGate%207%20Coffee%20Roastery!5e0!3m2!1sen!2s!4v1758699078419!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div>
-                    <h4>Khung Giờ</h4>
-                    <div class="hours">
-                        <span>Thứ Hai – Thứ Sáu</span><span>6:00 sáng – 10:00 tối</span>
-                        <span>Thứ Bảy – Chủ Nhật</span><span>6:00 sáng – 10:00 tối</span>
-                    </div>
-                </div>
-                <div>
-                    <h4>Theo Dõi Gate Tại</h4>
-                    <div class="social-links">
-                        <a href="https://instagram.com/gate7.coffee" target="_blank" rel="noopener noreferrer">
-                            <img src="../images/Instagram_icon.png.webp" alt="Instagram"> Instagram
-                        </a>
-                        <a href="https://www.facebook.com/share/1CnRHZ9QSz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
-                            <img src="../images/Facebook_Logo_(2019).png.webp" alt="Facebook"> Facebook
-                        </a>
-                        <a href="https://zalo.me/2485475799709134069" target="_blank" rel="noopener noreferrer">
-                            <img src="../images/7044033_zalo_icon.ico" alt="Zalo"> Zalo
-                        </a>
-                    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <h4 data-en="Address" data-vn="Địa Chỉ">Địa Chỉ</h4>
+                <p>162A Nguyễn Trường Tộ<br/>Phường Phú Thọ Hòa, TP HCM</p>
+                <p>hello@gate7.vn<br/>0971091120</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.237932965956!2d106.63045397428787!3d10.793080158887879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529a8b3819463%3A0x5aec4a7508322c9d!2sGate%207%20Coffee%20Roastery!5e0!3m2!1sen!2s!4v1758699078419!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div>
+                <h4 data-en="Hours" data-vn="Khung Giờ">Khung Giờ</h4>
+                <div class="hours">
+                    <span data-en="Monday – Friday" data-vn="Thứ Hai – Thứ Sáu">Thứ Hai – Thứ Sáu</span><span data-en="6:00 AM – 10:00 PM" data-vn="6:00 sáng – 10:00 tối">6:00 sáng – 10:00 tối</span>
+                    <span data-en="Saturday – Sunday" data-vn="Thứ Bảy – Chủ Nhật">Thứ Bảy – Chủ Nhật</span><span data-en="6:00 AM – 10:00 PM" data-vn="6:00 sáng – 10:00 tối">6:00 sáng – 10:00 tối</span>
                 </div>
             </div>
-            <div class="footer-bottom">© 2025 Gate 7 Coffee Roastery. All rights reserved.</div>
+            <div>
+                <h4 data-en="Follow" data-vn="Theo Dõi Gate Tại">Theo Dõi Gate Tại</h4>
+                <div class="social-links">
+                <a href="https://instagram.com/gate7.coffee" target="_blank" rel="noopener noreferrer">
+                <img src="../images/Instagram_icon.png.webp" alt="Instagram"> Instagram
+                </a>
+                <a href="https://www.facebook.com/share/1CnRHZ9QSz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+                <img src="../images/Facebook_Logo_(2019).png.webp" alt="Facebook"> Facebook
+                </a>
+                <a href="https://zalo.me/2485475799709134069" target="_blank" rel="noopener noreferrer">
+                <img src="../images/7044033_zalo_icon.ico" alt="Zalo"> Zalo
+                </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <span data-en="© 2025 Gate 7 Coffee Roastery. All rights reserved." data-vn="© 2025 Gate 7 Coffee Roastery. Tất cả quyền được bảo lưu.">© 2025 Gate 7 Coffee Roastery. All rights reserved.</span>
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <span>|</span>
+                <button class="lang-btn" data-lang="vn">VN</button>
+            </div>
+        </div>
         </footer>
-    </div>
-</body>
-</html>
+         </div>
+
+     <script>
+         // Smooth scroll behavior
+         document.documentElement.style.scrollBehavior = 'smooth';
+
+         // Intersection Observer for scroll animations
+         document.addEventListener('DOMContentLoaded', function() {
+             const observerOptions = {
+                 threshold: 0.1,
+                 rootMargin: '0px 0px -50px 0px'
+             };
+
+             const observer = new IntersectionObserver(function(entries) {
+                 entries.forEach(entry => {
+                     if (entry.isIntersecting) {
+                         entry.target.classList.add('animate-in');
+                     }
+                 });
+             }, observerOptions);
+
+             // Observe elements that should animate on scroll
+             const animateElements = document.querySelectorAll('.menu-section, .footer');
+             animateElements.forEach(el => {
+                 observer.observe(el);
+             });
+         });
+
+         // Language switcher
+         document.addEventListener('DOMContentLoaded', function() {
+             const langBtns = document.querySelectorAll('.lang-btn');
+             let currentLang = 'vn'; // Default to Vietnamese
+
+             function switchLanguage(lang) {
+                 // Update button states
+                 langBtns.forEach(btn => {
+                     btn.classList.toggle('active', btn.dataset.lang === lang);
+                 });
+
+                 // Update translatable elements
+                 const elements = document.querySelectorAll('[data-' + lang + ']');
+                 elements.forEach(el => {
+                     el.textContent = el.getAttribute('data-' + lang);
+                 });
+
+                 currentLang = lang;
+                 localStorage.setItem('selectedLanguage', lang);
+             }
+
+             // Load saved language
+             const savedLang = localStorage.getItem('selectedLanguage') || 'vn';
+             switchLanguage(savedLang);
+
+             // Event listeners
+             langBtns.forEach(btn => {
+                 btn.addEventListener('click', () => {
+                     switchLanguage(btn.dataset.lang);
+                 });
+             });
+         });
+     </script>
+         </body>
+         </html>

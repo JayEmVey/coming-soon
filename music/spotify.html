@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gate 7 Coffee - Playlist Manager</title>
+    <link rel="icon" type="image/png" href="../images/logo-only-white.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S72S3FXR6Z"></script>
@@ -23,8 +24,8 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #faf9f7;
-            color: #2c2c2c;
+            background-color: #202020;
+            color: #ffffff;
             min-height: 100vh;
             padding: 40px 20px;
         }
@@ -36,12 +37,12 @@
 
         /* Welcome Message */
         .welcome-message {
-            background: linear-gradient(135deg, #8b6f47 0%, #a89968 100%);
-            color: white;
+            background: linear-gradient(135deg, #FEBC11 0%, #FEC844 100%);
+            color: #202020;
             padding: 24px 32px;
             border-radius: 12px;
             margin-bottom: 40px;
-            box-shadow: 0 4px 12px rgba(139, 111, 71, 0.2);
+            box-shadow: 0 4px 12px rgba(254, 188, 17, 0.2);
         }
 
         .welcome-message h2 {
@@ -64,18 +65,18 @@
             right: 20px;
             display: flex;
             gap: 8px;
-            background: white;
+            background: #2a2a2a;
             padding: 8px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border: 1px solid #e8e6e1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            border: 1px solid rgba(254, 188, 17, 0.2);
         }
 
         .lang-btn {
             padding: 6px 14px;
             border: none;
             background: transparent;
-            color: #6b6b6b;
+            color: rgba(255, 255, 255, 0.8);
             font-weight: 600;
             font-size: 0.85em;
             cursor: pointer;
@@ -85,13 +86,13 @@
         }
 
         .lang-btn.active {
-            background: #8b6f47;
-            color: white;
+            background: #FEBC11;
+            color: #202020;
         }
 
         .lang-btn:hover:not(.active) {
-            background: #f5f5f5;
-            color: #2c2c2c;
+            background: rgba(254, 188, 17, 0.1);
+            color: #FEBC11;
         }
 
         /* Header Section */
@@ -105,7 +106,7 @@
 
         .logo {
             width: 120px;
-            height: 120px;
+            height: auto;
             margin: 0 auto 20px;
             display: block;
         }
@@ -114,7 +115,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 2em;
             font-weight: 700;
-            color: #1a1a1a;
+            color: #FEBC11;
             margin-bottom: 12px;
             letter-spacing: -0.5px;
         }
@@ -122,7 +123,7 @@
         .header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.2em;
-            color: #1a1a1a;
+            color: #FEBC11;
             margin-bottom: 12px;
             font-weight: 600;
             letter-spacing: -0.3px;
@@ -130,7 +131,7 @@
 
         .header p {
             font-size: 0.95em;
-            color: #6b6b6b;
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
             max-width: 500px;
             margin: 0 auto;
@@ -139,21 +140,22 @@
 
         /* Playlist Grid */
         .playlist-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 28px;
+            column-count: 2;
+            column-gap: 28px;
             margin-bottom: 60px;
         }
 
         .time-slot {
-            background: white;
+            background: #2a2a2a;
             border-radius: 12px;
             padding: 28px;
-            border: 1px solid #e8e6e1;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid rgba(254, 188, 17, 0.2);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            break-inside: avoid;
+            margin-bottom: 28px;
         }
 
         .time-slot::before {
@@ -163,15 +165,15 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #8b6f47 0%, #a89968 100%);
+            background: linear-gradient(90deg, #FEBC11 0%, #FEC844 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         .time-slot:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-            border-color: #d4cfc7;
+            box-shadow: 0 6px 16px rgba(254, 188, 17, 0.15);
+            border-color: #FEBC11;
         }
 
         .time-slot:hover::before {
@@ -182,13 +184,13 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.25em;
             font-weight: 600;
-            color: #1a1a1a;
+            color: #FEBC11;
             margin-bottom: 6px;
             letter-spacing: -0.3px;
         }
 
         .audience {
-            color: #8b8b8b;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.85em;
             margin-bottom: 16px;
             font-weight: 500;
@@ -197,13 +199,13 @@
         }
 
         .vibe-description {
-            background: #fef9f4;
+            background: rgba(254, 188, 17, 0.1);
             padding: 12px 14px;
             border-radius: 8px;
             margin-bottom: 18px;
             font-size: 0.85em;
-            color: #6b6b6b;
-            border-left: 3px solid #c9a876;
+            color: rgba(255, 255, 255, 0.8);
+            border-left: 3px solid #FEBC11;
             line-height: 1.5;
         }
 
@@ -218,7 +220,7 @@
             align-items: center;
             gap: 12px;
             padding: 12px 14px;
-            background: #fef9f4;
+            background: rgba(254, 188, 17, 0.1);
             border-radius: 8px;
             transition: all 0.2s ease;
             border: 1px solid transparent;
@@ -227,8 +229,8 @@
         }
 
         .playlist-item:hover {
-            background: #fdf5ed;
-            border-color: #e8ddd0;
+            background: rgba(254, 188, 17, 0.2);
+            border-color: #FEBC11;
             transform: translateX(4px);
         }
 
@@ -250,19 +252,19 @@
         .playlist-link {
             flex: 1;
             text-decoration: none;
-            color: #2c2c2c;
+            color: #ffffff;
             font-weight: 500;
             font-size: 0.9em;
             transition: color 0.2s ease;
         }
 
         .playlist-item:hover .playlist-link {
-            color: #8b6f47;
+            color: #FEBC11;
         }
 
         /* Footer Section */
         .footer {
-            background: #1a1a1a;
+            background: #202020;
             color: white;
             padding: 40px;
             border-radius: 12px;
@@ -280,12 +282,13 @@
             font-size: 1.3em;
             font-weight: 600;
             letter-spacing: -0.3px;
+            color: #FEBC11;
         }
 
         .footer-text {
             font-size: 0.9em;
             line-height: 1.8;
-            color: #d4d4d4;
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 20px;
         }
 
@@ -303,7 +306,7 @@
         }
 
         .highlight-label {
-            color: #a89968;
+            color: #FEBC11;
             font-weight: 600;
             margin-bottom: 4px;
             text-transform: uppercase;
@@ -311,7 +314,7 @@
         }
 
         .highlight-value {
-            color: #d4d4d4;
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.4;
         }
 
@@ -349,7 +352,11 @@
             }
 
             .playlist-grid {
-                grid-template-columns: 1fr;
+                column-count: 1;
+            }
+            
+            .time-slot {
+                margin-bottom: 20px;
             }
 
             .time-slot {
@@ -397,9 +404,7 @@
         </div>
 
         <div class="header">
-            <img src="../assets/gate7-logo.png" alt="Gate 7 Logo" class="logo" onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='block'">
-            <div class="logo-text" style="display: none;">GATE 7</div>
-            <h1 data-en="Your Soundtrack" data-vn="Nhạc Của Bạn">Your Soundtrack</h1>
+            <img src="../images/logo-color-black-bg1.png" alt="Gate 7 Logo" class="logo" onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='block'">            <h1 data-en="Your Soundtrack" data-vn="Nhạc Của Bạn">Your Soundtrack</h1>
             <p data-en="Curated playlists for every moment of your day at Gate 7. Click any playlist to open it in Spotify and set the mood." data-vn="Danh sách nhạc được tuyển chọn cho mọi khoảnh khắc trong ngày tại Gate 7. Nhấp vào bất kỳ danh sách nào để mở trong Spotify và tạo không khí.">Curated playlists for every moment of your day at Gate 7. Click any playlist to open it in Spotify and set the mood.</p>
         </div>
 
@@ -533,6 +538,14 @@
                         <div class="highlight-value" data-en="Mix your own blend from multiple playlists for a custom Gate 7 sound" data-vn="Trộn các danh sách phát để tạo âm thanh Gate 7 riêng của bạn">Mix your own blend from multiple playlists for a custom Gate 7 sound</div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center;">
+            <span data-en="© 2025 Gate 7 Coffee Roastery. All rights reserved." data-vn="© 2025 Gate 7 Coffee Roastery. Tất cả quyền được bảo lưu.">© 2025 Gate 7 Coffee Roastery. All rights reserved.</span>
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <span>|</span>
+                <button class="lang-btn" data-lang="vn">VN</button>
             </div>
         </div>
     </div>
