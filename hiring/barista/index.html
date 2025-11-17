@@ -50,11 +50,14 @@
 
 		/* Navigation */
 		header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 40px 0;
+			padding: 20px 0;
 			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 3rem;
+			max-width: 1200px;
+			margin: 0 auto;
+			margin-bottom: 2rem;
 		}
 
 		.logo {
@@ -68,7 +71,8 @@
 
 		.welcome-message {
 			text-align: right;
-			flex: 1;
+			flex: 2;
+			margin-top: 10px;
 			margin-left: 40px;
 		}
 
