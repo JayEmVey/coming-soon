@@ -32,5 +32,18 @@
       <image:title>Gate 7 Coffee Menu</image:title>
     </image:image>
   </url>
+
+  <!-- Music/Playlist Page -->
+  <url>
+    <loc>https://gate7.vn/music/spotify.html</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+    <image:image>
+      <image:loc>https://gate7.vn/images/logo-color-black-bg1.png</image:loc>
+      <image:title>Gate 7 Coffee Playlist Manager</image:title>
+    </image:image>
+  </url>
   
 </urlset>
