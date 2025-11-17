@@ -1,20 +1,45 @@
-# One-Command Deployment Guide
+# Deployment Guide
 
-Gate 7 Coffee Roastery website is now fully optimized for production deployment to GitHub Pages with a **single command**.
+Gate 7 Coffee Roastery website features **fully automated deployment** to GitHub Pages with optional manual deployment.
 
-## Quick Deploy
+## Auto-Deployment (Recommended)
 
-### Windows
+**GitHub Actions automatically deploys on every push to `main` or `master` branch.**
+
+### How It Works
+
+1. **Push code changes** to main/master branch
+2. **GitHub Actions triggers automatically** (see `.github/workflows/deploy.yml`)
+3. **Build process runs** (node build-simple.js)
+4. **Deploy to GitHub Pages** (via peaceiris action)
+5. **Site live in ~1-2 minutes**
+
+### Setup (One-time)
+
+The workflow file is already configured at `.github/workflows/deploy.yml`. No additional setup needed!
+
+**Verify it's working:**
+1. Make any change and push to main branch
+2. Go to GitHub → Actions tab
+3. See "Auto-Deploy to GitHub Pages" workflow running
+4. Site updates automatically when workflow completes
+
+---
+
+## Manual Deployment (Optional)
+
+If you prefer to deploy manually instead of auto-deployment:
+
+### Windows/macOS/Linux
 ```bash
 npm run deploy
 ```
 
-### macOS/Linux
-```bash
-npm run deploy
-```
-
-That's it! The website will be built, minified, and deployed to GitHub Pages.
+This command:
+1. Builds production bundle
+2. Creates git commit
+3. Pushes to GitHub
+4. Manual GitHub Actions runs build again (redundant but safe)
 
 ---
 
@@ -313,44 +338,41 @@ git log --oneline -5
 
 ---
 
-## Continuous Deployment (Optional)
+## Workflow Status & Monitoring
 
-To automate deployment on every push, create `.github/workflows/deploy.yml`:
+### View Deployment Status
 
-```yaml
-name: Deploy to GitHub Pages
+1. **GitHub Actions Dashboard**
+   - Go to: Repository → Actions tab
+   - See: "Auto-Deploy to GitHub Pages" workflow
+   - Status: Green checkmark = Success, Red X = Failed
 
-on:
-  push:
-    branches: [master]
+2. **Deployment Details**
+   - Click workflow run to see logs
+   - View build output and any errors
+   - Check deployment timestamp
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Build
-        run: node build-simple.js
-      
-      - name: Copy static files
-        run: |
-          cp CNAME dist/
-          cp robots.txt dist/
-          cp sitemap.xml dist/
-          cp .htaccess dist/
-      
-      - name: Deploy to Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-```
+3. **GitHub Pages Status**
+   - Settings → Pages
+   - See: "Deployments" history
+   - Verify latest deployment succeeded
 
-**With this:**
-- Every git push triggers automatic deployment
-- No need to run `npm run deploy` manually
-- Website updates instantly
+### Troubleshooting Auto-Deployment
+
+**Workflow not triggering?**
+- Check that push is to `main` or `master` branch
+- Verify `.github/workflows/deploy.yml` exists
+- Push should trigger within 5-10 seconds
+
+**Build failing?**
+- Check GitHub Actions logs
+- Run locally: `node build-simple.js`
+- Verify all source files exist and are valid
+
+**Site not updating?**
+- Hard refresh browser: `Ctrl+Shift+R` (Windows) or `Cmd+Shift+R` (Mac)
+- Wait 1-2 minutes for GitHub Pages propagation
+- Check GitHub Pages deployment in Settings
 
 ---
 
@@ -481,15 +503,45 @@ After deploying:
 
 ## Summary
 
-**Old way:** Manual FTP, manual minification, error-prone  
-**New way:** `npm run deploy` → Done!
+**Deployment Options:**
 
-**Time saved:** 10+ minutes per deployment  
-**Error rate:** Virtually zero  
-**Confidence:** High ✅  
+| Method | How It Works | When to Use |
+|--------|------------|-----------|
+| **Auto-Deploy** | Push → GitHub Actions → Auto-build → Live | Default, recommended |
+| **Manual Deploy** | `npm run deploy` → Build → Git push → Live | Prefer local control |
+
+**Benefits:**
+- Zero manual steps (auto-deploy)
+- Fail-safe build process
+- Full audit trail in GitHub Actions
+- Rollback capability with git
+
+**Time: ~1-2 minutes from push to live**
+
+---
+
+## Next Steps
+
+1. **First push triggers auto-deployment**
+   ```bash
+   git add .
+   git commit -m "enable auto-deployment"
+   git push origin main
+   ```
+
+2. **Watch GitHub Actions**
+   - Go to Actions tab
+   - See workflow running
+   - Check site at gate7.vn when complete
+
+3. **For subsequent updates**
+   - Edit HTML/CSS files
+   - Commit: `git commit -m "your message"`
+   - Push: `git push origin main`
+   - Auto-deployment handles the rest!
 
 ---
 
 *Last Updated: November 17, 2025*  
-*Status: ✅ Production Ready*  
-*Next Deploy Command: `npm run deploy`*
+*Status: ✅ Production Ready with Auto-Deployment*  
+*Deployment Method: GitHub Actions (gh-pages)*

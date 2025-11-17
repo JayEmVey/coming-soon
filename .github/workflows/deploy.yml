@@ -1,32 +1,53 @@
-name: Deploy to GitHub Pages
+name: Auto-Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - name: Checkout code
+        uses: actions/checkout@v4
       
-      - uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
       
-      - name: Configure Git
+      - name: Build production bundle
+        run: node build-simple.js
+      
+      - name: Copy static files to dist
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          cp CNAME dist/CNAME 2>/dev/null || true
+          cp robots.txt dist/robots.txt 2>/dev/null || true
+          cp sitemap.xml dist/sitemap.xml 2>/dev/null || true
+          cp .htaccess dist/.htaccess 2>/dev/null || true
       
-      - run: npm install
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
       
-      - name: Build and Deploy
-        run: npm run build
-        env:
-          GIT_AUTHOR_NAME: github-actions[bot]
-          GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
-          GIT_COMMITTER_NAME: github-actions[bot]
-          GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

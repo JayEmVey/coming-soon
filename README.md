@@ -6,15 +6,16 @@ A modern, SEO-optimized static website for Gate 7 Coffee Roastery, featuring Vie
 
 ---
 
-## 🚀 Quick Deploy
+## 🚀 Deployment
 
+**Auto-deployment enabled:** Push to `main` branch → Site updates automatically in ~2 minutes
+
+### Manual Deploy (Optional)
 ```bash
 npm run deploy
 ```
 
-Site goes live in ~2 minutes! ✨
-
-For detailed deployment guide, see: **[README_DEPLOYMENT.md](README_DEPLOYMENT.md)**
+For detailed deployment guide, see: **[DEPLOYMENT.md](DEPLOYMENT.md)**
 
 ---
 
@@ -43,12 +44,12 @@ For detailed deployment guide, see: **[README_DEPLOYMENT.md](README_DEPLOYMENT.m
 - ✅ Google Analytics integration (GA4)
 - ✅ Mobile-friendly verified
 
-### 🛠️ Build System
+### 🛠️ Deployment System
 - ✅ Zero-dependency build script
 - ✅ HTML minification (28-30%)
 - ✅ CSS minification (26%)
-- ✅ One-command deployment
-- ✅ Automatic GitHub Pages build
+- ✅ Auto-deployment via GitHub Actions
+- ✅ One-command manual deploy option
 
 ---
 
@@ -102,29 +103,37 @@ open dist/index.html
 
 ## Build & Deploy
 
-### Build Command
+### Auto-Deployment (Recommended)
+Simply push changes to `main` or `master` branch:
+```bash
+git commit -m "your changes"
+git push origin main
+```
+
+GitHub Actions automatically:
+1. Builds production bundle
+2. Minifies HTML/CSS
+3. Deploys to GitHub Pages
+4. Site live in ~1-2 minutes
+
+### Manual Build
 ```bash
 npm run build
 ```
 
-**Output:**
+**Output in `dist/` folder:**
 - Minified HTML (3 pages)
 - Minified CSS
 - Optimized images
 - SEO config files
 - Server optimization (.htaccess)
 
-### Deploy Command
+### Manual Deploy (Alternative)
 ```bash
 npm run deploy
 ```
 
-**What happens:**
-1. Builds production bundle
-2. Creates git commit
-3. Pushes to GitHub
-4. GitHub Pages builds automatically
-5. Site live in ~2 minutes
+Builds and pushes locally (GitHub Actions still runs afterwards)
 
 ### Force Deploy (Rare)
 ```bash
@@ -250,10 +259,11 @@ Supported pages:
 ## Configuration
 
 ### GitHub Pages
-- **Source:** main branch, / (root) folder
+- **Source:** GitHub Actions deployment
+- **Branch:** main or master
 - **Domain:** gate7.vn (CNAME configured)
 - **HTTPS:** Enabled automatically
-- **Deployment:** Automatic on push
+- **Deployment:** Automatic on push via GitHub Actions
 
 ### Custom Domain (gate7.vn)
 DNS is configured to point to GitHub Pages. CNAME file in repository handles routing.
@@ -314,10 +324,13 @@ python -m http.server 8000
 # Build production
 npm run build
 
-# Deploy to GitHub Pages
+# Auto-deploy (push to main branch)
+git push origin main
+
+# Manual deploy (builds + pushes)
 npm run deploy
 
-# Force deploy (rare)
+# Force deploy (rare, rewrites history)
 npm run deploy:force
 
 # Check build output
@@ -436,23 +449,26 @@ Hosting:     GitHub Pages (gate7.vn)
 
 ### Ready to go live?
 ```bash
-npm run deploy
+git push origin main
 ```
+
+Auto-deployment triggers automatically!
 
 ### Want to customize?
 1. Edit HTML/CSS files
 2. Test locally: `python -m http.server 8000`
-3. Deploy: `npm run deploy`
+3. Commit & push: `git push origin main`
+4. GitHub Actions deploys automatically
 
 ### Need help?
-- 📖 See [DEPLOYMENT.md](DEPLOYMENT.md) for full guide
+- 📖 See [DEPLOYMENT.md](DEPLOYMENT.md) for auto-deployment guide
 - 📖 See [BUILD_REPORT.md](BUILD_REPORT.md) for technical details
 - 📖 See [AGENTS.md](AGENTS.md) for code guidelines
 
 ---
 
 **Live at:** https://gate7.vn  
-**Deploy command:** `npm run deploy`  
+**Auto-deployment:** Enabled ✅  
 **Status:** ✅ Production Ready  
 
-🚀 Ready to deploy!
+🚀 Push to main branch → Automatic deployment!
