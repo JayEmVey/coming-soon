@@ -6,8 +6,8 @@
     RewriteEngine On
     RewriteBase /
     
-    # Allow hiring/barista directory access
-    RewriteRule ^hiring/barista(/.*)?$ - [L]
+    # Allow hiring directory access
+    RewriteRule ^hiring(/.*)?$ - [L]
     
     # Remove trailing slashes (except for directories)
     RewriteCond %{REQUEST_FILENAME} !-d
