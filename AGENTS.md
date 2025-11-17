@@ -2,10 +2,40 @@
 
 ## Build/Lint/Test Commands
 
-This is a static website project with no build process, linting, or tests.
+This is a static website project with optimized build and deployment pipeline.
 
-- **Serve locally**: Use any static web server (e.g., `python -m http.server 8000`)
-- **Deploy**: Hosted on GitHub Pages via repository settings
+### Build Commands
+
+- **Build for production**: `npm run build`
+  - Minifies HTML, CSS, JavaScript
+  - Optimizes and copies images
+  - Output: `dist/` folder
+  - No external dependencies required
+  
+- **Deploy to GitHub Pages** (one command): `npm run deploy`
+  - Builds production bundle
+  - Commits to git
+  - Pushes to GitHub (triggers GitHub Pages)
+  - Site live in ~2 minutes
+  - Windows: `npm run deploy`
+  - macOS/Linux: `npm run deploy`
+  
+- **Force deploy** (if needed): `npm run deploy:force`
+  - Same as deploy but force-pushes to git
+  - Use only if git history is out of sync
+
+### Local Development
+
+- **Serve locally**: `python -m http.server 8000` (or any static server)
+- **View dist folder**: Open `dist/index.html` in browser after build
+
+### Deployment Info
+
+- Hosted on GitHub Pages (main branch serves dist/ folder)
+- Custom domain: gate7.vn (via CNAME file)
+- HTTPS: Enabled automatically by GitHub Pages
+- Build script: `build-simple.js` (zero npm dependencies!)
+- See: DEPLOYMENT.md for detailed deployment guide
 
 ## Architecture & Codebase Structure
 
