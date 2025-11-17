@@ -4,8 +4,8 @@
   "description": "Gate 7 Coffee Roastery - Vietnamese Specialty Coffee Shop Website",
   "scripts": {
     "build": "node build-simple.js",
-    "deploy": "npm run build && git add dist -f && git commit -m \"chore: production build\" && git push origin main",
-    "deploy:force": "npm run build && git add dist -f && git commit -am \"chore: production build (forced)\" && git push origin main -f"
+    "deploy": "npm run build && git add dist -f && git commit -m \"chore: production build\" && git push origin master",
+    "deploy:force": "npm run build && git add dist -f && git commit -am \"chore: production build (forced)\" && git push origin master -f"
   },
   "engines": {
     "node": ">=14.0.0"

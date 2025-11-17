@@ -45,7 +45,7 @@ git commit -m "chore: production build"
 
 ### 3. Push to GitHub (Automatic)
 ```bash
-git push origin main
+git push origin master
 ```
 
 **GitHub Pages automatically:**
@@ -83,7 +83,7 @@ Ensure these are configured in GitHub repository settings:
 
 1. **GitHub Pages Settings**
    - Go to: Settings → Pages
-   - Source: Branch `main`, Folder `/` (root)
+   - Source: Branch `master`, Folder `/` (root)
    - HTTPS: Enabled ✅
 
 2. **Custom Domain (Optional)**
@@ -176,12 +176,37 @@ git add dist -f
 git commit -m "chore: production build"
 
 # 4. Push
-git push origin main
+git push origin master
 ```
 
 ---
 
 ## Troubleshooting
+
+### GitHub Actions Workflow Not Triggering
+
+**Problem:** You run `npm run deploy` but GitHub Actions doesn't trigger.
+
+**Solution:**
+The workflow file (`.github/workflows/deploy.yml`) must match your repository's default branch:
+
+```bash
+# Check your current branch
+git branch -a
+
+# If using 'master' (not 'main'), the workflow must listen for 'master':
+# In .github/workflows/deploy.yml:
+# on:
+#   push:
+#     branches: [master]    # Change from [main] to [master]
+```
+
+**Verify the fix:**
+1. Edit `.github/workflows/deploy.yml`
+2. Change `branches: [main]` to `branches: [master]`
+3. Commit and push
+4. Go to GitHub → Actions tab
+5. You should see the workflow running
 
 ### Build Fails
 ```bash
@@ -197,12 +222,12 @@ ls dist/
 # Check git status
 git status
 
-# Ensure main branch exists
+# Ensure master branch exists
 git branch -a
 
 # Pull before pushing
-git pull origin main
-git push origin main
+git pull origin master
+git push origin master
 ```
 
 ### Site Not Updating
@@ -297,7 +322,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   build-and-deploy:
@@ -359,7 +384,7 @@ git log --oneline -5
 git reset --hard HEAD~1
 
 # Push to revert deployment
-git push origin main -f
+git push origin master -f
 ```
 
 **Example:**
@@ -369,7 +394,7 @@ git push origin main -f
 git reset --hard abc1234
 
 # Site reverts to previous version
-git push origin main -f
+git push origin master -f
 ```
 
 ---
@@ -444,7 +469,7 @@ After deploying:
 - [ ] Build completes without errors
 - [ ] `dist/` folder created with all files
 - [ ] Git commit shows "chore: production build"
-- [ ] Push succeeds to `origin main`
+- [ ] Push succeeds to `origin master`
 - [ ] Website loads at https://gate7.vn
 - [ ] All pages accessible (menu, music)
 - [ ] Images display correctly
