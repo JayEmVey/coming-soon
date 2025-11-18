@@ -12,7 +12,9 @@ const DIST_DIR = path.join(__dirname, 'dist');
 const SOURCE_FILES = [
   { src: 'index.html', dest: 'index.html' },
   { src: 'menu/index.html', dest: 'menu/index.html' },
-  { src: 'music/spotify.html', dest: 'music/spotify.html' }
+  { src: 'music/spotify.html', dest: 'music/spotify.html' },
+  { src: 'hiring/index.html', dest: 'hiring/index.html' },
+    { src: 'hiring/banner.html', dest: 'hiring/banner.html' }
 ];
 
 const STATIC_FILES = [

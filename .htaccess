@@ -6,15 +6,12 @@
     RewriteEngine On
     RewriteBase /
     
-    # Remove trailing slashes (except for directories and hiring/barista)
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} !^/hiring/barista(/.*)?$
-    RewriteRule ^(.+)/$ /$1 [L,R=301]
+    # Allow hiring directory access
+    RewriteRule ^hiring(/.*)?$ - [L]
     
-    # Allow direct access to hiring/barista
-    RewriteCond %{REQUEST_FILENAME} -d
-    RewriteCond %{REQUEST_URI} ^/hiring/barista(/.*)?$
-    RewriteRule ^ - [L]
+    # Remove trailing slashes (except for directories)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)/$ /$1 [L,R=301]
     
     # Redirect www to non-www
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]

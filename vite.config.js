@@ -10,7 +10,9 @@ export default defineConfig({
       input: {
         main: './index.html',
         menu: './menu/index.html',
-        music: './music/spotify.html'
+        music: './music/spotify.html',
+        hiring: './hiring/index.html',
+        hiringBanner: './hiring/banner.html'
       },
       output: {
         dir: 'dist',
