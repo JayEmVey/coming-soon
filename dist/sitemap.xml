@@ -45,5 +45,27 @@
       <image:title>Gate 7 Coffee Playlist Manager</image:title>
     </image:image>
   </url>
+
+  <!-- Hiring Page -->
+  <url>
+    <loc>https://gate7.vn/hiring/</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <mobile:mobile/>
+    <image:image>
+      <image:loc>https://gate7.vn/hiring/hiring-banner.png</image:loc>
+      <image:title>Gate 7 Coffee Hiring Opportunities</image:title>
+    </image:image>
+  </url>
+
+  <!-- Hiring Banner Page -->
+  <url>
+    <loc>https://gate7.vn/hiring/banner.html</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <mobile:mobile/>
+  </url>
   
 </urlset>
