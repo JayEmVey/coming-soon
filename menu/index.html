@@ -68,10 +68,47 @@
     
     <link rel="icon" type="image/png" href="../images/logo-only-white.png">
     <link rel="apple-touch-icon" href="../images/logo-only-white.png">
+    <!-- Performance: Preload critical resources -->
+    <link rel="preload" as="style" href="../css/style-gate7.css">
+    <link rel="preload" as="image" href="../images/logo-color-black-bg1.png" fetchpriority="high">
+    <!-- Performance: DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Performance: Font loading optimization -->
+    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHAPMtFVJRDw50.woff2" type="font/woff2" crossorigin>
+    
     <link rel="stylesheet" href="../css/style-gate7.css">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S72S3FXR6Z"></script>
+    
+    <!-- Web Vitals Performance Monitoring -->
     <script>
+    window.webVitalsMetrics = {};
+    const lcpObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        window.webVitalsMetrics.lcp = lastEntry.renderTime || lastEntry.loadTime;
+    });
+    try {
+        lcpObserver.observe({type: 'largest-contentful-paint', buffered: true});
+    } catch (e) {}
+    let clsValue = 0;
+    const clsObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+            if (!entry.hadRecentInput) {
+                clsValue += entry.value;
+                window.webVitalsMetrics.cls = clsValue;
+            }
+        }
+    });
+    try {
+        clsObserver.observe({type: 'layout-shift', buffered: true});
+    } catch (e) {}
+    </script>
+    
+    <!-- Google tag (gtag.js) - Deferred for performance -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S72S3FXR6Z"></script>
+    <script defer>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
