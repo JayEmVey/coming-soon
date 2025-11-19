@@ -18,43 +18,84 @@ This document centralizes all SEO keywords used across the Gate 7 Coffee Roaster
 **URL:** `https://gate7.vn/`
 
 ### Meta Keywords Tag
+
+#### English
 ```
-Gate 7 Coffee, Vietnamese Coffee, Phin Coffee, Specialty Coffee, Coffee Roastery, HCMC, Ho Chi Minh, Arabica, Robusta
+Gate 7 Coffee, Gate 7 Coffee Roastery, Vietnamese Coffee, Phin Coffee, High Quality Coffee, Coffee Roastery, HCMC, Ho Chi Minh, Arabica, Robusta
+```
+
+#### Vietnamese
+```
+Gate 7 Cà phê, Gate 7 Coffee Roastery, Cà phê Việt Nam, Cà phê Phin, Cà phê Chất Lượng Cao, Nhà Rang Cà phê, TPHCM, Hồ Chí Minh, Arabica, Robusta
 ```
 
 ### Keyword List
 
-#### Brand Keywords (3)
+#### English Keywords
+
+##### Brand Keywords (3)
 - Gate 7 Coffee
 - Gate 7 Coffee Roastery
 - Gate 7 HCMC
 
-#### Product Keywords (5)
+##### Product Keywords (5)
 - Phin Coffee
 - Vietnamese Coffee
 - Specialty Coffee
 - Arabica
 - Robusta
 
-#### Service Keywords (3)
+##### Service Keywords (3)
 - Coffee Roastery
 - Coffee Shop
 - Cafe
 
-#### Location Keywords (3)
+##### Location Keywords (3)
 - HCMC
 - Ho Chi Minh
 - Ho Chi Minh City
 
-#### Related Keywords (5)
+##### Related Keywords (5)
 - Drip Coffee
 - Espresso
 - Matcha
 - Vietnamese Beverages
 - Specialty Drinks
 
+#### Vietnamese Keywords
+
+##### Từ Khóa Thương Hiệu (3)
+- Gate 7 Cà phê
+- Gate 7 Coffee Roastery
+- Gate 7 TPHCM
+
+##### Từ Khóa Sản Phẩm (5)
+- Cà phê Phin
+- Cà phê Việt Nam
+- Cà phê Specialty
+- Arabica
+- Robusta
+
+##### Từ Khóa Dịch Vụ (3)
+- Nhà Rang Cà phê
+- Quán Cà phê
+- Cafe
+
+##### Từ Khóa Địa Điểm (3)
+- TPHCM
+- Hồ Chí Minh
+- Thành phố Hồ Chí Minh
+
+##### Từ Khóa Liên Quan (5)
+- Cà phê Drip
+- Espresso
+- Matcha
+- Đồ Uống Việt Nam
+- Đồ Uống Specialty
+
 ### Meta Titles & Descriptions
 
+#### English
 **Title (60 chars):**
 ```
 Gate 7 Coffee Roastery | Vietnamese Specialty Coffee HCM
@@ -67,14 +108,40 @@ Phin coffee, specialty espresso, and unique matcha drinks. Visit us at
 162A Nguyễn Trường Tộ.
 ```
 
+#### Vietnamese
+**Title (70 chars):**
+```
+Gate 7 Coffee Roastery - Cà phê Specialty Việt Nam Chất Lượng Cao TPHCM
+```
+
+**Description (160 chars):**
+```
+Khám phá Gate 7 Coffee Roastery tại Hồ Chí Minh. Cà phê Phin Việt Nam 
+chính gốc, specialty espresso, và đồ uống matcha độc đáo. Địa chỉ: 
+162A Nguyễn Trường Tộ.
+```
+
 ### Open Graph Tags
+
+#### English
 - og:title: `Gate 7 Coffee Roastery | Vietnamese Specialty Coffee`
 - og:description: `Experience authentic Vietnamese coffee culture. Phin drip coffee, specialty espresso, and unique matcha creations.`
 
+#### Vietnamese
+- og:title: `Gate 7 Coffee Roastery - Cà phê Specialty Việt Nam`
+- og:description: `Trải nghiệm nền văn hóa cà phê Việt Nam chính gốc. Cà phê Phin drip, specialty espresso, và các đồ uống matcha độc đáo.`
+
 ### Schema Keywords
-- LocalBusiness: Gate 7 Coffee Roastery
-- Location: Ho Chi Minh City, Vietnam
-- Address: 162A Nguyễn Trường Tộ
+- LocalBusiness: Gate 7 Coffee Roastery / Gate 7 Cà phê
+- Location: Ho Chi Minh City / Hồ Chí Minh, Vietnam / Việt Nam
+- Address: 162A Nguyễn Trường Tộ, Phường Phú Thọ Hòa, Quận 6, TP HCM
+
+### Keyword Density Targets
+- Gate 7 Coffee: 2-3%
+- Vietnamese Coffee: 1.5-2%
+- Phin Coffee: 1-2%
+- Specialty Coffee: 1-1.5%
+- HCMC/Ho Chi Minh: 0.5-1%
 
 ---
 
@@ -84,13 +151,22 @@ Phin coffee, specialty espresso, and unique matcha drinks. Visit us at
 **URL:** `https://gate7.vn/menu/`
 
 ### Meta Keywords Tag
+
+#### English
 ```
 Gate 7 Coffee Menu, Vietnamese Coffee, Phin Coffee, Espresso, Matcha, Coffee Prices, HCMC
 ```
 
+#### Vietnamese
+```
+Thực Đơn Gate 7 Coffee, Cà phê Việt Nam, Cà phê Phin, Espresso, Matcha, Giá Cà phê, TPHCM
+```
+
 ### Keyword List
 
-#### Menu-Specific Keywords (7)
+#### English Keywords
+
+##### Menu-Specific Keywords (7)
 - Coffee Menu
 - Vietnamese Coffee
 - Phin Coffee
@@ -99,14 +175,14 @@ Gate 7 Coffee Menu, Vietnamese Coffee, Phin Coffee, Espresso, Matcha, Coffee Pri
 - Vietnamese Tea
 - Coffee Prices
 
-#### Product Categories (5)
+##### Product Categories (5)
 - Phin Cafe (100% Robusta)
 - Espresso Bar (100% Arabica)
 - Matcha & Houjicha
 - Tea & Milktea
 - Extra Toppings
 
-#### Individual Items (10+)
+##### Individual Items (10+)
 - Drip Drop Coffee
 - Cappuccino
 - Latte
@@ -118,8 +194,39 @@ Gate 7 Coffee Menu, Vietnamese Coffee, Phin Coffee, Espresso, Matcha, Coffee Pri
 - Passion Fruit Tea
 - Salted Foam
 
+#### Vietnamese Keywords
+
+##### Từ Khóa Cụ Thể Thực Đơn (7)
+- Thực Đơn Cà phê
+- Cà phê Việt Nam
+- Cà phê Phin
+- Espresso
+- Matcha
+- Trà Việt Nam
+- Giá Cà phê
+
+##### Danh Mục Sản Phẩm (5)
+- Phin Cafe (100% Robusta)
+- Espresso Bar (100% Arabica)
+- Matcha & Houjicha
+- Trà & Milktea
+- Toppings Bổ Sung
+
+##### Mục Đơn Lẻ (10+)
+- Cà phê Drip Drop
+- Cappuccino
+- Latte
+- Mocha
+- Americano
+- Matcha Latte
+- Houjicha Latte
+- Trà Jasmine Oolong
+- Trà Passion Fruit
+- Salted Foam
+
 ### Meta Titles & Descriptions
 
+#### English
 **Title (65 chars):**
 ```
 Gate 7 Coffee Menu | Vietnamese Phin & Specialty Drinks
@@ -130,6 +237,19 @@ Gate 7 Coffee Menu | Vietnamese Phin & Specialty Drinks
 Explore Gate 7 Coffee's full menu: Phin Robusta coffee, Arabica espresso, 
 matcha drinks, and Vietnamese tea. Prices and detailed descriptions for 
 all beverages.
+```
+
+#### Vietnamese
+**Title (70 chars):**
+```
+Thực Đơn Gate 7 Coffee - Cà phê Phin, Specialty Drinks Chất Lượng Cao
+```
+
+**Description (165 chars):**
+```
+Khám phá thực đơn đầy đủ Gate 7 Coffee: Cà phê Phin Robusta, Arabica 
+espresso, đồ uống matcha, và trà Việt Nam. Giá cả và mô tả chi tiết 
+cho tất cả đồ uống.
 ```
 
 ---
@@ -200,6 +320,120 @@ Gate 7 Coffee Music, Coffee Shop Music, Spotify Playlist, Vietnamese Coffee Musi
 - Gate 7 Coffee Music
 - Vietnamese Coffee Music
 - Coffee Culture Music
+
+### Meta Titles & Descriptions
+
+**Title (55 chars):**
+```
+Gate 7 Coffee Music | Spotify Playlist
+```
+
+**Description (160 chars):**
+```
+Gate 7 Coffee Roastery's curated Spotify playlist. Ambient and background 
+music for coffee shops. Stream the perfect soundtrack for your coffee 
+experience.
+```
+
+---
+
+## Brand Story Page Keywords
+
+**Page:** `/brand-story/index.html`  
+**URL:** `https://gate7.vn/brand-story/`
+
+### Meta Keywords Tag
+```
+Gate 7 Coffee Story, Coffee Heritage, Vietnamese Coffee, Coffee Passion, Roastery
+```
+
+### Keyword List
+
+#### Brand Story Keywords (4)
+- Gate 7 Coffee Story
+- Coffee Heritage
+- Coffee Passion
+- Roastery Journey
+
+#### Value Keywords (4)
+- Quality Coffee
+- Authentic Vietnamese
+- Specialty Focus
+- Craft Roasting
+
+#### Experience Keywords (3)
+- Coffee Culture
+- Cafe Experience
+- Coffee Community
+
+### Meta Titles & Descriptions
+
+**Title (60 chars):**
+```
+Our Story | Gate 7 Coffee Roastery - Coffee Heritage
+```
+
+**Description (160 chars):**
+```
+Learn the story behind Gate 7 Coffee Roastery. Our passion for authentic 
+Vietnamese coffee, specialty roasting, and craft culture. Discover our values 
+and journey.
+```
+
+---
+
+## Coming Soon / Public Page Keywords
+
+**Page:** `/public/index.html`  
+**URL:** `https://gate7.vn/public/`
+
+### Meta Keywords Tag
+```
+Coming Soon, Gate 7 Coffee, Pre-launch, Email Newsletter, Vietnamese Coffee
+```
+
+### Keyword List
+
+#### Coming Soon Keywords (3)
+- Coming Soon
+- Pre-launch
+- Newsletter Signup
+
+#### Brand Keywords (2)
+- Gate 7 Coffee
+- Vietnamese Coffee
+
+#### Engagement Keywords (2)
+- Email Notification
+- Stay Updated
+
+### Meta Titles & Descriptions
+
+**Title (55 chars):**
+```
+Coming Soon | Gate 7 Coffee Roastery
+```
+
+**Description (160 chars):**
+```
+Gate 7 Coffee Roastery coming soon. Sign up for our email list to be the 
+first notified when we launch. Authentic Vietnamese specialty coffee 
+experience.
+```
+
+---
+
+## Pilot / Test Pages Keywords
+
+**Pages:** `/pilot/` various test pages
+
+### Meta Keywords Tag
+```
+Gate 7 Coffee, Vietnamese Coffee, Test Pages
+```
+
+### Note
+Pilot pages use inherited keywords from main site. Update with target keywords as content develops.
 
 ---
 
@@ -276,16 +510,26 @@ Monitor these competitor keywords:
 
 ### Search Volume Estimates
 
-| Keyword | Volume | Difficulty | Priority |
-|---------|--------|------------|----------|
-| Vietnamese Coffee | 1,900 | High | High |
-| Specialty Coffee | 1,600 | High | High |
-| Phin Coffee | 800 | Medium | High |
-| Coffee HCMC | 600 | Medium | High |
-| Matcha Coffee | 400 | Medium | Medium |
-| Coffee Menu HCMC | 300 | Low | Medium |
-| Barista Jobs Vietnam | 200 | Low | Low |
-| Coffee Roastery | 150 | Medium | Low |
+| Keyword | Volume | Difficulty | Priority | Current Status |
+|---------|--------|------------|----------|-----------------|
+| Vietnamese Coffee | 1,900 | High | High | Low density (0.28%) |
+| Specialty Coffee | 1,600 | High | High | Optimize needed |
+| Phin Coffee | 800 | Medium | High | Low density (0.22%) |
+| Coffee HCMC | 600 | Medium | High | Low density (0.28%) |
+| Matcha Coffee | 400 | Medium | Medium | Optimize needed |
+| Coffee Menu HCMC | 300 | Low | Medium | Low density (0.11%) |
+| Barista Jobs Vietnam | 200 | Low | Low | Low density (0.26%) |
+| Coffee Roastery | 150 | Medium | Low | Optimize needed |
+
+### Current Build-Time Validation
+
+The `npm run build:seo` command automatically validates:
+- ✅ All required meta tags present
+- ✅ Keyword density analysis (target: 0.5-3%)
+- ✅ Title tag length (50-60 chars)
+- ✅ Meta description length (150-160 chars)
+- ✅ Open Graph tags validation
+- ✅ Generates `seo-build-report.json` after build
 
 ---
 
@@ -309,17 +553,21 @@ Monitor these competitor keywords:
 - [ ] Update meta descriptions
 - [ ] Update page titles
 - [ ] Update Open Graph tags
-- [ ] Run build process
-- [ ] Deploy to production
+- [ ] Run SEO build validation: `npm run build:seo`
+- [ ] Review SEO validation report
+- [ ] Fix any SEO issues before deployment
+- [ ] Deploy to production with: `npm run deploy:seo`
+- [ ] Verify seo-build-report.json in dist/
 
 ### After Deployment
 
+- [ ] Check seo-build-report.json results
 - [ ] Submit sitemap to Google Search Console
 - [ ] Test with Google Rich Results
 - [ ] Monitor in Search Console
-- [ ] Check indexed keywords
-- [ ] Track ranking positions
-- [ ] Monitor organic traffic
+- [ ] Check indexed keywords within 24-48 hours
+- [ ] Track ranking positions in GSC
+- [ ] Monitor organic traffic trends
 
 ---
 
@@ -374,23 +622,78 @@ Monitor these competitor keywords:
    - Update keyword lists
    - Change priorities
    - Add new keywords
+   - Track in Current Status column
 
 2. **Update HTML Files**
    - Edit meta keywords tag
    - Update title tag
    - Update description
    - Update Open Graph tags
+   - Ensure proper keyword density (0.5-3%)
 
-3. **Rebuild & Deploy**
+3. **Validate Before Deploy**
    ```bash
-   npm run build
-   npm run deploy
+   npm run build:seo
+   ```
+   - Review SEO validation report
+   - Fix warnings/errors reported
+   - Check dist/seo-build-report.json
+
+4. **Rebuild & Deploy**
+   ```bash
+   npm run deploy:seo
    ```
 
-4. **Monitor Results**
+5. **Monitor Results**
    - Google Search Console
+   - seo-build-report.json in dist
    - PageSpeed Insights
    - Analytics
+
+---
+
+## SEO Validation Workflow
+
+### Quick Build with SEO Check
+
+```bash
+npm run build:seo
+```
+
+**Output includes:**
+- Minified HTML/CSS/JS
+- SEO validation for each page
+- Keyword density analysis
+- Meta tag validation
+- `seo-build-report.json` with full report
+
+### Deploy with SEO Validation
+
+```bash
+npm run deploy:seo
+```
+
+**Process:**
+1. Convert images to WebP
+2. Run SEO-enhanced build
+3. Validate all keyword requirements
+4. Git commit with SEO message
+5. Push to GitHub Pages
+
+### SEO Report File
+
+After `npm run build:seo`, check: `dist/seo-build-report.json`
+
+Contains:
+```json
+{
+  "timestamp": "ISO-8601 timestamp",
+  "totalSize": "bytes",
+  "files": "count",
+  "seoWarnings": [],
+  "seoPassed": true/false
+}
+```
 
 ---
 
@@ -501,22 +804,45 @@ Monitor these competitor keywords:
 
 ## Quick Reference
 
-### Home Page Keywords (9 primary)
+### Home Page Keywords (9 primary each language)
+
+**English:**
 ```
 Gate 7 Coffee, Vietnamese Coffee, Phin Coffee, Specialty Coffee, 
 Coffee Roastery, HCMC, Ho Chi Minh, Arabica, Robusta
 ```
 
-### Menu Page Keywords (7 primary)
+**Vietnamese:**
+```
+Gate 7 Cà phê, Cà phê Việt Nam, Cà phê Phin, Cà phê Specialty, 
+Nhà Rang Cà phê, TPHCM, Hồ Chí Minh, Arabica, Robusta
+```
+
+### Menu Page Keywords (7 primary each language)
+
+**English:**
 ```
 Gate 7 Coffee Menu, Vietnamese Coffee, Phin Coffee, Espresso, 
 Matcha, Coffee Prices, HCMC
 ```
 
+**Vietnamese:**
+```
+Thực Đơn Gate 7 Coffee, Cà phê Việt Nam, Cà phê Phin, Espresso, 
+Matcha, Giá Cà phê, TPHCM
+```
+
 ### Always Include
+
+**English:**
 - Brand name: Gate 7 Coffee
 - Location: HCMC / Ho Chi Minh City
 - Main product: Coffee / Phin Coffee / Specialty Coffee
+
+**Vietnamese:**
+- Tên thương hiệu: Gate 7 Cà phê / Gate 7 Coffee
+- Địa điểm: TPHCM / Hồ Chí Minh / TP HCM
+- Sản phẩm chính: Cà phê / Cà phê Phin / Cà phê Specialty
 
 ---
 

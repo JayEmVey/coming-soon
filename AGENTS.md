@@ -11,6 +11,15 @@ This is a static website project with optimized build and deployment pipeline.
   - Optimizes and copies images
   - Output: `dist/` folder
   - No external dependencies required
+
+- **Build with SEO validation**: `npm run build:seo`
+  - Performs standard build
+  - Validates SEO keywords on all pages
+  - Checks meta tags (title, description, keywords, og:*)
+  - Analyzes keyword density (warns if too high/low)
+  - Checks title/description length
+  - Generates `seo-build-report.json` in dist/
+  - Recommended before major deployments
   
 - **Deploy to GitHub Pages** (one command): `npm run deploy`
   - Builds production bundle
@@ -19,6 +28,12 @@ This is a static website project with optimized build and deployment pipeline.
   - Site live in ~2 minutes
   - Windows: `npm run deploy`
   - macOS/Linux: `npm run deploy`
+
+- **Deploy with SEO validation**: `npm run deploy:seo`
+  - Builds with SEO keyword validation
+  - Commits with SEO validation message
+  - Pushes to GitHub
+  - Use for content updates and keyword changes
   
 - **Force deploy** (if needed): `npm run deploy:force`
   - Same as deploy but force-pushes to git
@@ -43,25 +58,38 @@ This is a static website project with optimized build and deployment pipeline.
   - Central location for all SEO keywords
   - Organized by page and keyword type
   - Includes search volume and difficulty
-  - Tracks keyword performance
+  - Tracks keyword performance and current status
   
 - **Update HTML keywords**: 
   - Edit `<meta name="keywords">` in HTML files
   - Reference SEO-KEYWORDS.md for current keywords
   - Update `<title>` and `<meta description>` tags
   - Update Open Graph tags
+  - Target keyword density: 0.5-3%
   
-- **Deployment checklist**:
-  - [ ] Review keywords in SEO-KEYWORDS.md
+- **SEO Validation Commands**:
+  - Validate before deploy: `npm run build:seo`
+  - Deploy with validation: `npm run deploy:seo`
+  - Check report: `dist/seo-build-report.json`
+  
+- **Pre-deployment SEO checklist**:
+  - [ ] Review/update keywords in SEO-KEYWORDS.md
   - [ ] Update meta keywords in HTML
-  - [ ] Check keyword density (1-3%)
-  - [ ] Test titles/descriptions length
+  - [ ] Check keyword density (0.5-3% target)
+  - [ ] Test titles (50-60 chars) & descriptions (150-160 chars)
   - [ ] Verify Open Graph tags
-  - [ ] Run: `npm run build && npm run deploy`
+  - [ ] Run validation: `npm run build:seo`
+  - [ ] Review SEO warnings from build
+  - [ ] Fix SEO issues before deploy
+  - [ ] Deploy with: `npm run deploy:seo`
+  - [ ] Verify seo-build-report.json generated
   - [ ] Submit sitemap to Google Search Console
   - [ ] Monitor keywords in Search Console
   
-- **See also**: SEO-KEYWORDS.md for detailed keyword management guide
+- **See also**: 
+  - SEO-KEYWORDS.md - Detailed keyword management
+  - SEO_BUILD_QUICK_START.md - Quick start workflow
+  - SEO_BUILD_IMPLEMENTATION_SUMMARY.md - What's implemented
 
 ## Architecture & Codebase Structure
 
