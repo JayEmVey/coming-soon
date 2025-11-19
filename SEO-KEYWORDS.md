@@ -21,12 +21,12 @@ This document centralizes all SEO keywords used across the Gate 7 Coffee Roaster
 
 #### English
 ```
-Gate 7 Coffee, Gate 7 Coffee Roastery, Vietnamese Coffee, Phin Coffee, High Quality Coffee, Coffee Roastery, HCMC, Ho Chi Minh, Arabica, Robusta
+Gate 7 Coffee, Gate 7 Coffee Roastery, Vietnamese Coffee, Phin Coffee, High Quality Coffee, Coffee Roastery, HCMC, Ho Chi Minh, Tan Phu, Arabica, Robusta, Coffee Nearby Tan Phu, Coffee Nearby Tan Son Nhi, Coffee Nearby Truong Vinh Ky, Coffee Nearby Doc Lap
 ```
 
 #### Vietnamese
 ```
-Gate 7 Cà phê, Gate 7 Coffee Roastery, Cà phê Việt Nam, Cà phê Phin, Cà phê Chất Lượng Cao, Nhà Rang Cà phê, TPHCM, Hồ Chí Minh, Arabica, Robusta
+Cà phê Gate 7, Gate 7 Coffee Roastery, Cà phê Việt Nam, Cà phê Phin, Cà phê Chất Lượng Cao, Nhà Rang Cà phê, TPHCM, Hồ Chí Minh, Tân Phú, Arabica, Robusta, Cà phê gần đây Tân Phú, Cà phê gần đây Tân Sơn Nhì, Cà phê gần đây Trương Vinh Ky, Cà phê gần đây Độc Lập
 ```
 
 ### Keyword List
@@ -36,19 +36,24 @@ Gate 7 Cà phê, Gate 7 Coffee Roastery, Cà phê Việt Nam, Cà phê Phin, Cà
 ##### Brand Keywords (3)
 - Gate 7 Coffee
 - Gate 7 Coffee Roastery
+- Gate 7 Coffee Tan Phu
+- Gate 7 Coffee Phu Tho Hoa
 - Gate 7 HCMC
 
 ##### Product Keywords (5)
 - Phin Coffee
 - Vietnamese Coffee
+- High Quality Coffee
 - Specialty Coffee
 - Arabica
 - Robusta
 
 ##### Service Keywords (3)
 - Coffee Roastery
+- Coffee Roaster
 - Coffee Shop
 - Cafe
+- Cafeteria
 
 ##### Location Keywords (3)
 - HCMC
@@ -57,39 +62,58 @@ Gate 7 Cà phê, Gate 7 Coffee Roastery, Cà phê Việt Nam, Cà phê Phin, Cà
 
 ##### Related Keywords (5)
 - Drip Coffee
+- Phin Coffee
 - Espresso
 - Matcha
+- Houjicha
+- Milktea
 - Vietnamese Beverages
 - Specialty Drinks
 
 #### Vietnamese Keywords
 
 ##### Từ Khóa Thương Hiệu (3)
-- Gate 7 Cà phê
+- Cà phê Gate 7 
 - Gate 7 Coffee Roastery
 - Gate 7 TPHCM
+- Cà phê Tân Phú
+- Cà phê Phú Thọ Hòa
 
 ##### Từ Khóa Sản Phẩm (5)
 - Cà phê Phin
 - Cà phê Việt Nam
 - Cà phê Specialty
+- Cà phê đặc sản
+- Cà phê chất lượng cao
 - Arabica
 - Robusta
 
 ##### Từ Khóa Dịch Vụ (3)
 - Nhà Rang Cà phê
+- Xưởng Rang Cà Phê
 - Quán Cà phê
 - Cafe
+- Cafeteria
 
 ##### Từ Khóa Địa Điểm (3)
 - TPHCM
 - Hồ Chí Minh
 - Thành phố Hồ Chí Minh
+- Quận Tân Phú
+- Phường Phú Thọ Hòa
 
 ##### Từ Khóa Liên Quan (5)
-- Cà phê Drip
+- Cà phê phin
+- Cà phê Việt Nam
+- Cà phê truyền thống
+- Cà phê pha phin
+- Cà phê pha máy
+- Cà phê đặc sản
+- Cà phê chất lượng cao
 - Espresso
 - Matcha
+- Houjicha
+- Trà sữa
 - Đồ Uống Việt Nam
 - Đồ Uống Specialty
 
@@ -98,43 +122,43 @@ Gate 7 Cà phê, Gate 7 Coffee Roastery, Cà phê Việt Nam, Cà phê Phin, Cà
 #### English
 **Title (60 chars):**
 ```
-Gate 7 Coffee Roastery | Vietnamese Specialty Coffee HCM
+Gate 7 Coffee Roastery | Vietnamese High Quality Coffee HCM
 ```
 
 **Description (160 chars):**
 ```
 Discover Gate 7 Coffee Roastery in Ho Chi Minh City. Authentic Vietnamese 
 Phin coffee, specialty espresso, and unique matcha drinks. Visit us at 
-162A Nguyễn Trường Tộ.
+162A Nguyen Truong To, Phu Tho Hoa Ward, Ho Chi Minh City.
 ```
 
 #### Vietnamese
 **Title (70 chars):**
 ```
-Gate 7 Coffee Roastery - Cà phê Specialty Việt Nam Chất Lượng Cao TPHCM
+Gate 7 Coffee Roastery - Cà phê Việt Nam Chất Lượng Cao TPHCM
 ```
 
 **Description (160 chars):**
 ```
 Khám phá Gate 7 Coffee Roastery tại Hồ Chí Minh. Cà phê Phin Việt Nam 
 chính gốc, specialty espresso, và đồ uống matcha độc đáo. Địa chỉ: 
-162A Nguyễn Trường Tộ.
+162A Nguyễn Trường Tộ, Phường Phú Thọ Hòa, Quận Tân Phú (cũ), TP HCM.
 ```
 
 ### Open Graph Tags
 
 #### English
-- og:title: `Gate 7 Coffee Roastery | Vietnamese Specialty Coffee`
+- og:title: `Gate 7 Coffee Roastery | Vietnamese High Quality Coffee`
 - og:description: `Experience authentic Vietnamese coffee culture. Phin drip coffee, specialty espresso, and unique matcha creations.`
 
 #### Vietnamese
-- og:title: `Gate 7 Coffee Roastery - Cà phê Specialty Việt Nam`
-- og:description: `Trải nghiệm nền văn hóa cà phê Việt Nam chính gốc. Cà phê Phin drip, specialty espresso, và các đồ uống matcha độc đáo.`
+- og:title: `Gate 7 Coffee Roastery - Cà phê Việt Nam chất lượng cao`
+- og:description: `Trải nghiệm nền văn hóa cà phê Việt Nam chính gốc. Cà phê Pha Phin, espresso, và các đồ uống matcha độc đáo.`
 
 ### Schema Keywords
-- LocalBusiness: Gate 7 Coffee Roastery / Gate 7 Cà phê
+- LocalBusiness: Gate 7 Coffee Roastery / Cà phê Gate 7 
 - Location: Ho Chi Minh City / Hồ Chí Minh, Vietnam / Việt Nam
-- Address: 162A Nguyễn Trường Tộ, Phường Phú Thọ Hòa, Quận 6, TP HCM
+- Address: 162A Nguyễn Trường Tộ, Phường Phú Thọ Hòa, TP HCM
 
 ### Keyword Density Targets
 - Gate 7 Coffee: 2-3%
@@ -159,7 +183,7 @@ Gate 7 Coffee Menu, Vietnamese Coffee, Phin Coffee, Espresso, Matcha, Coffee Pri
 
 #### Vietnamese
 ```
-Thực Đơn Gate 7 Coffee, Cà phê Việt Nam, Cà phê Phin, Espresso, Matcha, Giá Cà phê, TPHCM
+Thực Đơn Gate 7 Coffee, Cà phê Việt Nam, Cà phê Phin, Espresso, Matcha, Bảng Giá Cà phê, TPHCM
 ```
 
 ### Keyword List
@@ -200,10 +224,11 @@ Thực Đơn Gate 7 Coffee, Cà phê Việt Nam, Cà phê Phin, Espresso, Matcha
 - Thực Đơn Cà phê
 - Cà phê Việt Nam
 - Cà phê Phin
+- Cà phê pha phin
 - Espresso
 - Matcha
 - Trà Việt Nam
-- Giá Cà phê
+- Bảng giá Cà phê
 
 ##### Danh Mục Sản Phẩm (5)
 - Phin Cafe (100% Robusta)
@@ -213,7 +238,7 @@ Thực Đơn Gate 7 Coffee, Cà phê Việt Nam, Cà phê Phin, Espresso, Matcha
 - Toppings Bổ Sung
 
 ##### Mục Đơn Lẻ (10+)
-- Cà phê Drip Drop
+- Cà phê pha phin
 - Cappuccino
 - Latte
 - Mocha
@@ -222,7 +247,7 @@ Thực Đơn Gate 7 Coffee, Cà phê Việt Nam, Cà phê Phin, Espresso, Matcha
 - Houjicha Latte
 - Trà Jasmine Oolong
 - Trà Passion Fruit
-- Salted Foam
+- Kem muối
 
 ### Meta Titles & Descriptions
 
@@ -261,7 +286,7 @@ cho tất cả đồ uống.
 
 ### Meta Keywords Tag
 ```
-Tuyển dụng Barista, Gate 7 Coffee, Công việc HCM, Cà phê Việt Nam
+Tuyển dụng Barista, Gate 7 Coffee, Công việc Tân Phú, Công việc HCM, Cà phê Việt Nam
 ```
 
 ### Keyword List (Vietnamese)
