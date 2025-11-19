@@ -25,4 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
     animateElements.forEach(el => {
         observer.observe(el);
     });
+
+    // Trigger animation immediately for above-fold content
+    const menuElements = document.querySelector('.menu');
+    if (menuElements) {
+        menuElements.classList.add('animate-in');
+    }
 });

@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gate 7 Coffee Menu - Vietnamese Phin & Specialty Coffee HCMC</title>
-<meta name="description" content="Gate 7 Coffee Menu: Phin Robusta, Arabica espresso, matcha, Vietnamese tea with prices and detailed descriptions of all specialty drinks.">
-<meta name="keywords" content="Gate 7 Coffee Menu, Vietnamese Coffee, Phin Coffee, Espresso, Matcha, Vietnamese Tea, Coffee Prices, HCMC, Ho Chi Minh, Robusta, Arabica, Specialty Coffee, Cafe Menu">
+<meta name="description"
+content="Gate 7 Coffee Menu: Phin Robusta, Arabica espresso, matcha, Vietnamese tea with prices and detailed descriptions of all specialty drinks.">
+<meta name="keywords"
+content="Gate 7 Coffee Menu, Vietnamese Coffee, Phin Coffee, Espresso, Matcha, Vietnamese Tea, Coffee Prices, HCMC, Ho Chi Minh, Robusta, Arabica, Specialty Coffee, Cafe Menu">
 <meta name="author" content="Gate 7 Coffee Roastery">
 <meta name="theme-color" content="#202020">
 <link rel="canonical" href="https://gate7.vn/menu/">
@@ -14,13 +16,15 @@
 <link rel="alternate" hreflang="x-default" href="https://gate7.vn/menu/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gate 7 Coffee Menu - Vietnamese Phin & Specialty Coffee">
-<meta property="og:description" content="Full menu of authentic Vietnamese and specialty coffee drinks. Phin Robusta, Arabica espresso, matcha, Vietnamese tea, and more with prices. HCMC coffee roastery.">
+<meta property="og:description"
+content="Full menu of authentic Vietnamese and specialty coffee drinks. Phin Robusta, Arabica espresso, matcha, Vietnamese tea, and more with prices. HCMC coffee roastery.">
 <meta property="og:image" content="https://gate7.vn/images/logo-color-black-bg1.png">
 <meta property="og:url" content="https://gate7.vn/menu/">
 <meta property="og:site_name" content="Gate 7 Coffee Roastery">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Gate 7 Coffee Menu - Vietnamese Phin & Specialty Coffee">
-<meta name="twitter:description" content="Authentic Vietnamese Phin coffee, Arabica espresso, matcha, Vietnamese tea, and specialty drinks with prices in HCMC.">
+<meta name="twitter:description"
+content="Authentic Vietnamese Phin coffee, Arabica espresso, matcha, Vietnamese tea, and specialty drinks with prices in HCMC.">
 <meta name="twitter:image" content="https://gate7.vn/images/logo-color-black-bg1.png">
 <script type="application/ld+json">
 {
@@ -75,8 +79,8 @@ const lastEntry = entries[entries.length - 1];
 window.webVitalsMetrics.lcp = lastEntry.renderTime || lastEntry.loadTime;
 });
 try {
-lcpObserver.observe({type: 'largest-contentful-paint', buffered: true});
-} catch (e) {}
+lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });
+} catch (e) { }
 let clsValue = 0;
 const clsObserver = new PerformanceObserver((list) => {
 for (const entry of list.getEntries()) {
@@ -87,13 +91,13 @@ window.webVitalsMetrics.cls = clsValue;
 }
 });
 try {
-clsObserver.observe({type: 'layout-shift', buffered: true});
-} catch (e) {}
+clsObserver.observe({ type: 'layout-shift', buffered: true });
+} catch (e) { }
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S72S3FXR6Z"></script>
 <script defer>
 window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
+function gtag() { dataLayer.push(arguments); }
 gtag('js', new Date());
 gtag('config', 'G-S72S3FXR6Z');
 </script>
@@ -161,14 +165,22 @@ margin: 0;
 .menu-section {
 padding: 60px 0;
 text-align: center;
+width: 100%;
+overflow: hidden;
 }
 .menu-image {
 max-width: 100%;
+width: 100%;
 height: auto;
 border-radius: 12px;
-box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 margin: 0 auto;
 display: block;
+background-color: #1a1a1a;
+}
+picture {
+display: block;
+width: 100%;
 }
 /* Footer Section */
 .footer {
@@ -295,6 +307,18 @@ transition: opacity 0.6s ease, transform 0.6s ease;
 opacity: 1 !important;
 transform: translateY(0) !important;
 }
+/* Fallback: Show elements if JavaScript doesn't load */
+@supports not (animation-timeline: view()) {
+.menu-section {
+opacity: 1;
+transform: translateY(0);
+}
+}
+/* Force visibility for critical content */
+noscript ~ .container .menu-section {
+opacity: 1;
+transform: translateY(0);
+}
 /* Responsive Design */
 @media (max-width: 768px) {
 .container {
@@ -349,40 +373,41 @@ text-align: center;
 </div>
 <div class="welcome-message">
 <h1 data-en="Hello!" data-vn="Chào bạn!">Chào bạn!</h1>
-<p data-en="Delight in every sip, anytime, anywhere" data-vn="Thưởng thức cà phê mọi lúc mọi nơi">Thưởng thức cà phê mọi lúc mọi nơi</p>
+<p data-en="Delight in every sip, anytime, anywhere" data-vn="Thưởng thức cà phê mọi lúc mọi nơi">Thưởng
+thức cà phê mọi lúc mọi nơi</p>
 </div>
 </header>
 <main class="menu-section">
-<picture>
-<source media="(max-width: 480px)" srcset="../images/Menu_Final-small.webp" type="image/webp">
-<source media="(max-width: 768px)" srcset="../images/Menu_Final-medium.webp" type="image/webp">
-<source media="(min-width: 769px)" srcset="../images/Menu_Final.webp" type="image/webp">
-<img src="../images/Menu_Final.png" alt="Gate 7 Coffee Menu" class="menu-image" loading="lazy">
-</picture>
+<img src="../images/Menu_Final.png" alt="Gate 7 Coffee Menu - Full Menu with Prices" class="menu-image" loading="eager" decoding="async">
 </main>
 <footer class="footer">
 <div class="footer-container">
 <div>
 <h4 data-en="Address" data-vn="Địa Chỉ">Địa Chỉ</h4>
-<p>162A Nguyễn Trường Tộ<br/>Phường Phú Thọ Hòa, TP HCM</p>
-<p>hello@gate7.vn<br/>0971091120</p>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.237932965956!2d106.63045397428787!3d10.793080158887879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529a8b3819463%3A0x5aec4a7508322c9d!2sGate%207%20Coffee%20Roastery!5e0!3m2!1sen!2s!4v1758699078419!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<p>162A Nguyễn Trường Tộ<br />Phường Phú Thọ Hòa, TP HCM</p>
+<p>hello@gate7.vn<br />0971091120</p>
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.237932965956!2d106.63045397428787!3d10.793080158887879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529a8b3819463%3A0x5aec4a7508322c9d!2sGate%207%20Coffee%20Roastery!5e0!3m2!1sen!2s!4v1758699078419!5m2!1sen!2s"
+allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 <div>
 <h4 data-en="Hours" data-vn="Khung Giờ">Khung Giờ</h4>
 <div class="hours">
-<span data-en="Monday – Friday" data-vn="Thứ Hai – Thứ Sáu">Thứ Hai – Thứ Sáu</span><span data-en="6:00 AM – 09:00 PM" data-vn="6:00 sáng – 09:00 tối">6:00 sáng – 09:00 tối</span>
-<span data-en="Saturday – Sunday" data-vn="Thứ Bảy – Chủ Nhật">Thứ Bảy – Chủ Nhật</span><span data-en="6:00 AM – 09:00 PM" data-vn="6:00 sáng – 09:00 tối">6:00 sáng – 09:00 tối</span>
+<span data-en="Monday – Friday" data-vn="Thứ Hai – Thứ Sáu">Thứ Hai – Thứ Sáu</span><span
+data-en="6:00 AM – 09:00 PM" data-vn="6:00 sáng – 09:00 tối">6:00 sáng – 09:00 tối</span>
+<span data-en="Saturday – Sunday" data-vn="Thứ Bảy – Chủ Nhật">Thứ Bảy – Chủ Nhật</span><span
+data-en="6:00 AM – 09:00 PM" data-vn="6:00 sáng – 09:00 tối">6:00 sáng – 09:00 tối</span>
 </div>
 </div>
 <div>
 <h4 data-en="Follow" data-vn="Theo Dõi Gate Tại">Theo Dõi Gate Tại</h4>
 <div class="social-links">
 <a href="https://instagram.com/gate7.coffee" target="_blank" rel="noopener noreferrer">
-<img src="../images/Instagram_icon.png.webp" alt="Instagram"> Instagram
+Instagram
 </a>
-<a href="https://www.facebook.com/share/1CnRHZ9QSz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
-<img src="../images/Facebook_Logo_(2019).png.webp" alt="Facebook"> Facebook
+<a href="https://www.facebook.com/share/1CnRHZ9QSz/?mibextid=wwXIfr" target="_blank"
+rel="noopener noreferrer">
+Facebook
 </a>
 <a href="https://zalo.me/2485475799709134069" target="_blank" rel="noopener noreferrer">
 <img src="../images/7044033_zalo_icon.ico" alt="Zalo"> Zalo
@@ -391,7 +416,9 @@ text-align: center;
 </div>
 </div>
 <div class="footer-bottom">
-<span data-en="© 2025 Gate 7 Coffee Roastery. All rights reserved." data-vn="© 2025 Gate 7 Coffee Roastery. Tất cả quyền được bảo lưu.">© 2025 Gate 7 Coffee Roastery. All rights reserved.</span>
+<span data-en="© 2025 Gate 7 Coffee Roastery. All rights reserved."
+data-vn="© 2025 Gate 7 Coffee Roastery. Tất cả quyền được bảo lưu.">© 2025 Gate 7 Coffee Roastery.
+All rights reserved.</span>
 <div class="language-switcher">
 <button class="lang-btn active" data-lang="en">EN</button>
 <span>|</span>
@@ -403,6 +430,13 @@ text-align: center;
 <script>
 // Smooth scroll behavior (critical for UX)
 document.documentElement.style.scrollBehavior = 'smooth';
+// Show menu section immediately to prevent flashing/hiding
+document.addEventListener('DOMContentLoaded', function() {
+const menuSection = document.querySelector('.menu-section');
+if (menuSection && !menuSection.classList.contains('animate-in')) {
+menuSection.classList.add('animate-in');
+}
+});
 </script>
 <script defer src="../js/scroll-animations.js"></script>
 <script defer src="../js/language-switcher.js"></script>
