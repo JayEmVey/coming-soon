@@ -87,22 +87,38 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Averta', sans-serif;
             background-color: #202020;
             color: #ffffff;
             min-height: 100vh;
             padding: 40px 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: url('../images/coffee-as-you-are.png') center/contain no-repeat;
+            opacity: 0.35;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         /* Welcome Message */
         .welcome-message {
-            background: linear-gradient(135deg, #FEBC11 0%, #FEC844 100%);
-            color: #202020;
+            color: #FEBC11;
             padding: 24px 32px;
             border-radius: 12px;
             margin-bottom: 40px;
@@ -110,7 +126,7 @@
         }
 
         .welcome-message h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Averta', sans-serif;
             font-size: 1.5em;
             margin-bottom: 8px;
             font-weight: 600;
@@ -146,7 +162,7 @@
             cursor: pointer;
             border-radius: 6px;
             transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
+    font-family: 'Averta', sans-serif;
         }
 
         .lang-btn.active {
@@ -176,7 +192,7 @@
         }
 
         .logo-text {
-            font-family: 'Playfair Display', serif;
+    font-family: 'Averta', sans-serif;
             font-size: 2em;
             font-weight: 700;
             color: #FEBC11;
@@ -185,7 +201,7 @@
         }
 
         .header h1 {
-            font-family: 'Playfair Display', serif;
+    font-family: 'Averta', sans-serif;
             font-size: 2.2em;
             color: #FEBC11;
             margin-bottom: 12px;
@@ -210,7 +226,6 @@
         }
 
         .time-slot {
-            background: #2a2a2a;
             border-radius: 12px;
             padding: 28px;
             border: 1px solid rgba(254, 188, 17, 0.2);
@@ -245,7 +260,7 @@
         }
 
         .time-period {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Averta', sans-serif;
             font-size: 1.25em;
             font-weight: 600;
             color: #FEBC11;
@@ -341,7 +356,7 @@
         }
 
         .footer h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Averta', sans-serif;
             margin-bottom: 16px;
             font-size: 1.3em;
             font-weight: 600;
@@ -457,9 +472,9 @@
 </head>
 <body>
     <div class="language-switcher">
-        <button class="lang-btn active" onclick="switchLanguage('en')">ENG</button>
-        <button class="lang-btn" onclick="switchLanguage('vn')">VNE</button>
-    </div>
+         <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+         <button class="lang-btn" onclick="switchLanguage('vn')">VN</button>
+     </div>
 
     <div class="container">
         <div class="welcome-message">
@@ -606,11 +621,6 @@
         </div>
         <div class="footer-bottom" style="text-align: center;">
             <span data-en="© 2025 Gate 7 Coffee Roastery. All rights reserved." data-vn="© 2025 Gate 7 Coffee Roastery. Tất cả quyền được bảo lưu.">© 2025 Gate 7 Coffee Roastery. All rights reserved.</span>
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang="en">EN</button>
-                <span>|</span>
-                <button class="lang-btn" data-lang="vn">VN</button>
-            </div>
         </div>
     </div>
 
@@ -736,7 +746,7 @@
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.classList.add('active');
+            document.querySelector(`.lang-btn[onclick*="'${lang}'"]`).classList.add('active');
 
             // Update all elements with data attributes
             document.querySelectorAll('[data-en]').forEach(element => {
