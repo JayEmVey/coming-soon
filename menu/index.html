@@ -68,18 +68,16 @@
     
     <link rel="icon" type="image/png" href="../images/logo-only-white.png">
     <link rel="apple-touch-icon" href="../images/logo-only-white.png">
-    <!-- Performance: Preload critical resources -->
-    <link rel="preload" as="style" href="../css/style-gate7.css">
+    <!-- Critical styles (Phase 2 optimization ready) -->
+    <link rel="stylesheet" href="../css/style-gate7.css">
+    <!-- Performance: Preload critical image resources -->
     <link rel="preload" as="image" href="../images/logo-color-black-bg1.png" fetchpriority="high">
     <!-- Performance: DNS Prefetch & Preconnect -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Performance: Font loading optimization -->
-    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHAPMtFVJRDw50.woff2" type="font/woff2" crossorigin>
-    
-    <link rel="stylesheet" href="../css/style-gate7.css">
+    <!-- Performance: Font loading optimization (via Google Fonts CSS import) -->
     
     <!-- Web Vitals Performance Monitoring -->
     <script>
@@ -418,7 +416,16 @@
 
         <!-- Menu -->
         <main class="menu-section">
-            <img src="../images/Menu_Final.png" alt="Gate 7 Coffee Menu" class="menu-image">
+            <picture>
+                <!-- Mobile: up to 480px -->
+                <source media="(max-width: 480px)" srcset="../images/Menu_Final-small.webp" type="image/webp">
+                <!-- Tablet: 481px to 768px -->
+                <source media="(max-width: 768px)" srcset="../images/Menu_Final-medium.webp" type="image/webp">
+                <!-- Desktop: 769px and up -->
+                <source media="(min-width: 769px)" srcset="../images/Menu_Final.webp" type="image/webp">
+                <!-- Fallback for older browsers -->
+                <img src="../images/Menu_Final.png" alt="Gate 7 Coffee Menu" class="menu-image" loading="lazy">
+            </picture>
         </main>
 
     <!-- Footer -->
@@ -464,64 +471,25 @@
         </footer>
          </div>
 
+     <!-- Critical scripts (inline for immediate execution) -->
      <script>
-         // Smooth scroll behavior
+         // Smooth scroll behavior (critical for UX)
          document.documentElement.style.scrollBehavior = 'smooth';
+     </script>
 
-         // Intersection Observer for scroll animations
-         document.addEventListener('DOMContentLoaded', function() {
-             const observerOptions = {
-                 threshold: 0.1,
-                 rootMargin: '0px 0px -50px 0px'
-             };
+     <!-- Deferred non-critical scripts (Phase 2 optimization) -->
+     <script defer src="../js/scroll-animations.js"></script>
+     <script defer src="../js/language-switcher.js"></script>
 
-             const observer = new IntersectionObserver(function(entries) {
-                 entries.forEach(entry => {
-                     if (entry.isIntersecting) {
-                         entry.target.classList.add('animate-in');
-                     }
-                 });
-             }, observerOptions);
-
-             // Observe elements that should animate on scroll
-             const animateElements = document.querySelectorAll('.menu-section, .footer');
-             animateElements.forEach(el => {
-                 observer.observe(el);
+     <!-- Service Worker Registration (non-blocking) -->
+     <script defer>
+         if ('serviceWorker' in navigator) {
+             window.addEventListener('load', () => {
+                 navigator.serviceWorker.register('/service-worker.js')
+                     .then(reg => console.log('✓ Service Worker registered'))
+                     .catch(err => console.log('Service Worker registration failed:', err));
              });
-         });
-
-         // Language switcher
-         document.addEventListener('DOMContentLoaded', function() {
-             const langBtns = document.querySelectorAll('.lang-btn');
-             let currentLang = 'vn'; // Default to Vietnamese
-
-             function switchLanguage(lang) {
-                 // Update button states
-                 langBtns.forEach(btn => {
-                     btn.classList.toggle('active', btn.dataset.lang === lang);
-                 });
-
-                 // Update translatable elements
-                 const elements = document.querySelectorAll('[data-' + lang + ']');
-                 elements.forEach(el => {
-                     el.textContent = el.getAttribute('data-' + lang);
-                 });
-
-                 currentLang = lang;
-                 localStorage.setItem('selectedLanguage', lang);
-             }
-
-             // Load saved language
-             const savedLang = localStorage.getItem('selectedLanguage') || 'vn';
-             switchLanguage(savedLang);
-
-             // Event listeners
-             langBtns.forEach(btn => {
-                 btn.addEventListener('click', () => {
-                     switchLanguage(btn.dataset.lang);
-                 });
-             });
-         });
+         }
      </script>
          </body>
          </html>

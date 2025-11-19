@@ -30,10 +30,8 @@
     <link rel="icon" type="image/png" href="images/logo-only-white.png">
     <link rel="apple-touch-icon" href="images/logo-only-white.png">
     
-    <!-- Performance: Preload critical resources -->
-    <link rel="preload" as="style" href="css/style-gate7.css">
+    <!-- Performance: Preload critical image resources -->
     <link rel="preload" as="image" href="images/logo-color-black-bg1.png" fetchpriority="high">
-    <link rel="preload" as="image" href="images/coffee-as-you-are.png">
     
     <!-- Performance: DNS Prefetch & Preconnect for external resources -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -41,10 +39,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Performance: Font loading optimization with font-display swap -->
-    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHAPMtFVJRDw50.woff2" type="font/woff2" crossorigin>
+    <!-- Performance: Font loading optimization (via Google Fonts CSS import) -->
     
-    <!-- Font Averta will be loaded here if using hosted font -->
+    <!-- Critical styles (Phase 2 optimization ready) -->
     <link rel="stylesheet" href="css/style-gate7.css">
     
     <!-- Local Business Schema (Structured Data) -->
@@ -133,8 +130,14 @@
     <main>
         <div class="logo-container">
             <picture>
-                <source srcset="images/logo-color-black-bg1.webp" type="image/webp">
-                <img src="images/logo-color-black-bg1.png" alt="Gate 7 Coffee Roastery Logo" class="logo">
+                <!-- Mobile: up to 480px -->
+                <source media="(max-width: 480px)" srcset="images/logo-color-black-bg1-small.webp" type="image/webp">
+                <!-- Tablet: 481px to 768px -->
+                <source media="(max-width: 768px)" srcset="images/logo-color-black-bg1-medium.webp" type="image/webp">
+                <!-- Desktop: 769px and up -->
+                <source media="(min-width: 769px)" srcset="images/logo-color-black-bg1.webp" type="image/webp">
+                <!-- Fallback for older browsers -->
+                <img src="images/logo-color-black-bg1.png" alt="Gate 7 Coffee Roastery Logo" class="logo" loading="lazy">
             </picture>
         </div>
         
@@ -143,7 +146,13 @@
             
             <div class="vietnamese-phin-filter animate-text-delay" style="margin-top: 1rem; text-align: center;">
                 <picture>
-                    <source srcset="images/coffee-as-you-are.webp" type="image/webp">
+                    <!-- Mobile: up to 480px -->
+                    <source media="(max-width: 480px)" srcset="images/coffee-as-you-are-small.webp" type="image/webp">
+                    <!-- Tablet: 481px to 768px -->
+                    <source media="(max-width: 768px)" srcset="images/coffee-as-you-are-medium.webp" type="image/webp">
+                    <!-- Desktop: 769px and up -->
+                    <source media="(min-width: 769px)" srcset="images/coffee-as-you-are.webp" type="image/webp">
+                    <!-- Fallback for older browsers -->
                     <img src="images/coffee-as-you-are.png" alt="Vietnamese Phin Filter" style="max-width:237px; height:auto" loading="lazy">
                 </picture>
             </div>
@@ -376,70 +385,25 @@
         </div>
         </footer>
 
-    <script defer>
-        // Smooth scroll behavior
+    <!-- Critical scripts (inline for immediate execution) -->
+    <script>
+        // Smooth scroll behavior (critical for UX)
         document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
 
-        // Scroll indicator fade out
-        window.addEventListener('scroll', function() {
-            const indicator = document.querySelector('.scroll-indicator');
-            if (indicator) indicator.style.opacity = '0';
-        });
+    <!-- Deferred non-critical scripts -->
+    <script defer src="js/scroll-animations.js"></script>
+    <script defer src="js/language-switcher.js"></script>
 
-        // Intersection Observer for scroll animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                    }
-                });
-            }, observerOptions);
-
-            // Observe elements that should animate on scroll
-            const animateElements = document.querySelectorAll('.menu, .footer');
-            animateElements.forEach(el => {
-                observer.observe(el);
+    <!-- Service Worker Registration (non-blocking) -->
+    <script defer>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => console.log('✓ Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed:', err));
             });
-        });
-
-        // Language switcher
-        document.addEventListener('DOMContentLoaded', function() {
-            const langBtns = document.querySelectorAll('.lang-btn');
-            let currentLang = 'vn'; // Default to Vietnamese
-
-            function switchLanguage(lang) {
-                // Update button states
-                langBtns.forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.lang === lang);
-                });
-
-                // Update translatable elements
-                const elements = document.querySelectorAll('[data-' + lang + ']');
-                elements.forEach(el => {
-                    el.textContent = el.getAttribute('data-' + lang);
-                });
-
-                currentLang = lang;
-                localStorage.setItem('selectedLanguage', lang);
-            }
-
-            // Load saved language
-            const savedLang = localStorage.getItem('selectedLanguage') || 'vn';
-            switchLanguage(savedLang);
-
-            // Event listeners
-            langBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    switchLanguage(btn.dataset.lang);
-                });
-            });
-        });
+        }
     </script>
 
 </body>
