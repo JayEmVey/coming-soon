@@ -9,8 +9,34 @@
 <meta name="author" content="Gate 7 Coffee Roastery">
 <link rel="icon" type="image/png" href="../../images/logo-only-white.png">
 <link rel="canonical" href="https://gate7.vn/tuyen-dung/barista/">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S72S3FXR6Z"></script>
+<link rel="preload" as="image" href="../../images/logo-only-white.png" fetchpriority="high">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
 <script>
+window.webVitalsMetrics = {};
+const lcpObserver = new PerformanceObserver((list) => {
+const entries = list.getEntries();
+const lastEntry = entries[entries.length - 1];
+window.webVitalsMetrics.lcp = lastEntry.renderTime || lastEntry.loadTime;
+});
+try {
+lcpObserver.observe({type: 'largest-contentful-paint', buffered: true});
+} catch (e) {}
+let clsValue = 0;
+const clsObserver = new PerformanceObserver((list) => {
+for (const entry of list.getEntries()) {
+if (!entry.hadRecentInput) {
+clsValue += entry.value;
+window.webVitalsMetrics.cls = clsValue;
+}
+}
+});
+try {
+clsObserver.observe({type: 'layout-shift', buffered: true});
+} catch (e) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S72S3FXR6Z"></script>
+<script defer>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
@@ -354,30 +380,6 @@ gap: 1rem;
 }
 }
 </style>
-<style>
-/* Image Protection Styles */
-.protected-image {
-display: block;
-max-width: 100%;
-height: auto;
-image-rendering: crisp-edges;
-user-select: none;
--webkit-user-drag: none;
--moz-user-select: none;
--webkit-user-select: none;
-}
-/* Prevent drag and drop */
-.protected-image-container {
-user-select: none;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-}
-/* Global right-click block for protected content */
-.protect-right-click {
-pointer-events: none;
-}
-</style>
 </head>
 <body>
 <header class="header">
@@ -651,44 +653,6 @@ link.addEventListener('click', function() {
 trackEvent('click', 'social_media', this.href);
 });
 });
-</script>
-<script>
-// Global Image Protection Module
-(function() {
-'use strict';
-// Disable right-click globally for protected images
-document.addEventListener('contextmenu', function(e) {
-const target = e.target;
-if (target.dataset && target.dataset.protectedImage) {
-e.preventDefault();
-console.log('Right-click blocked for protected image');
-}
-});
-// Block developer tools access to canvas
-if (typeof window !== 'undefined') {
-window.addEventListener('beforeunload', function() {
-// Clear canvas data before unload
-document.querySelectorAll('[data-protected-image]').forEach(canvas => {
-if (canvas.getContext) {
-const ctx = canvas.getContext('2d');
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-});
-});
-}
-// Anti-debugging measures (light)
-let devToolsOpen = false;
-const threshold = 160;
-setInterval(function() {
-if (window.outerHeight - window.innerHeight > threshold ||
-window.outerWidth - window.innerWidth > threshold) {
-devToolsOpen = true;
-}
-}, 500);
-// Log protection status
-console.log('%cGate 7 Image Protection Active', 'color: #C17817; font-size: 14px; font-weight: bold;');
-console.log('Images are protected by multiple layers');
-})();
 </script>
 </body>
 </html>

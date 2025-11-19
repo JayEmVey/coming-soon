@@ -24,6 +24,14 @@
 <meta name="twitter:image" content="https://gate7.vn/images/logo-color-black-bg1.png">
 <link rel="icon" type="image/png" href="images/logo-only-white.png">
 <link rel="apple-touch-icon" href="images/logo-only-white.png">
+<link rel="preload" as="style" href="css/style-gate7.css">
+<link rel="preload" as="image" href="images/logo-color-black-bg1.png" fetchpriority="high">
+<link rel="preload" as="image" href="images/coffee-as-you-are.png">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHAPMtFVJRDw50.woff2" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style-gate7.css">
 <script type="application/ld+json">
 {
@@ -62,47 +70,55 @@
 "priceRange": "VND 5000 - VND 60000"
 }
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S72S3FXR6Z"></script>
 <script>
+// Core Web Vitals tracking
+window.webVitalsMetrics = {};
+// Largest Contentful Paint (LCP)
+const lcpObserver = new PerformanceObserver((list) => {
+const entries = list.getEntries();
+const lastEntry = entries[entries.length - 1];
+window.webVitalsMetrics.lcp = lastEntry.renderTime || lastEntry.loadTime;
+});
+try {
+lcpObserver.observe({type: 'largest-contentful-paint', buffered: true});
+} catch (e) {}
+// Cumulative Layout Shift (CLS)
+let clsValue = 0;
+const clsObserver = new PerformanceObserver((list) => {
+for (const entry of list.getEntries()) {
+if (!entry.hadRecentInput) {
+clsValue += entry.value;
+window.webVitalsMetrics.cls = clsValue;
+}
+}
+});
+try {
+clsObserver.observe({type: 'layout-shift', buffered: true});
+} catch (e) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S72S3FXR6Z"></script>
+<script defer>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-S72S3FXR6Z');
 </script>
-<style>
-/* Image Protection Styles */
-.protected-image {
-display: block;
-max-width: 100%;
-height: auto;
-image-rendering: crisp-edges;
-user-select: none;
--webkit-user-drag: none;
--moz-user-select: none;
--webkit-user-select: none;
-}
-/* Prevent drag and drop */
-.protected-image-container {
-user-select: none;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-}
-/* Global right-click block for protected content */
-.protect-right-click {
-pointer-events: none;
-}
-</style>
 </head>
 <body>
 <main>
 <div class="logo-container">
+<picture>
+<source srcset="images/logo-color-black-bg1.webp" type="image/webp">
 <img src="images/logo-color-black-bg1.png" alt="Gate 7 Coffee Roastery Logo" class="logo">
+</picture>
 </div>
 <h1 class="animate-text">GATE 7 COFFEE ROASTERY</h1>
 <div class="tagline-container">
 <div class="vietnamese-phin-filter animate-text-delay" style="margin-top: 1rem; text-align: center;">
-<img src="images/coffee-as-you-are.png" alt="Vietnamese Phin Filter" style="max-width:237px; height:auto">
+<picture>
+<source srcset="images/coffee-as-you-are.webp" type="image/webp">
+<img src="images/coffee-as-you-are.png" alt="Vietnamese Phin Filter" style="max-width:237px; height:auto" loading="lazy">
+</picture>
 </div>
 </div>
 <div class="scroll-indicator">
@@ -304,13 +320,19 @@ pointer-events: none;
 <h4 data-en="Follow" data-vn="Theo Dõi Gate Tại">Theo Dõi Gate Tại</h4>
 <div class="social-links">
 <a href="https://instagram.com/gate7.coffee" target="_blank" rel="noopener noreferrer">
-<img src="images/Instagram_icon.png.webp" alt="Instagram"> Instagram
+<picture>
+<img src="images/Instagram_icon.png.webp" alt="Instagram" loading="lazy"> Instagram
+</picture>
 </a>
 <a href="https://www.facebook.com/share/1CnRHZ9QSz/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
-<img src="images/Facebook_Logo_(2019).png.webp" alt="Facebook"> Facebook
+<picture>
+<img src="images/Facebook_Logo_(2019).png.webp" alt="Facebook" loading="lazy"> Facebook
+</picture>
 </a>
 <a href="https://zalo.me/2485475799709134069" target="_blank" rel="noopener noreferrer">
-<img src="images/7044033_zalo_icon.ico" alt="Zalo"> Zalo
+<picture>
+<img src="images/7044033_zalo_icon.ico" alt="Zalo" loading="lazy"> Zalo
+</picture>
 </a>
 </div>
 </div>
@@ -324,13 +346,13 @@ pointer-events: none;
 </div>
 </div>
 </footer>
-<script>
+<script defer>
 // Smooth scroll behavior
 document.documentElement.style.scrollBehavior = 'smooth';
 // Scroll indicator fade out
 window.addEventListener('scroll', function() {
 const indicator = document.querySelector('.scroll-indicator');
-indicator.style.opacity = '0';
+if (indicator) indicator.style.opacity = '0';
 });
 // Intersection Observer for scroll animations
 document.addEventListener('DOMContentLoaded', function() {
@@ -378,44 +400,6 @@ switchLanguage(btn.dataset.lang);
 });
 });
 });
-</script>
-<script>
-// Global Image Protection Module
-(function() {
-'use strict';
-// Disable right-click globally for protected images
-document.addEventListener('contextmenu', function(e) {
-const target = e.target;
-if (target.dataset && target.dataset.protectedImage) {
-e.preventDefault();
-console.log('Right-click blocked for protected image');
-}
-});
-// Block developer tools access to canvas
-if (typeof window !== 'undefined') {
-window.addEventListener('beforeunload', function() {
-// Clear canvas data before unload
-document.querySelectorAll('[data-protected-image]').forEach(canvas => {
-if (canvas.getContext) {
-const ctx = canvas.getContext('2d');
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-});
-});
-}
-// Anti-debugging measures (light)
-let devToolsOpen = false;
-const threshold = 160;
-setInterval(function() {
-if (window.outerHeight - window.innerHeight > threshold ||
-window.outerWidth - window.innerWidth > threshold) {
-devToolsOpen = true;
-}
-}, 500);
-// Log protection status
-console.log('%cGate 7 Image Protection Active', 'color: #C17817; font-size: 14px; font-weight: bold;');
-console.log('Images are protected by multiple layers');
-})();
 </script>
 </body>
 </html>
