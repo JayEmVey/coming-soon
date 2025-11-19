@@ -6,11 +6,26 @@
     RewriteEngine On
     RewriteBase /
     
+    # Don't rewrite real files, directories, or symlinks
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d [OR]
+    RewriteCond %{REQUEST_FILENAME} -l
+    RewriteRule ^ - [L]
+    
+    # Don't rewrite static assets
+    RewriteCond %{REQUEST_URI} ^/images/ [OR]
+    RewriteCond %{REQUEST_URI} ^/css/ [OR]
+    RewriteCond %{REQUEST_URI} ^/js/ [OR]
+    RewriteCond %{REQUEST_URI} ^/fonts/ [OR]
+    RewriteCond %{REQUEST_FILENAME} \.(jpg|jpeg|png|gif|ico|webp|css|js|svg|woff|woff2|ttf|otf|eot)$ [OR]
+    RewriteRule ^ - [L]
+    
     # Allow hiring directory access
     RewriteRule ^hiring(/.*)?$ - [L]
     
-    # Remove trailing slashes (except for directories)
+    # Remove trailing slashes (except for directories and static files)
     RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.+)/$ /$1 [L,R=301]
     
     # Redirect www to non-www
