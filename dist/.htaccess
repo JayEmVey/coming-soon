@@ -103,6 +103,14 @@
 # Disable directory listing
 Options -Indexes
 
+# Add MIME types for modern image formats
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType font/woff2 .woff2
+    AddType font/woff .woff
+    AddEncoding gzip .webp
+</IfModule>
+
 # Prevent access to sensitive files
 <FilesMatch "(^#.*#|\.(bak|conf|db|fla|in[ci]|log|psd|sh|sql|sw[op]|xml)$)">
     Deny from all
