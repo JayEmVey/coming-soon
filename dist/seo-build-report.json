@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-11-19T08:45:47.707Z",
+  "totalSize": 11612725,
+  "files": 5,
+  "seoWarnings": [
+    {
+      "file": "index.html",
+      "page": "Home",
+      "issues": [
+        "⚠️  Low keyword density for \"Vietnamese Coffee\": 0.34%",
+        "⚠️  Low keyword density for \"Specialty Coffee\": 0.34%",
+        "⚠️  Low keyword density for \"Ho Chi Minh\": 0.34%"
+      ]
+    },
+    {
+      "file": "menu/index.html",
+      "page": "Menu",
+      "issues": [
+        "⚠️  Low keyword density for \"Vietnamese Coffee\": 0.12%",
+        "⚠️  Low keyword density for \"Phin Coffee\": 0.37%",
+        "⚠️  Low keyword density for \"Coffee Prices\": 0.12%",
+        "⚠️  Low keyword density for \"HCMC\": 0.49%"
+      ]
+    },
+    {
+      "file": "music/spotify.html",
+      "page": "Music",
+      "issues": [
+        "⚠️  Low keyword density for \"Gate 7 Coffee Music\": 0.06%",
+        "⚠️  Low keyword density for \"Coffee Shop Music\": 0.06%",
+        "⚠️  Low keyword density for \"Spotify Playlist\": 0.30%",
+        "⚠️  Meta description too long: 162 chars (recommended: 150-160)"
+      ]
+    },
+    {
+      "file": "hiring/index.html",
+      "page": "Hiring",
+      "issues": [
+        "⚠️  Low keyword density for \"Tuyển dụng Barista\": 0.26%",
+        "⚠️  Meta description too short: 108 chars (recommended: 150-160)"
+      ]
+    }
+  ],
+  "seoPassed": false
+}
