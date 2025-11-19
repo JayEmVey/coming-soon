@@ -37,6 +37,32 @@ This is a static website project with optimized build and deployment pipeline.
 - Build script: `build-simple.js` (zero npm dependencies!)
 - See: DEPLOYMENT.md for detailed deployment guide
 
+### SEO Keywords Management
+
+- **Manage keywords**: Edit `SEO-KEYWORDS.md`
+  - Central location for all SEO keywords
+  - Organized by page and keyword type
+  - Includes search volume and difficulty
+  - Tracks keyword performance
+  
+- **Update HTML keywords**: 
+  - Edit `<meta name="keywords">` in HTML files
+  - Reference SEO-KEYWORDS.md for current keywords
+  - Update `<title>` and `<meta description>` tags
+  - Update Open Graph tags
+  
+- **Deployment checklist**:
+  - [ ] Review keywords in SEO-KEYWORDS.md
+  - [ ] Update meta keywords in HTML
+  - [ ] Check keyword density (1-3%)
+  - [ ] Test titles/descriptions length
+  - [ ] Verify Open Graph tags
+  - [ ] Run: `npm run build && npm run deploy`
+  - [ ] Submit sitemap to Google Search Console
+  - [ ] Monitor keywords in Search Console
+  
+- **See also**: SEO-KEYWORDS.md for detailed keyword management guide
+
 ## Architecture & Codebase Structure
 
 Static HTML/CSS/JavaScript website for Gate 7 Coffee Roastery coming soon page.
