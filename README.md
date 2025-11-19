@@ -51,6 +51,14 @@ For detailed deployment guide, see: **[DEPLOYMENT.md](DEPLOYMENT.md)**
 - ✅ Auto-deployment via GitHub Actions
 - ✅ One-command manual deploy option
 
+### 🛡️ Image Protection (Optional)
+- ✅ Canvas rendering for premium images
+- ✅ Invisible overlay blocking (no right-click, drag, copy)
+- ✅ Time-limited signed URLs (1-hour TTL)
+- ✅ Global right-click disabling
+- ✅ Image tiling for high-value assets
+- ✅ Multi-layer theft deterrence
+
 ---
 
 ## Project Structure
@@ -134,6 +142,13 @@ npm run deploy
 ```
 
 Builds and pushes locally (GitHub Actions still runs afterwards)
+
+### Protected Deploy (With Image Protection)
+```bash
+npm run deploy:protect
+```
+
+Builds with multi-layer image protection + deploys. See [IMAGE_PROTECTION.md](IMAGE_PROTECTION.md) for details.
 
 ### Force Deploy (Rare)
 ```bash
@@ -324,11 +339,17 @@ python -m http.server 8000
 # Build production
 npm run build
 
+# Build with image protection
+npm run build:protect
+
 # Auto-deploy (push to main branch)
 git push origin main
 
 # Manual deploy (builds + pushes)
 npm run deploy
+
+# Deploy with image protection
+npm run deploy:protect
 
 # Force deploy (rare, rewrites history)
 npm run deploy:force
@@ -462,6 +483,7 @@ Auto-deployment triggers automatically!
 
 ### Need help?
 - 📖 See [DEPLOYMENT.md](DEPLOYMENT.md) for auto-deployment guide
+- 📖 See [IMAGE_PROTECTION.md](IMAGE_PROTECTION.md) for image security system
 - 📖 See [BUILD_REPORT.md](BUILD_REPORT.md) for technical details
 - 📖 See [AGENTS.md](AGENTS.md) for code guidelines
 
