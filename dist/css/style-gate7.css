@@ -56,10 +56,22 @@ main {
 /* Logo Styles */
 .logo-container {
     margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-container picture {
+    display: block;
+    width: 100%;
+    max-width: 400px;
 }
 
 .logo {
-    width: 200px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s var(--animation-timing) forwards;
@@ -68,6 +80,28 @@ main {
 
 .logo:hover {
     transform: translateY(-5px);
+}
+
+/* Phin Filter Styles */
+.vietnamese-phin-filter {
+    margin-top: 1rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.vietnamese-phin-filter picture {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+}
+
+.vietnamese-phin-filter img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Typography */
