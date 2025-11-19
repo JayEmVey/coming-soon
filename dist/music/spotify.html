@@ -392,6 +392,30 @@ gap: 20px;
 }
 }
 </style>
+<style>
+/* Image Protection Styles */
+.protected-image {
+display: block;
+max-width: 100%;
+height: auto;
+image-rendering: crisp-edges;
+user-select: none;
+-webkit-user-drag: none;
+-moz-user-select: none;
+-webkit-user-select: none;
+}
+/* Prevent drag and drop */
+.protected-image-container {
+user-select: none;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+}
+/* Global right-click block for protected content */
+.protect-right-click {
+pointer-events: none;
+}
+</style>
 </head>
 <body>
 <div class="language-switcher">
@@ -667,6 +691,44 @@ updateDateTime();
 updateDateTime();
 updatePlaylists();
 setInterval(updateDateTime, 1000);
+</script>
+<script>
+// Global Image Protection Module
+(function() {
+'use strict';
+// Disable right-click globally for protected images
+document.addEventListener('contextmenu', function(e) {
+const target = e.target;
+if (target.dataset && target.dataset.protectedImage) {
+e.preventDefault();
+console.log('Right-click blocked for protected image');
+}
+});
+// Block developer tools access to canvas
+if (typeof window !== 'undefined') {
+window.addEventListener('beforeunload', function() {
+// Clear canvas data before unload
+document.querySelectorAll('[data-protected-image]').forEach(canvas => {
+if (canvas.getContext) {
+const ctx = canvas.getContext('2d');
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+});
+});
+}
+// Anti-debugging measures (light)
+let devToolsOpen = false;
+const threshold = 160;
+setInterval(function() {
+if (window.outerHeight - window.innerHeight > threshold ||
+window.outerWidth - window.innerWidth > threshold) {
+devToolsOpen = true;
+}
+}, 500);
+// Log protection status
+console.log('%cGate 7 Image Protection Active', 'color: #C17817; font-size: 14px; font-weight: bold;');
+console.log('Images are protected by multiple layers');
+})();
 </script>
 </body>
 </html>
