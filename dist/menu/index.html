@@ -61,14 +61,12 @@
 </script>
 <link rel="icon" type="image/png" href="../images/logo-only-white.png">
 <link rel="apple-touch-icon" href="../images/logo-only-white.png">
-<link rel="preload" as="style" href="../css/style-gate7.css">
+<link rel="stylesheet" href="../css/style-gate7.css">
 <link rel="preload" as="image" href="../images/logo-color-black-bg1.png" fetchpriority="high">
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHAPMtFVJRDw50.woff2" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/style-gate7.css">
 <script>
 window.webVitalsMetrics = {};
 const lcpObserver = new PerformanceObserver((list) => {
@@ -355,7 +353,12 @@ text-align: center;
 </div>
 </header>
 <main class="menu-section">
-<img src="../images/Menu_Final.png" alt="Gate 7 Coffee Menu" class="menu-image">
+<picture>
+<source media="(max-width: 480px)" srcset="../images/Menu_Final-small.webp" type="image/webp">
+<source media="(max-width: 768px)" srcset="../images/Menu_Final-medium.webp" type="image/webp">
+<source media="(min-width: 769px)" srcset="../images/Menu_Final.webp" type="image/webp">
+<img src="../images/Menu_Final.png" alt="Gate 7 Coffee Menu" class="menu-image" loading="lazy">
+</picture>
 </main>
 <footer class="footer">
 <div class="footer-container">
@@ -398,54 +401,19 @@ text-align: center;
 </footer>
 </div>
 <script>
-// Smooth scroll behavior
+// Smooth scroll behavior (critical for UX)
 document.documentElement.style.scrollBehavior = 'smooth';
-// Intersection Observer for scroll animations
-document.addEventListener('DOMContentLoaded', function() {
-const observerOptions = {
-threshold: 0.1,
-rootMargin: '0px 0px -50px 0px'
-};
-const observer = new IntersectionObserver(function(entries) {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.classList.add('animate-in');
+</script>
+<script defer src="../js/scroll-animations.js"></script>
+<script defer src="../js/language-switcher.js"></script>
+<script defer>
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', () => {
+navigator.serviceWorker.register('/service-worker.js')
+.then(reg => console.log('✓ Service Worker registered'))
+.catch(err => console.log('Service Worker registration failed:', err));
+});
 }
-});
-}, observerOptions);
-// Observe elements that should animate on scroll
-const animateElements = document.querySelectorAll('.menu-section, .footer');
-animateElements.forEach(el => {
-observer.observe(el);
-});
-});
-// Language switcher
-document.addEventListener('DOMContentLoaded', function() {
-const langBtns = document.querySelectorAll('.lang-btn');
-let currentLang = 'vn'; // Default to Vietnamese
-function switchLanguage(lang) {
-// Update button states
-langBtns.forEach(btn => {
-btn.classList.toggle('active', btn.dataset.lang === lang);
-});
-// Update translatable elements
-const elements = document.querySelectorAll('[data-' + lang + ']');
-elements.forEach(el => {
-el.textContent = el.getAttribute('data-' + lang);
-});
-currentLang = lang;
-localStorage.setItem('selectedLanguage', lang);
-}
-// Load saved language
-const savedLang = localStorage.getItem('selectedLanguage') || 'vn';
-switchLanguage(savedLang);
-// Event listeners
-langBtns.forEach(btn => {
-btn.addEventListener('click', () => {
-switchLanguage(btn.dataset.lang);
-});
-});
-});
 </script>
 </body>
 </html>
