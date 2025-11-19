@@ -1,11 +1,20 @@
 #!/usr/bin/env node
 
 /**
- * Responsive Image Generator
+ * Responsive Image Generator - Maximum Quality
  * 
- * This script generates responsive image variants from source images.
+ * Generates responsive image variants from source images with highest quality settings.
+ * 
+ * Quality Settings:
+ * - WebP Quality: 100 (highest/lossless-like)
+ * - Alpha Quality: 100 (preserves transparency)
+ * - Effort: 6 (maximum compression for best quality)
+ * - Near-Lossless: true (imperceptible quality loss)
+ * - Smart Subsampling: true (intelligent color preservation)
+ * - Resize Kernel: cubic (best quality interpolation)
+ * - No Upscaling: true (preserves original detail)
+ * 
  * Requires: Sharp library (npm install sharp)
- * 
  * Usage: node scripts/generate-responsive-images.js
  */
 
@@ -19,25 +28,25 @@ try {
         {
             source: 'images/logo-color-black-bg1.png',
             variants: [
-                { size: { width: 240, height: 180 }, suffix: '-small', quality: 80 },
-                { size: { width: 320, height: 240 }, suffix: '-medium', quality: 80 },
-                { size: { width: 400, height: 300 }, suffix: '', quality: 80 }
+                { size: { width: 240, height: 180 }, suffix: '-small', quality: 100 },
+                { size: { width: 320, height: 240 }, suffix: '-medium', quality: 100 },
+                { size: { width: 400, height: 300 }, suffix: '', quality: 100 }
             ]
         },
         {
             source: 'images/coffee-as-you-are.png',
             variants: [
-                { size: { width: 180, height: 135 }, suffix: '-small', quality: 80 },
-                { size: { width: 237, height: 178 }, suffix: '-medium', quality: 80 },
-                { size: { width: 237, height: 178 }, suffix: '', quality: 80 }
+                { size: { width: 180, height: 135 }, suffix: '-small', quality: 100 },
+                { size: { width: 237, height: 178 }, suffix: '-medium', quality: 100 },
+                { size: { width: 237, height: 178 }, suffix: '', quality: 100 }
             ]
         },
         {
             source: 'images/Menu_Final.png',
             variants: [
-                { size: { width: 600, height: 400 }, suffix: '-small', quality: 80 },
-                { size: { width: 900, height: 600 }, suffix: '-medium', quality: 80 },
-                { size: { width: 1200, height: 800 }, suffix: '', quality: 80 }
+                { size: { width: 600, height: 400 }, suffix: '-small', quality: 100 },
+                { size: { width: 900, height: 600 }, suffix: '-medium', quality: 100 },
+                { size: { width: 1200, height: 800 }, suffix: '', quality: 100 }
             ]
         }
     ];
@@ -62,19 +71,30 @@ try {
             const outputPath = path.join(dir, outputName);
             
             sharp(sourceFile)
+                // High-quality resize with best interpolation
                 .resize(variant.size.width, variant.size.height, {
-                    fit: 'cover',
-                    position: 'center'
+                    fit: 'contain',
+                    background: { r: 255, g: 255, b: 255, alpha: 0 },
+                    kernel: 'cubic',        // Use cubic convolution for best quality resize
+                    withoutEnlargement: true // Don't upscale small images
                 })
-                .webp({ quality: variant.quality })
+                // Maximum quality WebP conversion
+                .webp({
+                    quality: 100,           // Highest quality (lossless-like)
+                    alphaQuality: 100,      // Preserve alpha channel at maximum quality
+                    effort: 6,              // Maximum compression effort for best results
+                    nearLossless: true,     // Near-lossless compression preserves detail
+                    smartSubsample: true    // Smart subsampling for better quality
+                })
                 .toFile(outputPath, (err, info) => {
-                    if (err) {
-                        console.error(`❌ Error generating ${outputName}:`, err.message);
-                    } else {
-                        console.log(`✓ ${outputName} (${variant.size.width}x${variant.size.height}, ${Math.round(info.size / 1024)}KB)`);
-                        totalGenerated++;
-                    }
-                });
+                     if (err) {
+                         console.error(`❌ Error generating ${outputName}:`, err.message);
+                     } else {
+                         const sizeKB = Math.round(info.size / 1024);
+                         console.log(`✓ ${outputName} (${variant.size.width}x${variant.size.height}, ${sizeKB}KB, quality: 100)`);
+                         totalGenerated++;
+                     }
+                 });
         });
     });
     

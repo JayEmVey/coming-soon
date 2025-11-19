@@ -143,19 +143,7 @@ function build() {
     });
   }
 
-  // Convert source images to WebP before copying (if sharp is available)
-  try {
-    const { spawnSync } = require('child_process');
-    const node = process.execPath;
-    const res = spawnSync(node, [path.join(__dirname, 'scripts', 'convert-to-webp.js')], { stdio: 'inherit' });
-    if (res.error) {
-      console.warn('⚠️  WebP conversion process failed to start:', res.error.message);
-    }
-  } catch (e) {
-    console.warn('⚠️  Skipping WebP conversion:', e && e.message);
-  }
-
-  // Copy images (includes generated .webp files)
+  // Copy images
   console.log('\n🖼️  Copying images...');
   DIRS_TO_COPY.forEach(dir => {
     const srcPath = path.join(__dirname, dir);

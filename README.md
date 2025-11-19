@@ -6,16 +6,43 @@ A modern, SEO-optimized static website for Gate 7 Coffee Roastery, featuring Vie
 
 ---
 
-## 🚀 Deployment
+## Table of Contents
 
-**Auto-deployment enabled:** Push to `main` branch → Site updates automatically in ~2 minutes
+- [Quick Start](#quick-start)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Build & Deploy](#build--deploy)
+- [Development](#development)
+- [SEO & Keywords](#seo--keywords)
+- [Performance](#performance)
+- [Image Protection](#image-protection)
+- [Bilingual Support](#bilingual-support)
+- [Technologies](#technologies)
+- [Troubleshooting](#troubleshooting)
+- [Code Style Guidelines](#code-style-guidelines)
+- [Contact](#contact)
 
-### Manual Deploy (Optional)
+---
+
+## Quick Start
+
+### Auto-Deployment (Recommended)
+Push to `main` branch → Site updates automatically in ~2 minutes
+```bash
+git commit -m "your changes"
+git push origin main
+```
+
+### Manual Deploy
 ```bash
 npm run deploy
 ```
 
-For detailed deployment guide, see: **[DEPLOYMENT.md](DEPLOYMENT.md)**
+### Local Development
+```bash
+python -m http.server 8000
+# Then visit: http://localhost:8000
+```
 
 ---
 
@@ -33,10 +60,9 @@ For detailed deployment guide, see: **[DEPLOYMENT.md](DEPLOYMENT.md)**
 - ✅ 28% smaller file size
 - ✅ Gzip compression enabled
 - ✅ Browser caching (30-day TTL)
-- ✅ Optimized images
+- ✅ Optimized responsive images
 
 ### 🔍 SEO
-- ✅ Complete Phase 1 optimization
 - ✅ Meta tags on all pages
 - ✅ LocalBusiness structured data
 - ✅ Sitemap & robots.txt
@@ -49,7 +75,7 @@ For detailed deployment guide, see: **[DEPLOYMENT.md](DEPLOYMENT.md)**
 - ✅ HTML minification (28-30%)
 - ✅ CSS minification (26%)
 - ✅ Auto-deployment via GitHub Actions
-- ✅ One-command manual deploy option
+- ✅ One-command manual deploy
 
 ### 🛡️ Image Protection (Optional)
 - ✅ Canvas rendering for premium images
@@ -57,7 +83,6 @@ For detailed deployment guide, see: **[DEPLOYMENT.md](DEPLOYMENT.md)**
 - ✅ Time-limited signed URLs (1-hour TTL)
 - ✅ Global right-click disabling
 - ✅ Image tiling for high-value assets
-- ✅ Multi-layer theft deterrence
 
 ---
 
@@ -70,267 +95,111 @@ coming-soon/
 ├── music/spotify.html           # Spotify playlist manager
 ├── css/
 │   └── style-gate7.css          # Main stylesheet
-├── images/                      # Logo, menu, icons (30+ files)
+├── images/                      # Logo, menu, icons, responsive variants
+├── js/                          # JavaScript utilities
 ├── package.json                 # npm configuration
 ├── build-simple.js              # Build script (zero deps!)
 ├── CNAME                        # GitHub Pages custom domain
 ├── robots.txt                   # SEO crawler directives
 ├── sitemap.xml                  # SEO sitemap
 ├── .htaccess                    # Server optimization
-└── [Documentation Files]        # Guides & reports
-```
-
----
-
-## Local Development
-
-### 1. Serve Locally
-```bash
-# Using Python 3
-python -m http.server 8000
-
-# Then visit: http://localhost:8000
-```
-
-### 2. Test Build
-```bash
-# Build production bundle
-npm run build
-
-# Files appear in dist/ folder
-ls dist/
-```
-
-### 3. View Production Build
-```bash
-# Open in browser
-open dist/index.html
+├── service-worker.js            # Progressive Web App support
+├── SEO-KEYWORDS.md              # SEO keyword management
+└── README.md                    # This file
 ```
 
 ---
 
 ## Build & Deploy
 
-### Auto-Deployment (Recommended)
-Simply push changes to `main` or `master` branch:
-```bash
-git commit -m "your changes"
-git push origin main
-```
+### Build Commands
 
-GitHub Actions automatically:
-1. Builds production bundle
-2. Minifies HTML/CSS
-3. Deploys to GitHub Pages
-4. Site live in ~1-2 minutes
-
-### Manual Build
+#### Production Build
 ```bash
 npm run build
 ```
+- Minifies HTML, CSS, JavaScript
+- Optimizes and copies images
+- Output: `dist/` folder
+- No external dependencies required
 
-**Output in `dist/` folder:**
-- Minified HTML (3 pages)
-- Minified CSS
-- Optimized images
-- SEO config files
-- Server optimization (.htaccess)
-
-### Manual Deploy (Alternative)
+#### Build with SEO Validation
 ```bash
-npm run deploy
+npm run build:seo
 ```
+- Validates SEO keywords on all pages
+- Checks meta tags (title, description, keywords, og:*)
+- Analyzes keyword density (warns if too high/low)
+- Checks title/description length
+- Generates `seo-build-report.json` in dist/
 
-Builds and pushes locally (GitHub Actions still runs afterwards)
-
-### Protected Deploy (With Image Protection)
+#### Deploy with SEO Validation
 ```bash
-npm run deploy:protect
+npm run deploy:seo
 ```
+- Builds with SEO validation
+- Commits and pushes to GitHub
+- Use for content updates
 
-Builds with multi-layer image protection + deploys. See [IMAGE_PROTECTION.md](IMAGE_PROTECTION.md) for details.
-
-### Force Deploy (Rare)
+#### Force Deploy (Rare)
 ```bash
 npm run deploy:force
 ```
+- Force-pushes to git (use only if git history is out of sync)
 
-Only use if git history is out of sync.
+### Deployment System
 
----
+**GitHub Pages Configuration:**
+- Source: GitHub Actions deployment
+- Branch: main or master
+- Domain: gate7.vn (CNAME configured)
+- HTTPS: Enabled automatically
+- Deployment: Automatic on push via GitHub Actions
 
-## Technologies
-
-### Frontend
-- HTML5 (semantic markup)
-- CSS3 (custom properties, flexbox, grid)
-- JavaScript ES6+ (vanilla, no frameworks)
-- Google Fonts (Inter, Playfair Display)
-
-### Build & Deployment
-- Node.js (build script)
-- Git (version control)
-- GitHub Pages (hosting, free)
-- Custom domain via CNAME
-
-### Analytics & SEO
-- Google Analytics 4 (GA ID: G-S72S3FXR6Z)
-- LocalBusiness structured data
-- Hreflang tags (multilingual)
-- Open Graph & Twitter Cards
-
----
-
-## Performance Metrics
-
-### Load Time
-```
-Before:  3-4 seconds
-After:   1-2 seconds
-↓ 50% faster
-```
-
-### File Size
-```
-Original:  ~60 KB
-Minified:  ~58 KB
-Gzipped:   ~20 KB
-↓ 28% smaller
-```
-
-### Page Speed Score
-```
-Desktop:    A+ (90+)
-Mobile:     A+ (90+)
-Accessibility: AAA
-SEO Score:  100
-```
-
----
-
-## Bilingual Support
-
-Pages support English & Vietnamese:
-- Language switcher in header
-- All content has data-en and data-vn attributes
-- Preference saved to localStorage
-- Defaults to Vietnamese
-
-Supported pages:
-- ✅ index.html (Home)
-- ✅ menu/index.html (Menu)
-- ✅ music/spotify.html (Spotify Manager)
-
----
-
-## SEO Implementation
-
-### Completed (Phase 1)
-- [x] Meta titles & descriptions
-- [x] Meta keywords
-- [x] Open Graph tags (social)
-- [x] Twitter Card tags
-- [x] Canonical tags
-- [x] Hreflang tags (EN, VI, x-default)
-- [x] LocalBusiness schema (3 pages)
-- [x] robots.txt
-- [x] sitemap.xml
-- [x] .htaccess server optimization
-- [x] Google Analytics
-- [x] Mobile responsive
-- [x] Image alt text
-- [x] Semantic HTML
-
-### Planned (Phase 2)
-- [ ] Google Business Profile
-- [ ] Google Search Console setup
-- [ ] Local citations (TripAdvisor, Zomato, Foody.vn)
-- [ ] Image WebP conversion
-- [ ] Blog content strategy
-
----
-
-## Documentation
-
-### Quick Start
-📖 **[README_DEPLOYMENT.md](README_DEPLOYMENT.md)** - Deploy in 2 minutes
-
-### Full Guides
-📖 **[DEPLOYMENT.md](DEPLOYMENT.md)** - Comprehensive deployment guide (400+ lines)  
-📖 **[BUILD_REPORT.md](BUILD_REPORT.md)** - Technical build report  
-📖 **[SEO.md](SEO.md)** - SEO strategy & implementation  
-
-### References
-📖 **[DEPLOY_QUICK_REFERENCE.md](DEPLOY_QUICK_REFERENCE.md)** - Quick command reference  
-📖 **[BUILD.md](BUILD.md)** - Build system details  
-📖 **[AGENTS.md](AGENTS.md)** - Development guidelines  
-📖 **[IMPLEMENTATION_COMPLETE.md](IMPLEMENTATION_COMPLETE.md)** - Status report
-
-### Checklists
-📋 **[DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** - Pre-deployment verification
-
----
-
-## Configuration
-
-### GitHub Pages
-- **Source:** GitHub Actions deployment
-- **Branch:** main or master
-- **Domain:** gate7.vn (CNAME configured)
-- **HTTPS:** Enabled automatically
-- **Deployment:** Automatic on push via GitHub Actions
-
-### Custom Domain (gate7.vn)
+**Custom Domain:**
 DNS is configured to point to GitHub Pages. CNAME file in repository handles routing.
 
-### Google Analytics
-Tracking ID: `G-S72S3FXR6Z`  
-Event tracking enabled on all pages.
+### Responsive Images
+
+#### Generate Responsive Variants
+```bash
+npm run generate:responsive
+```
+- Automatically creates small/medium/large WebP variants
+- Updates logo, phin filter, and menu images
+- Required if source PNG images change
+- Output: 9 WebP files in `images/` folder
+
+**Image Breakpoints:**
+- Mobile (≤480px): Small variants (240x180 logo, 180x135 phin, 600x400 menu)
+- Tablet (481-768px): Medium variants (320x240 logo, 237x178 phin, 900x600 menu)
+- Desktop (≥769px): Large variants (400x300 logo, 237x178 phin, 1200x800 menu)
 
 ---
 
-## Menu (In App)
+## Development
 
-### Vietnamese Coffee (Phin)
-- Drip Drop Coffee (100% Robusta)
-- Drip Drop with Condensed Milk (Cà Phê Đen Đá)
-- Premium Arabica Drip
-- Cold Brew (24-hour extract)
+### Local Development Setup
 
-### Espresso Drinks
-- Espresso
-- Americano
-- Macchiato
-- Latte
-- Cappuccino
-- Cortado
-- Lungo
+1. **Serve locally** (choose one):
+   ```bash
+   # Using Python 3
+   python -m http.server 8000
+   
+   # Using Node.js http-server
+   npx http-server
+   ```
 
-### Specialty Drinks
-- Matcha Lattes
-- Houjicha (Japanese roasted tea)
-- Vietnamese Iced Tea
-- Homemade Syrups
-- Salted Foam drinks
+2. **View in browser:**
+   - http://localhost:8000
 
-### Beverages
-Full menu available at: https://gate7.vn/menu
+3. **Test build locally:**
+   ```bash
+   npm run build
+   open dist/index.html
+   ```
 
----
-
-## Spotify Integration
-
-The music page features curated playlists for different times of day:
-- 🌅 Morning (6 AM - 9 AM) - Jazz & Indie
-- ☕ Afternoon (9 AM - 11 AM) - Classic Jazz
-- 🏢 Lunch (11 AM - 3 PM) - Lo-Fi & Indie
-- 🌙 Evening (3 PM - 10 PM) - Trending & Pop
-
-Click any playlist to open directly in Spotify.
-
----
-
-## Quick Commands
+### Quick Development Commands
 
 ```bash
 # Local development
@@ -354,9 +223,201 @@ npm run deploy:protect
 # Force deploy (rare, rewrites history)
 npm run deploy:force
 
+# Generate responsive images
+npm run generate:responsive
+
 # Check build output
 ls dist/
 ```
+
+---
+
+## SEO & Keywords
+
+### Keyword Management
+
+Edit `SEO-KEYWORDS.md` for:
+- Central location for all SEO keywords
+- Organized by page and keyword type
+- Search volume and difficulty tracking
+- Keyword performance status
+
+### Updating HTML Keywords
+
+1. Edit `<meta name="keywords">` in HTML files
+2. Reference SEO-KEYWORDS.md for current keywords
+3. Update `<title>` and `<meta description>` tags
+4. Update Open Graph tags
+5. Target keyword density: 0.5-3%
+
+### Pre-Deployment SEO Checklist
+
+- [ ] Review/update keywords in SEO-KEYWORDS.md
+- [ ] Update meta keywords in HTML
+- [ ] Check keyword density (0.5-3% target)
+- [ ] Test titles (50-60 chars) & descriptions (150-160 chars)
+- [ ] Verify Open Graph tags
+- [ ] Run validation: `npm run build:seo`
+- [ ] Review SEO warnings from build
+- [ ] Fix SEO issues before deploy
+- [ ] Deploy with: `npm run deploy:seo`
+- [ ] Verify seo-build-report.json generated
+- [ ] Submit sitemap to Google Search Console
+- [ ] Monitor keywords in Search Console
+
+### SEO Implementation
+
+- ✅ Meta titles & descriptions
+- ✅ Meta keywords
+- ✅ Open Graph tags (social sharing)
+- ✅ Twitter Card tags
+- ✅ Canonical tags
+- ✅ Hreflang tags (EN, VI, x-default)
+- ✅ LocalBusiness schema (all pages)
+- ✅ robots.txt
+- ✅ sitemap.xml
+- ✅ .htaccess server optimization
+- ✅ Google Analytics 4
+- ✅ Mobile responsive
+- ✅ Image alt text
+- ✅ Semantic HTML
+
+**Google Analytics ID:** G-S72S3FXR6Z
+
+---
+
+## Performance
+
+### Metrics
+
+**Load Time:**
+```
+Before:  3-4 seconds
+After:   1-2 seconds
+↓ 50% faster
+```
+
+**File Size:**
+```
+Original:  ~60 KB
+Minified:  ~58 KB
+Gzipped:   ~20 KB
+↓ 28% smaller
+```
+
+**PageSpeed Score:**
+```
+Desktop:       A+ (90+)
+Mobile:        A+ (90+)
+Accessibility: AAA
+SEO Score:     100
+```
+
+### Optimizations Implemented
+
+- ✅ HTML minification
+- ✅ CSS minification
+- ✅ Gzip compression (.htaccess)
+- ✅ Browser caching (30-day TTL)
+- ✅ Image optimization
+- ✅ Lazy loading images
+- ✅ CSS code splitting
+- ✅ GitHub Pages CDN
+- ✅ Automatic HTTPS
+- ✅ Global edge caching
+- ✅ DDoS protection
+
+---
+
+## Image Protection
+
+### Optional Multi-Layer Image Security
+
+#### Features
+- Canvas rendering for premium images
+- Invisible overlay blocking (no right-click, drag, copy)
+- Time-limited signed URLs (1-hour TTL)
+- Global right-click disabling
+- Image tiling for high-value assets
+- Multi-layer theft deterrence
+
+#### Usage
+
+Deploy with image protection:
+```bash
+npm run deploy:protect
+```
+
+Build with protection (without deploy):
+```bash
+npm run build:protect
+```
+
+#### How It Works
+
+1. **Canvas Rendering:** Premium images rendered on canvas (cannot be right-clicked)
+2. **Overlay Blocking:** Invisible overlay prevents drag/copy
+3. **Signed URLs:** Time-limited access tokens (1-hour expiry)
+4. **Tiling:** Images split into tiles for additional protection
+5. **Right-Click Disabled:** Global context menu disabled
+
+---
+
+## Bilingual Support
+
+### Supported Languages
+
+- English (EN)
+- Vietnamese (VI)
+- Default: Vietnamese
+
+### Features
+
+- Language switcher in header
+- All content has data-en and data-vn attributes
+- User preference saved to localStorage
+- Persistent across sessions
+
+### Supported Pages
+
+- ✅ index.html (Home)
+- ✅ menu/index.html (Menu)
+- ✅ music/spotify.html (Spotify Manager)
+
+### How It Works
+
+1. Click language switcher in header
+2. Content updates immediately
+3. Preference saved to localStorage
+4. Loads saved preference on next visit
+
+---
+
+## Technologies
+
+### Frontend
+- HTML5 (semantic markup)
+- CSS3 (custom properties, flexbox, grid)
+- JavaScript ES6+ (vanilla, no frameworks)
+- Google Fonts (Inter, Playfair Display)
+
+### Build & Deployment
+- Node.js (build script)
+- Git (version control)
+- GitHub Pages (hosting, free)
+- Custom domain via CNAME
+
+### Analytics & SEO
+- Google Analytics 4 (GA ID: G-S72S3FXR6Z)
+- LocalBusiness structured data
+- Hreflang tags (multilingual)
+- Open Graph & Twitter Cards
+
+### Infrastructure
+- GitHub Pages CDN
+- HTTPS (automatic)
+- Gzip compression
+- 30-day browser caching
 
 ---
 
@@ -385,26 +446,125 @@ git reset --hard HEAD~1
 git push origin main -f
 ```
 
-See **[DEPLOYMENT.md](DEPLOYMENT.md)** for more troubleshooting.
+### Images not loading
+- Check image paths in HTML
+- Ensure responsive variants generated: `npm run generate:responsive`
+- Check dist/ folder after build
+
+### SEO issues
+- Run validation: `npm run build:seo`
+- Check seo-build-report.json in dist/
+- Review SEO-KEYWORDS.md for keyword targets
+- Verify keyword density (0.5-3%)
 
 ---
 
-## Performance Optimization
+## Code Style Guidelines
 
-### Implemented
-- ✅ HTML minification
-- ✅ CSS minification
-- ✅ Gzip compression (.htaccess)
-- ✅ Browser caching (30-day TTL)
-- ✅ Image optimization
-- ✅ Lazy loading images
-- ✅ CSS code splitting
+### HTML
+- Semantic HTML5 elements
+- Proper meta tags and accessibility attributes
+- Google Analytics integration with gtag.js
+- Alt text on all images
 
-### Infrastructure
-- ✅ GitHub Pages CDN
-- ✅ Automatic HTTPS
-- ✅ Global edge caching
-- ✅ DDoS protection
+### CSS
+- CSS custom properties (variables) for theming
+- Modern CSS reset (`box-sizing: border-box`)
+- Flexbox/Grid for layouts
+- Smooth animations with `cubic-bezier` easing
+- Mobile-first responsive design with media queries
+- Color scheme: Dark backgrounds (#0B0C06) with golden accent (#C17817)
+
+### JavaScript
+- ES6+ features (arrow functions, template literals)
+- Vanilla JS, no frameworks
+- Event listeners for form handling and scroll interactions
+- DOM manipulation for dynamic content updates
+- Progressive enhancement
+
+### Naming Conventions
+- CSS classes: kebab-case (e.g., `animate-text-delay`)
+- JavaScript: camelCase for variables/functions
+- Files: lowercase with hyphens (e.g., `style-gate7.css`)
+- HTML IDs: camelCase for JavaScript hooks
+
+### Error Handling
+- Basic form validation with user feedback
+- Graceful degradation for unsupported features
+- Try-catch for critical operations
+
+---
+
+## Contributing
+
+### To update content:
+
+1. Edit HTML files
+2. Commit changes:
+   ```bash
+   git commit -m "Description of changes"
+   ```
+3. Deploy:
+   ```bash
+   git push origin main
+   ```
+
+### Content Updates
+
+- **Menu Changes:** Edit `menu/index.html`
+- **Home Page:** Edit `index.html`
+- **Spotify Playlists:** Edit `music/spotify.html`
+- **Keywords:** Edit `SEO-KEYWORDS.md` and update HTML meta tags
+- **Styles:** Edit `css/style-gate7.css`
+
+### Before Deploying
+
+1. Test locally: `python -m http.server 8000`
+2. Validate SEO: `npm run build:seo`
+3. Check build output: `npm run build`
+4. Review changes in browser
+
+---
+
+## Menu
+
+### Vietnamese Coffee (Phin)
+- Drip Drop Coffee (100% Robusta)
+- Drip Drop with Condensed Milk (Cà Phê Đen Đá)
+- Premium Arabica Drip
+- Cold Brew (24-hour extract)
+
+### Espresso Drinks
+- Espresso
+- Americano
+- Macchiato
+- Latte
+- Cappuccino
+- Cortado
+- Lungo
+
+### Specialty Drinks
+- Matcha Lattes
+- Houjicha (Japanese roasted tea)
+- Vietnamese Iced Tea
+- Homemade Syrups
+- Salted Foam drinks
+
+**Full menu:** https://gate7.vn/menu
+
+---
+
+## Spotify Integration
+
+Curated playlists for different times of day:
+- 🌅 Morning (6 AM - 9 AM) - Jazz & Indie
+- ☕ Afternoon (9 AM - 11 AM) - Classic Jazz
+- 🏢 Lunch (11 AM - 3 PM) - Lo-Fi & Indie
+- 🌙 Evening (3 PM - 10 PM) - Trending & Pop
+
+Click any playlist to open directly in Spotify.
+
+**Music page:** https://gate7.vn/music/spotify.html
 
 ---
 
@@ -415,23 +575,6 @@ See **[DEPLOYMENT.md](DEPLOYMENT.md)** for more troubleshooting.
 ✅ **No Databases** - Static site (no SQL injection risk)  
 ✅ **No Server** - No authentication needed  
 ✅ **Safe Dependencies** - Only Node.js built-in  
-
----
-
-## Contributing
-
-### To update content:
-1. Edit HTML files
-2. Commit changes: `git commit -m "desc"`
-3. Deploy: `npm run deploy`
-
-### Code style:
-- HTML: Semantic tags, proper meta tags
-- CSS: CSS custom properties, mobile-first
-- JS: ES6+, vanilla (no frameworks)
-- Naming: kebab-case for classes, camelCase for JS
-
-See **[AGENTS.md](AGENTS.md)** for detailed guidelines.
 
 ---
 
@@ -448,17 +591,11 @@ See **[AGENTS.md](AGENTS.md)** for detailed guidelines.
 
 ---
 
-## License
-
-This project is proprietary to Gate 7 Coffee Roastery.
-
----
-
-## Version
+## Version & Status
 
 ```
 Version:     1.0.0
-Date:        November 17, 2025
+Last Update: November 19, 2025
 Status:      ✅ Production Ready
 Deploy:      npm run deploy
 Hosting:     GitHub Pages (gate7.vn)
@@ -466,31 +603,6 @@ Hosting:     GitHub Pages (gate7.vn)
 
 ---
 
-## Next Steps
+## License
 
-### Ready to go live?
-```bash
-git push origin main
-```
-
-Auto-deployment triggers automatically!
-
-### Want to customize?
-1. Edit HTML/CSS files
-2. Test locally: `python -m http.server 8000`
-3. Commit & push: `git push origin main`
-4. GitHub Actions deploys automatically
-
-### Need help?
-- 📖 See [DEPLOYMENT.md](DEPLOYMENT.md) for auto-deployment guide
-- 📖 See [IMAGE_PROTECTION.md](IMAGE_PROTECTION.md) for image security system
-- 📖 See [BUILD_REPORT.md](BUILD_REPORT.md) for technical details
-- 📖 See [AGENTS.md](AGENTS.md) for code guidelines
-
----
-
-**Live at:** https://gate7.vn  
-**Auto-deployment:** Enabled ✅  
-**Status:** ✅ Production Ready  
-
-🚀 Push to main branch → Automatic deployment!
+This project is proprietary to Gate 7 Coffee Roastery.

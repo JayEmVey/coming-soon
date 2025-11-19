@@ -1,149 +1,99 @@
-# AGENTS.md
+# AGENTS.md - Development Guidelines
 
-## Build/Lint/Test Commands
+## Build & Deploy Commands
 
-This is a static website project with optimized build and deployment pipeline.
+### Build
+```bash
+npm run build
+```
+Minifies HTML, CSS, JavaScript. Output in `dist/` folder.
 
-### Build Commands
+### Build with SEO Validation
+```bash
+npm run build:seo
+```
+Validates SEO keywords and generates `seo-build-report.json`.
 
-- **Build for production**: `npm run build`
-  - Minifies HTML, CSS, JavaScript
-  - Optimizes and copies images
-  - Output: `dist/` folder
-  - No external dependencies required
+### Deploy (Auto-deployment to GitHub Pages)
+```bash
+npm run deploy
+```
+Builds and pushes to GitHub. Site live in ~2 minutes.
 
-- **Build with SEO validation**: `npm run build:seo`
-  - Performs standard build
-  - Validates SEO keywords on all pages
-  - Checks meta tags (title, description, keywords, og:*)
-  - Analyzes keyword density (warns if too high/low)
-  - Checks title/description length
-  - Generates `seo-build-report.json` in dist/
-  - Recommended before major deployments
-  
-- **Deploy to GitHub Pages** (one command): `npm run deploy`
-  - Builds production bundle
-  - Commits to git
-  - Pushes to GitHub (triggers GitHub Pages)
-  - Site live in ~2 minutes
-  - Windows: `npm run deploy`
-  - macOS/Linux: `npm run deploy`
+### Deploy with SEO Validation
+```bash
+npm run deploy:seo
+```
+Validates SEO before deploying.
 
-- **Deploy with SEO validation**: `npm run deploy:seo`
-  - Builds with SEO keyword validation
-  - Commits with SEO validation message
-  - Pushes to GitHub
-  - Use for content updates and keyword changes
-  
-- **Force deploy** (if needed): `npm run deploy:force`
-  - Same as deploy but force-pushes to git
-  - Use only if git history is out of sync
+### Deploy with Protection
+```bash
+npm run deploy:protect
+```
+Builds with enhanced protection.
 
-### Responsive Images
+### Force Deploy (Rare)
+```bash
+npm run deploy:force
+```
+Force-push to git (only if git history is out of sync).
 
-- **Generate responsive variants**: `npm run generate:responsive`
-  - Automatically creates small/medium/large WebP variants
-  - Updates logo, phin filter, and menu images
-  - Required if source PNG images change
-  - Output: 9 WebP files in `images/` folder
-  
-- **Responsive Image Breakpoints**:
-  - Mobile (≤480px): Small variants (240x180 logo, 180x135 phin, 600x400 menu)
-  - Tablet (481-768px): Medium variants (320x240 logo, 237x178 phin, 900x600 menu)
-  - Desktop (≥769px): Large variants (400x300 logo, 237x178 phin, 1200x800 menu)
+### Generate Responsive Images
+```bash
+npm run generate:responsive
+```
+Creates WebP variants for mobile/tablet/desktop.
 
-### Local Development
+## Local Development
 
-- **Serve locally**: `python -m http.server 8000` (or any static server)
-- **View dist folder**: Open `dist/index.html` in browser after build
+```bash
+python -m http.server 8000
+# Visit: http://localhost:8000
+```
 
-### Deployment Info
-
-- Hosted on GitHub Pages (main branch serves dist/ folder)
-- Custom domain: gate7.vn (via CNAME file)
-- HTTPS: Enabled automatically by GitHub Pages
-- Build script: `build-simple.js` (zero npm dependencies!)
-- See: DEPLOYMENT.md for detailed deployment guide
-
-### SEO Keywords Management
-
-- **Manage keywords**: Edit `SEO-KEYWORDS.md`
-  - Central location for all SEO keywords
-  - Organized by page and keyword type
-  - Includes search volume and difficulty
-  - Tracks keyword performance and current status
-  
-- **Update HTML keywords**: 
-  - Edit `<meta name="keywords">` in HTML files
-  - Reference SEO-KEYWORDS.md for current keywords
-  - Update `<title>` and `<meta description>` tags
-  - Update Open Graph tags
-  - Target keyword density: 0.5-3%
-  
-- **SEO Validation Commands**:
-  - Validate before deploy: `npm run build:seo`
-  - Deploy with validation: `npm run deploy:seo`
-  - Check report: `dist/seo-build-report.json`
-  
-- **Pre-deployment SEO checklist**:
-  - [ ] Review/update keywords in SEO-KEYWORDS.md
-  - [ ] Update meta keywords in HTML
-  - [ ] Check keyword density (0.5-3% target)
-  - [ ] Test titles (50-60 chars) & descriptions (150-160 chars)
-  - [ ] Verify Open Graph tags
-  - [ ] Run validation: `npm run build:seo`
-  - [ ] Review SEO warnings from build
-  - [ ] Fix SEO issues before deploy
-  - [ ] Deploy with: `npm run deploy:seo`
-  - [ ] Verify seo-build-report.json generated
-  - [ ] Submit sitemap to Google Search Console
-  - [ ] Monitor keywords in Search Console
-  
-- **See also**: 
-  - SEO-KEYWORDS.md - Detailed keyword management
-  - SEO_BUILD_QUICK_START.md - Quick start workflow
-  - SEO_BUILD_IMPLEMENTATION_SUMMARY.md - What's implemented
-
-## Architecture & Codebase Structure
-
-Static HTML/CSS/JavaScript website for Gate 7 Coffee Roastery coming soon page.
-
-- **Root (`index.html`)**: Simple coming soon landing page
-- **gate1/**: Full coffee shop website (Roasted Grounds brand)
-- **gate2/, gate3/**: Alternative website versions
-- **public/**: Email notification coming soon page
-- **css/**: Stylesheets with CSS custom properties
-- **images/**: Static assets (logos, photos)
-- **Other folders**: brand-story, hiring, menu, music, pilot (various content sections)
-
-No backend, databases, or internal APIs. Pure client-side static files.
-
-## Code Style Guidelines
+## Code Style
 
 ### HTML
-- Semantic HTML5 elements
-- Proper meta tags and accessibility attributes
-- Google Analytics integration with gtag.js
+- Semantic HTML5
+- Proper meta tags and accessibility
+- Alt text on all images
 
 ### CSS
-- CSS custom properties (variables) for theming
-- Modern CSS reset (`box-sizing: border-box`)
-- Flexbox/Grid for layouts
-- Smooth animations with `cubic-bezier` easing
-- Mobile-first responsive design with media queries
+- CSS custom properties for theming
+- Mobile-first responsive design
 - Color scheme: Dark backgrounds (#0B0C06) with golden accent (#C17817)
 
 ### JavaScript
-- ES6+ features (arrow functions, template literals)
-- Vanilla JS, no frameworks
-- Event listeners for form handling and scroll interactions
-- DOM manipulation for dynamic content updates
+- ES6+ vanilla JS (no frameworks)
+- Event listeners and DOM manipulation
+- Progressive enhancement
 
-### Naming Conventions
-- CSS classes: kebab-case (e.g., `animate-text-delay`)
-- JavaScript: camelCase for variables/functions
-- Files: lowercase with hyphens (e.g., `style-gate7.css`)
+### Naming
+- CSS classes: kebab-case (`animate-text-delay`)
+- JS variables: camelCase
+- Files: lowercase with hyphens (`style-gate7.css`)
 
-### Error Handling
-- Basic form validation with user feedback
-- Graceful degradation for unsupported features
+## Project Structure
+
+```
+├── index.html              # Home page
+├── menu/index.html        # Menu page
+├── music/spotify.html     # Spotify manager
+├── css/style-gate7.css    # Stylesheet
+├── images/                # Assets + responsive variants
+├── js/                    # JavaScript utilities
+├── build-simple.js        # Zero-dep build script
+├── SEO-KEYWORDS.md        # Keyword management
+├── package.json           # npm config
+└── README.md              # Full documentation
+```
+
+## SEO Workflow
+
+1. Update keywords in SEO-KEYWORDS.md
+2. Update meta tags in HTML files
+3. Run validation: `npm run build:seo`
+4. Review seo-build-report.json
+5. Deploy: `npm run deploy:seo`
+
+See README.md for complete documentation.

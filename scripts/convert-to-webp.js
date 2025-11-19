@@ -46,8 +46,20 @@ async function convertFile(sharp, input) {
       }
     }
 
-    await sharp(input).webp({ quality: 80 }).toFile(out);
-    console.log('Created', path.relative(process.cwd(), out));
+    // Maximum quality WebP conversion
+    // quality: 100 = highest quality (lossless-like)
+    // alphaQuality: 100 = preserve alpha channel quality
+    // lossless: false = lossy compression at highest quality
+    // effort: 6 = maximum compression effort (slow but best results)
+    await sharp(input)
+      .webp({
+        quality: 100,
+        alphaQuality: 100,
+        effort: 6,
+        nearLossless: true
+      })
+      .toFile(out);
+    console.log('Created (max quality)', path.relative(process.cwd(), out));
   } catch (err) {
     console.error('Failed to convert', input, err && err.message);
   }
