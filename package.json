@@ -7,6 +7,7 @@
     "build:protect": "node build-with-protection.js --protect",
     "build:seo": "node build-seo-enhanced.js",
     "convert:webp": "node scripts/convert-to-webp.js",
+    "generate:responsive": "node scripts/generate-responsive-images.js",
     "deploy": "npm run convert:webp && npm run build && git add dist -f && git commit -m \"chore: production build\" && git push origin master",
     "deploy:seo": "npm run convert:webp && npm run build:seo && git add dist -f && git commit -m \"chore: production build with SEO validation\" && git push origin master",
     "deploy:protect": "npm run convert:webp && npm run build:protect && git add dist -f && git commit -m \"chore: production build with protection\" && git push origin master",

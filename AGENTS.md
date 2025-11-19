@@ -39,6 +39,19 @@ This is a static website project with optimized build and deployment pipeline.
   - Same as deploy but force-pushes to git
   - Use only if git history is out of sync
 
+### Responsive Images
+
+- **Generate responsive variants**: `npm run generate:responsive`
+  - Automatically creates small/medium/large WebP variants
+  - Updates logo, phin filter, and menu images
+  - Required if source PNG images change
+  - Output: 9 WebP files in `images/` folder
+  
+- **Responsive Image Breakpoints**:
+  - Mobile (≤480px): Small variants (240x180 logo, 180x135 phin, 600x400 menu)
+  - Tablet (481-768px): Medium variants (320x240 logo, 237x178 phin, 900x600 menu)
+  - Desktop (≥769px): Large variants (400x300 logo, 237x178 phin, 1200x800 menu)
+
 ### Local Development
 
 - **Serve locally**: `python -m http.server 8000` (or any static server)
