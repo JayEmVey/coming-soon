@@ -58,6 +58,17 @@ a {
     text-decoration: none;
 }
 
+/* Responsive Images - Picture Element Styles */
+picture {
+    display: inline-block;
+}
+
+picture img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {

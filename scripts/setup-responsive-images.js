@@ -34,6 +34,12 @@ const IMAGE_CONFIGS = {
       large: { width: 400, height: 300 }
     }
   },
+  'logo-only-white.png': {
+    name: 'Gate 7 Logo (White)',
+    category: 'branding',
+    use: 'Favicon and apple touch icon',
+    variants: null // Favicon - no variants needed
+  },
   'coffee-as-you-are.png': {
     name: 'Phin Filter Art',
     category: 'product',
@@ -44,7 +50,7 @@ const IMAGE_CONFIGS = {
       large: { width: 237, height: 178 }
     }
   },
-  'Menu_Final.png': {
+  'menu-25-nov.png': {
     name: 'Menu Art',
     category: 'product',
     use: 'Menu page hero image',
@@ -54,22 +60,22 @@ const IMAGE_CONFIGS = {
       large: { width: 1200, height: 800 }
     }
   },
-  'Instagram_icon.png.webp': {
+  'social-icon-instagram.png': {
     name: 'Instagram Icon',
     category: 'social',
-    use: 'Footer social link',
-    variants: null // Footer icons - no variants needed
+    use: 'Footer social media link',
+    variants: null // Social icons - no variants needed
   },
-  'Facebook_Logo_(2019).png.webp': {
+  'social-icon-facebook.png': {
     name: 'Facebook Icon',
     category: 'social',
-    use: 'Footer social link',
+    use: 'Footer social media link',
     variants: null
   },
-  '7044033_zalo_icon.ico': {
+  'social-icon-zalo.png': {
     name: 'Zalo Icon',
     category: 'social',
-    use: 'Footer social link',
+    use: 'Footer social media link',
     variants: null
   }
 };
@@ -215,13 +221,22 @@ function main() {
   }
   console.log();
 
-  // Step 3: Convert to WebP
+  // Step 3: Convert to WebP (for content images, not icons)
   if (hasImageMagick) {
     console.log('🔄 Converting PNG to WebP...\n');
+    
+    // List of images to skip WebP conversion (icons and already optimized files)
+    const skipWebP = ['social-icon-instagram.png', 'social-icon-facebook.png', 'social-icon-zalo.png', 'logo-only-white.png'];
     
     Object.keys(IMAGE_CONFIGS).forEach(img => {
       const inputPath = path.join(IMAGES_DIR, img);
       if (!fs.existsSync(inputPath)) return;
+      
+      // Skip WebP for social icons and favicons
+      if (skipWebP.includes(img)) {
+        console.log(`  ⊘ ${img} (icon - skipped WebP conversion)`);
+        return;
+      }
       
       if (!img.endsWith('.webp') && !img.endsWith('.ico')) {
         const baseName = img.replace(/\.[^/.]+$/, '');

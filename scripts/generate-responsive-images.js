@@ -42,7 +42,7 @@ try {
             ]
         },
         {
-            source: 'images/Menu_Final.png',
+            source: 'images/menu-25-nov.png',
             variants: [
                 { size: { width: 600, height: 400 }, suffix: '-small', quality: 100 },
                 { size: { width: 900, height: 600 }, suffix: '-medium', quality: 100 },
