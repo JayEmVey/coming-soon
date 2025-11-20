@@ -14,15 +14,20 @@ main {
     margin-bottom: 1rem;
 }
 
-.logo {
-    width: 200px;
+.logo-container picture {
+    display: inline-block;
+}
+
+.logo-container img {
+    width: 320px;
+    height: auto;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s var(--animation-timing) forwards;
     transition: transform 0.3s var(--animation-timing);
 }
 
-.logo:hover {
+.logo-container img:hover {
     transform: translateY(-5px);
 }
 
@@ -199,8 +204,8 @@ input[type="email"]:focus {
         font-size: 1.2rem;
     }
 
-    .logo {
-        width: 160px;
+    .logo-container img {
+        width: 240px;
     }
 
     input[type="email"] {
@@ -230,8 +235,8 @@ input[type="email"]:focus {
         font-size: 1rem;
     }
 
-    .logo {
-        width: 120px;
+    .logo-container img {
+        width: 160px;
     }
 
     input[type="email"] {
