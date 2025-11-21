@@ -97,7 +97,7 @@ python -m http.server 8000
 ## Project Structure
 
 ```
-coming-soon/
+gate7/
 ├── index.html                    # Home page
 ├── menu/index.html              # Menu page
 ├── music/index.html           # Spotify playlist manager

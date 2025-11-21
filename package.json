@@ -1,7 +1,7 @@
 {
   "name": "gate7-coffee-roastery",
-  "version": "1.0.0",
-  "description": "Gate 7 Coffee Roastery - Vietnamese Specialty Coffee Shop Website",
+  "version": "1.1.0",
+  "description": "Gate 7 Coffee Roastery - Coffee As You Are",
   "scripts": {
     "build": "node build-cdn.js cloudflare",
     "build:protect": "node build-with-protection.js --protect",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JayEmVey/coming-soon.git"
+    "url": "https://github.com/JayEmVey/gate7.git"
   },
   "keywords": [
     "coffee",

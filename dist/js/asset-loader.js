@@ -27,8 +27,8 @@ class AssetLoader {
       primaryCdn: 'cloudflare',
       cdns: {
         cloudflare: 'https://cdn.jsdelivr.net/gh/JayEmVey/gate7@master/dist',
-        jsdelivr: 'https://cdn.jsdelivr.net/gh/JayEmVey/gate7@master/dist',
-        github: 'https://raw.githubusercontent.com/JayEmVey/gate7/refs/heads/master/dist/'
+        jsdelivr: 'https://cdn.jsdelivr.net/gh/JayEmVey/gate7@latest',
+        github: 'https://raw.githubusercontent.com/JayEmVey/gate7/master'
       },
       fallbackOrder: ['cloudflare', 'jsdelivr', 'github'],
       timeout: 5000,
