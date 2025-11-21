@@ -601,16 +601,7 @@
     <script defer src="/js/scroll-animations.js"></script>
     <script defer src="/js/language-switcher.js"></script>
 
-    <!-- Service Worker Registration (non-blocking) -->
-    <script defer>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('js/service-worker.js')
-                    .then(reg => console.log('✓ Service Worker registered'))
-                    .catch(err => console.log('Service Worker registration failed:', err));
-            });
-        }
-    </script>
+
 </body>
 
 </html>

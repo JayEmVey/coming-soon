@@ -48,8 +48,7 @@ const SOURCE_FILES = [
 const STATIC_FILES = [
   'CNAME',
   'robots.txt',
-  'sitemap.xml',
-  'js/service-worker.js'
+  'sitemap.xml'
 ];
 
 const DIRS_TO_COPY = [

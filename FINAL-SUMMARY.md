@@ -119,7 +119,6 @@ dist/
   ├── js/                        (all JS including asset-loader.js)
   ├── images/                    (all images)
   ├── cdn-config.json            (CDN configuration)
-  ├── js/service-worker.js
   ├── robots.txt
   ├── sitemap.xml
   └── CNAME

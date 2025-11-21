@@ -153,5 +153,5 @@
 - DNS Prefetch: fonts.googleapis.com, www.googletagmanager.com
 - Preconnect: fonts.googleapis.com, fonts.gstatic.com
 - Phân Tích: Google Analytics (ID: G-S72S3FXR6Z)
-- Service Worker: Đăng ký cho tính năng PWA
+- CDN Caching: CDN Cloudflare/jsDelivr cấp cache tự động cho tất cả assets
 - Giám Sát Web Vitals: Theo dõi LCP & CLS được bật

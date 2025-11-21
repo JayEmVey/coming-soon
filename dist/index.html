@@ -477,15 +477,6 @@ document.documentElement.style.scrollBehavior = 'smooth';
 <script defer src="js/responsive-images.js"></script>
 <script defer src="js/scroll-animations.js"></script>
 <script defer src="js/language-switcher.js"></script>
-<script defer>
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('js/service-worker.js')
-.then(reg => console.log('✓ Service Worker registered'))
-.catch(err => console.log('Service Worker registration failed:', err));
-});
-}
-</script>
 
 <script defer src="js/cdn-resolver.js"></script>
 <script defer src="js/asset-loader.js"></script>

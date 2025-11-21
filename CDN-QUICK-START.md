@@ -156,7 +156,7 @@ Each build (`npm run build*`) creates `/dist/` with:
 - ✓ JavaScript files (including `cdn-resolver.js`)
 - ✓ `cdn-config.json` (current CDN config)
 - ✓ Static files (CNAME, robots.txt, sitemap.xml)
-- ✓ Service Worker
+- ✓ CDN Caching (Cloudflare/jsDelivr)
 
 ## Environment Variables
 

@@ -111,7 +111,7 @@ coming-soon/
 ├── robots.txt                   # SEO crawler directives
 ├── sitemap.xml                  # SEO sitemap
 ├── .htaccess                    # Server optimization
-├── js/service-worker.js            # Progressive Web App support
+
 ├── SEO-KEYWORDS.md              # SEO keyword management
 └── README.md                    # This file
 ```

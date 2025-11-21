@@ -272,7 +272,7 @@ When you run a build, you'll see:
   ✓ CNAME
   ✓ robots.txt
   ✓ sitemap.xml
-  ✓ js/service-worker.js
+  
 
 ⚙️  Configuring CDN...
   ✓ cdn-config.json (active CDN: cloudflare)
