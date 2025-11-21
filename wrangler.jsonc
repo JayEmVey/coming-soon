@@ -1,0 +1,7 @@
+{
+  "name": "gate7-coffee-roastery",
+  "compatibility_date": "2025-11-21",
+  "assets": {
+    "directory": "./dist"
+  }
+}

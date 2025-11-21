@@ -20,7 +20,8 @@ const SOURCE_FILES = [
 const STATIC_FILES = [
   'CNAME',
   'robots.txt',
-  'sitemap.xml'
+  'sitemap.xml',
+  'wrangler.jsonc'
 ];
 
 const DIRS_TO_COPY = [
