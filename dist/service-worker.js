@@ -1,9 +1,9 @@
 // Service Worker - Offline caching & performance
-// Version: 1.0.0
+// Version: 2.0.0
 // Usage: Registered in main HTML files
 
-const CACHE_NAME = 'gate7-v1';
-const CACHE_VERSION = 'v1';
+const CACHE_NAME = 'gate7-v2';
+const CACHE_VERSION = 'v2';
 
 // Critical assets to cache on install
 const urlsToCache = [
@@ -11,23 +11,24 @@ const urlsToCache = [
     '/index.html',
     '/menu/',
     '/menu/index.html',
-    '/music/spotify.html',
     '/hiring/',
     '/hiring/index.html',
-    '/css/style-global.css',
-    '/css/style-footer.css',
-    '/css/style-index.css',
-    '/css/style-menu.css',
-    '/css/style-music.css',
+    '/css/style-gate7.css',
     '/js/language-switcher.js',
     '/js/scroll-animations.js',
+    '/js/responsive-images.js',
     '/images/logo-color-black-bg1.png',
-    '/images/logo-only-white.png'
+    '/images/logo-only-white.png',
+    '/images/logo-only-black.png',
+    '/images/coffee-as-you-are.png',
+    '/images/social-icon-instagram.png',
+    '/images/social-icon-facebook.png',
+    '/images/social-icon-zalo.png'
 ];
 
 // Install event - Pre-cache critical assets
 self.addEventListener('install', event => {
-    console.log('[Service Worker] Installing...');
+    console.log('[Service Worker] Installing v2...');
     
     event.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
