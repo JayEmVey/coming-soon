@@ -96,7 +96,17 @@ self.addEventListener('fetch', event => {
         return;
     }
     
-    // Skip external requests
+    // Allow CDN requests (jsDelivr, Cloudflare, GitHub) to pass through
+    const isCdnRequest = url.hostname.includes('cdn.jsdelivr.net') || 
+                         url.hostname.includes('raw.githubusercontent.com') ||
+                         url.hostname.includes('cloudflare');
+    
+    if (isCdnRequest) {
+        // Let CDN requests pass through without service worker interception
+        return;
+    }
+    
+    // Skip other external requests
     if (url.origin !== location.origin) {
         return;
     }

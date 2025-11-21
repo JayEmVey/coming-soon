@@ -1,5 +1,5 @@
 {
-  "default": "jsdelivr",
+  "default": "cloudflare",
   "cdns": {
     "cloudflare": {
       "name": "Cloudflare CDN (via GitHub)",
@@ -29,8 +29,8 @@
   "version": "1.0.0",
   "enableDetailedLogging": true,
   "activeCdn": {
-    "name": "jsDelivr CDN",
-    "provider": "jsdelivr",
+    "name": "Cloudflare CDN",
+    "provider": "cloudflare",
     "baseUrl": "https://cdn.jsdelivr.net/gh/JayEmVey/gate7@master/dist/"
   }
 }
