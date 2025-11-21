@@ -1,8 +1,8 @@
 # Gate 7 Coffee Roastery - Metadata Tiếng Việt
 
 ## Thông Tin Trang
-- **Tiêu Đề**: Gate 7 Coffee Roastery - Thưởng Thức Cà Phê Chất Lượng Cao Việt Nam Tại TPHCM
-- **Mô Tả**: Gate 7 Coffee Roastery - Từ Hạt Cà phê chất lượng cao Việt Nam. Gate có: Cà phê pha phin truyền thống (100% Robusta), espresso (100% Arabica) và đồ uống matcha, houjicha. Ghé thăm Gate tại 162A Nguyễn Trường Tộ, Phường Phú Thọ Hòa.
+- **Tiêu Đề**: Gate 7 Coffee Roastery - Coffee As You Are
+- **Mô Tả**: Quán cà phê chất lượng cao Việt Nam nguyên chất tại TPHCM. Gate có: Cà phê pha phin (100% Robusta), espresso (100% Arabica), và đồ uống matcha, houjicha. Cà phê Arabica & Robusta cao cấp. Gate 7 Coffee Roastery tại 162A Nguyễn Trường Tộ.
 - **Từ Khóa**: Gate 7 Coffee Roastery, cà phê chất lượng cao Việt Nam, cà phê cao cấp TPHCM, cà phê pha phin Việt Nam, espresso đặc sản, quán cà phê roastery Hồ Chí Minh, Arabica Robusta, quán cà phê Việt Nam, 100% Robusta, 100% Arabica
 - **Ngôn Ngữ**: Tiếng Việt
 - **Tác Giả**: Gate 7 Coffee Roastery
@@ -16,8 +16,8 @@
 ## Mạng Xã Hội & SEO
 ### Open Graph
 - **Loại**: business.business
-- **Tiêu Đề**: Gate 7 Coffee Roastery - Cà Phê Cao Cấp Việt Nam
-- **Mô Tả**: Quán cà phê đặc sản Việt Nam nguyên chất tại TPHCM. Cà phê pha phin, espresso đặc sản, đồ uống matcha. Cà phê Arabica & Robusta cao cấp. Tọa lạc tại 162A Nguyễn Trường Tộ.
+- **Tiêu Đề**: Gate 7 Coffee Roastery - Coffee As You Are
+- **Mô Tả**: Quán cà phê chất lượng cao Việt Nam nguyên chất tại TPHCM. Gate có: Cà phê pha phin (100% Robusta), espresso (100% Arabica), và đồ uống matcha, houjicha. Cà phê Arabica & Robusta cao cấp. Gate 7 Coffee Roastery tại 162A Nguyễn Trường Tộ.
 - **Hình Ảnh**: https://gate7.vn/images/logo-only-black.png
 - **Alt Hình Ảnh**: Logo Gate 7 Coffee Roastery
 - **URL**: https://gate7.vn/
@@ -27,7 +27,7 @@
 ### Twitter Card
 - **Loại Thẻ**: summary_large_image
 - **Tiêu Đề**: Gate 7 Coffee Roastery - Cà Phê Cao Cấp Việt Nam
-- **Mô Tả**: Cà phê đặc sản Việt Nam nguyên chất tại TPHCM. Cà phê pha phin, espresso, đồ uống matcha. Quán roastery cà phê Arabica & Robusta cao cấp.
+- **Mô Tả**: Quán cà phê chất lượng cao Việt Nam nguyên chất tại TPHCM. Gate có: Cà phê pha phin (100% Robusta), espresso (100% Arabica), và đồ uống matcha, houjicha. Cà phê Arabica & Robusta cao cấp. Gate 7 Coffee Roastery tại 162A Nguyễn Trường Tộ.
 - **Hình Ảnh**: https://gate7.vn/images/logo-only-black.png
 - **Người Tạo**: @gate7coffee
 

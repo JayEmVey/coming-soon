@@ -1,7 +1,7 @@
 # Gate 7 Coffee Roastery - English Metadata
 
 ## Page Information
-- **Title**: Gate 7 Coffee Roastery - Vietnamese Premium Coffee in HCMC
+- **Title**: Gate 7 Coffee Roastery - Coffee As You Are
 - **Description**: Gate 7 Coffee Roastery - Authentic Vietnamese specialty coffee in Ho Chi Minh City. Phin coffee, espresso, and matcha drinks. Visit 162A Nguyen Truong To, Phu Tho Hoa Ward.
 - **Keywords**: Gate 7 Coffee Roastery, Vietnamese specialty coffee, premium coffee HCMC, Vietnamese Phin coffee, specialty espresso, coffee roastery Ho Chi Minh, Arabica Robusta, Vietnamese coffee shop
 - **Language**: English
@@ -16,7 +16,7 @@
 ## Social Media & SEO
 ### Open Graph
 - **Type**: business.business
-- **Title**: Gate 7 Coffee Roastery - Vietnamese Premium Coffee
+- **Title**: Gate 7 Coffee Roastery - Coffee As You Are
 - **Description**: Authentic Vietnamese specialty coffee roastery in HCMC. Phin drip coffee, specialty espresso, matcha drinks. Premium Arabica & Robusta coffee. Located at 162A Nguyen Truong To.
 - **Image**: https://gate7.vn/images/logo-only-black.png
 - **Image Alt**: Gate 7 Coffee Roastery Logo
@@ -26,7 +26,7 @@
 
 ### Twitter Card
 - **Card Type**: summary_large_image
-- **Title**: Gate 7 Coffee Roastery - Vietnamese Premium Coffee
+- **Title**: Gate 7 Coffee Roastery - Coffee As You Are
 - **Description**: Authentic Vietnamese specialty coffee in HCMC. Phin drip, espresso, matcha drinks. Premium Arabica & Robusta coffee roastery.
 - **Image**: https://gate7.vn/images/logo-only-black.png
 - **Creator**: @gate7coffee
