@@ -474,9 +474,27 @@ gtag('config', 'G-S72S3FXR6Z');
 document.documentElement.style.scrollBehavior = 'smooth';
 </script>
 <script src="https://cdn.jsdelivr.net/gh/JayEmVey/gate7@cb7953249183ab54dd9cefada97f39cb37357fb1/dist/js/cdn-resolver.js"></script>
-<script defer src="js/responsive-images.js"></script>
-<script defer src="js/scroll-animations.js"></script>
-<script defer src="js/language-switcher.js"></script>
+<script id="load-scripts">
+// Load scripts from CDN with fallback to local
+document.addEventListener('DOMContentLoaded', async () => {
+const scripts = [
+'js/responsive-images.js',
+'js/scroll-animations.js',
+'js/language-switcher.js'
+];
+for (const scriptPath of scripts) {
+try {
+const cdnUrl = await window.cdnResolver.resolveAsset(scriptPath);
+const script = document.createElement('script');
+script.src = cdnUrl;
+script.defer = true;
+document.head.appendChild(script);
+} catch (error) {
+console.warn(`[CDN] Failed to load ${scriptPath}:`, error);
+}
+}
+});
+</script>
 
 <script defer src="js/cdn-resolver.js"></script>
 <script defer src="js/asset-loader.js"></script>
