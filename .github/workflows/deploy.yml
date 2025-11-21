@@ -30,8 +30,8 @@ jobs:
         with:
           node-version: '18'
       
-      - name: Build production bundle
-        run: node build-simple.js
+      - name: Build production bundle with SEO validation
+        run: node build-seo-enhanced.js
       
       - name: Copy static files to dist
         run: |

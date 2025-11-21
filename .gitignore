@@ -3,8 +3,8 @@ node_modules/
 package-lock.json
 yarn.lock
 
-# Build outputs
-dist/
+# Build outputs (tracked for GitHub Pages deployment)
+# dist/
 
 # IDE
 .vscode/
