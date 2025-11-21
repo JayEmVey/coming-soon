@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Gate 7 Coffee Roastery - Vietnamese Specialty Coffee Shop Website",
   "scripts": {
-    "build": "node build-simple.js",
+    "build": "node build-cdn.js cloudflare",
     "build:protect": "node build-with-protection.js --protect",
     "build:seo": "node build-seo-enhanced.js",
+    "build:cdn-jsdelivr": "node build-cdn.js jsdelivr",
+    "build:cdn-github": "node build-cdn.js github",
     "test": "node test.js",
     "deploy": "node deploy-complete.js",
     "deploy:seo": "npm run build:seo && git add dist -f && git commit -m \"chore: production build with SEO validation\" && git push origin master",

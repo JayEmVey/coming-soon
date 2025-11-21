@@ -1,0 +1,36 @@
+{
+  "default": "jsdelivr",
+  "cdns": {
+    "cloudflare": {
+      "name": "Cloudflare CDN (via jsDelivr)",
+      "baseUrl": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
+      "description": "Fast Cloudflare edge with jsDelivr routing"
+    },
+    "jsdelivr": {
+      "name": "jsDelivr CDN",
+      "baseUrl": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
+      "description": "Global CDN routing optimization"
+    },
+    "github": {
+      "name": "GitHub Raw (Fallback)",
+      "baseUrl": "https://raw.githubusercontent.com/JayEmVey/coming-soon/master",
+      "description": "GitHub raw content fallback"
+    }
+  },
+  "assetPaths": {
+    "css": "/css",
+    "js": "/js",
+    "images": "/images"
+  },
+  "fallbackStrategy": "github",
+  "timeout": 8000,
+  "retryAttempts": 2,
+  "buildDate": "2025-11-21",
+  "version": "1.0.0",
+  "enableDetailedLogging": true,
+  "activeCdn": {
+    "name": "jsDelivr CDN",
+    "provider": "jsdelivr",
+    "baseUrl": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest"
+  }
+}

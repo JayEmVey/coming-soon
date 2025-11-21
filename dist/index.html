@@ -7,7 +7,7 @@
 <meta name="description" content="Quán cà phê chất lượng cao Việt Nam nguyên chất tại TPHCM. Gate có: Cà phê pha phin (100% Robusta), espresso (100% Arabica), và đồ uống matcha, houjicha. Cà phê Arabica & Robusta cao cấp. Gate 7 Coffee Roastery tại 162A Nguyễn Trường Tộ.">
 <meta name="keywords" content="Gate 7 Coffee Roastery, cà phê chất lượng cao Việt Nam, cà phê cao cấp TPHCM, cà phê pha phin Việt Nam, espresso đặc sản, quán cà phê roastery Hồ Chí Minh, Arabica Robusta, quán cà phê Việt Nam, 100% Robusta, 100% Arabica">
 <meta name="msapplication-TileColor" content="#202020">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="author" content="Gate 7 Coffee Roastery">
 <meta name="theme-color" content="#202020">
@@ -180,6 +180,63 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-S72S3FXR6Z');
+</script>
+
+<script id="cdn-loader">
+(function() {
+  // CDN Configuration Loader
+  window.CDN_CONFIG = {
+    "primaryCdn": "jsdelivr",
+    "cdns": {
+      "cloudflare": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
+      "jsdelivr": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
+      "github": "https://raw.githubusercontent.com/JayEmVey/coming-soon/master"
+    },
+    "fallbackOrder": ["cloudflare", "jsdelivr", "github"],
+    "timeout": 5000,
+    "retryAttempts": 2
+  };
+  
+  // CDN Asset Helper
+  window.getCdnUrl = function(assetPath) {
+    const cdnUrl = window.CDN_CONFIG.cdns[window.CDN_CONFIG.primaryCdn];
+    return cdnUrl + assetPath;
+  };
+  
+  // CDN Fallback Resolver
+  window.resolveCdnAsset = async function(assetPath) {
+    const config = window.CDN_CONFIG;
+    const timeoutMs = config.timeout;
+    
+    for (let cdn of config.fallbackOrder) {
+      const baseUrl = config.cdns[cdn];
+      const url = baseUrl + assetPath;
+      
+      try {
+        const response = await Promise.race([
+          fetch(url, { method: 'HEAD' }),
+          new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Timeout')), timeoutMs)
+          )
+        ]);
+        
+        if (response.ok) {
+          console.log('[CDN] Using ' + cdn + ' for ' + assetPath);
+          return url;
+        }
+      } catch (error) {
+        console.warn('[CDN] Failed on ' + cdn + ': ' + error.message);
+      }
+    }
+    
+    // Fallback to current domain
+    console.warn('[CDN] All CDNs failed, using local: ' + assetPath);
+    return assetPath;
+  };
+  
+  // Store current CDN in localStorage
+  localStorage.setItem('activeCdn', window.CDN_CONFIG.primaryCdn);
+})();
 </script>
 </head>
 <body>
@@ -428,5 +485,8 @@ navigator.serviceWorker.register('/service-worker.js')
 });
 }
 </script>
+
+<script defer src="js/cdn-resolver.js"></script>
+<script defer src="js/asset-loader.js"></script>
 </body>
 </html>

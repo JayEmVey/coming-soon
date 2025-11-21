@@ -2,11 +2,19 @@
 
 ## Build & Deploy Commands
 
-### Build
+### Build (Default - Cloudflare CDN)
 ```bash
 npm run build
 ```
-Minifies HTML, CSS, JavaScript. Output in `dist/` folder.
+Minifies HTML, CSS, JavaScript with Cloudflare CDN. Output in `dist/` folder. CDN configuration injected into HTML files.
+
+### Build with CDN Selection
+```bash
+npm run build                    # Cloudflare CDN (default, fastest)
+npm run build:cdn-jsdelivr       # jsDelivr CDN
+npm run build:cdn-github         # GitHub Raw (fallback)
+```
+CDN is automatically injected into build. See `cdn-config.json` for current configuration.
 
 ### Build with SEO Validation
 ```bash
@@ -85,16 +93,26 @@ python -m http.server 8000
 ## Project Structure
 
 ```
-├── index.html              # Home page
-├── menu/index.html        # Menu page
-├── music/index.html     # Spotify manager
-├── css/style-gate7.css    # Stylesheet
-├── images/                # Assets + responsive variants
-├── js/                    # JavaScript utilities
-├── build-simple.js        # Zero-dep build script
-├── SEO-KEYWORDS.md        # Keyword management
-├── package.json           # npm config
-└── README.md              # Full documentation
+├── index.html                      # Home page
+├── menu/index.html                 # Menu page
+├── music/index.html                # Spotify manager
+├── css/style-gate7.css             # Stylesheet
+├── images/                         # Assets + responsive variants
+├── js/                             # JavaScript utilities
+│   ├── cdn-resolver.js             # CDN fallback resolver
+│   ├── asset-loader.js             # Dynamic asset loading
+│   ├── responsive-images.js        # Image optimization
+│   ├── scroll-animations.js        # Scroll effects
+│   └── language-switcher.js        # Language toggle
+├── build-simple.js                 # Legacy build script
+├── build-cdn.js                    # CDN-aware build system
+├── cdn-config.json                 # CDN configuration reference
+├── CDN-SWITCHING.md                # CDN system documentation
+├── CDN-QUICK-START.md              # Quick reference guide
+├── ASSET-LOADING.md                # Asset loading documentation
+├── SEO-KEYWORDS.md                 # Keyword management
+├── package.json                    # npm config
+└── README.md                       # Full documentation
 ```
 
 ## SEO Workflow
