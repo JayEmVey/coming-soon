@@ -35,7 +35,7 @@
 
   <!-- Music/Playlist Page -->
   <url>
-    <loc>https://gate7.vn/music/spotify.html</loc>
+    <loc>https://gate7.vn/music/index.html</loc>
     <lastmod>2025-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

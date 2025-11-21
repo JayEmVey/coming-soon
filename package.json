@@ -6,7 +6,8 @@
     "build": "node build-simple.js",
     "build:protect": "node build-with-protection.js --protect",
     "build:seo": "node build-seo-enhanced.js",
-    "deploy": "npm run build && git add dist -f && git commit -m \"chore: production build\" && git push origin master",
+    "test": "node test.js",
+    "deploy": "node deploy-complete.js",
     "deploy:seo": "npm run build:seo && git add dist -f && git commit -m \"chore: production build with SEO validation\" && git push origin master",
     "deploy:protect": "npm run build:protect && git add dist -f && git commit -m \"chore: production build with protection\" && git push origin master",
     "deploy:force": "npm run build && git add dist -f && git commit -am \"chore: production build (forced)\" && git push origin master -f"

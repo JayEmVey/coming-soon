@@ -14,35 +14,44 @@ npm run build:seo
 ```
 Validates SEO keywords and generates `seo-build-report.json`.
 
-### Deploy (Auto-deployment to GitHub Pages)
+### Test Production Build
+```bash
+npm run build
+npm run test
+```
+Serves the minified production build from `/dist` folder locally at http://localhost:8080.
+Test on multiple devices (mobile, tablet, desktop) before deploying.
+
+### Deploy (Complete - Recommended)
 ```bash
 npm run deploy
 ```
-Builds and pushes to GitHub. Site live in ~2 minutes.
+**Complete deployment pipeline that handles:**
+1. Validates SEO keywords
+2. Builds production bundle
+3. Copies static assets (CNAME, robots.txt, sitemap.xml)
+4. Creates Git commit with timestamp
+5. Pushes to GitHub
+
+Site live in ~2 minutes.
 
 ### Deploy with SEO Validation
 ```bash
 npm run deploy:seo
 ```
-Validates SEO before deploying.
+Validates SEO before deploying (legacy, use `npm run deploy` for complete flow).
 
 ### Deploy with Protection
 ```bash
 npm run deploy:protect
 ```
-Builds with enhanced protection.
+Builds with enhanced protection (legacy).
 
 ### Force Deploy (Rare)
 ```bash
 npm run deploy:force
 ```
 Force-push to git (only if git history is out of sync).
-
-### Generate Responsive Images
-```bash
-npm run generate:responsive
-```
-Creates WebP variants for mobile/tablet/desktop.
 
 ## Local Development
 
@@ -78,7 +87,7 @@ python -m http.server 8000
 ```
 ├── index.html              # Home page
 ├── menu/index.html        # Menu page
-├── music/spotify.html     # Spotify manager
+├── music/index.html     # Spotify manager
 ├── css/style-gate7.css    # Stylesheet
 ├── images/                # Assets + responsive variants
 ├── js/                    # JavaScript utilities

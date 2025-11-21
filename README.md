@@ -33,12 +33,20 @@ git commit -m "your changes"
 git push origin main
 ```
 
+### Test Production Build
+```bash
+npm run build
+npm run test
+# Visit: http://localhost:8080
+```
+Serves minified production build locally. Test on mobile, tablet, and desktop before deploying.
+
 ### Manual Deploy
 ```bash
 npm run deploy
 ```
 
-### Local Development
+### Local Development (Source Files)
 ```bash
 python -m http.server 8000
 # Then visit: http://localhost:8000
@@ -60,7 +68,7 @@ python -m http.server 8000
 - ✅ 28% smaller file size
 - ✅ Gzip compression enabled
 - ✅ Browser caching (30-day TTL)
-- ✅ Optimized responsive images
+- ✅ Optimized images
 
 ### 🔍 SEO
 - ✅ Meta tags on all pages
@@ -92,7 +100,7 @@ python -m http.server 8000
 coming-soon/
 ├── index.html                    # Home page
 ├── menu/index.html              # Menu page
-├── music/spotify.html           # Spotify playlist manager
+├── music/index.html           # Spotify playlist manager
 ├── css/
 │   └── style-gate7.css          # Main stylesheet
 ├── images/                      # Logo, menu, icons, responsive variants
@@ -158,22 +166,6 @@ npm run deploy:force
 
 **Custom Domain:**
 DNS is configured to point to GitHub Pages. CNAME file in repository handles routing.
-
-### Responsive Images
-
-#### Generate Responsive Variants
-```bash
-npm run generate:responsive
-```
-- Automatically creates small/medium/large WebP variants
-- Updates logo, phin filter, and menu images
-- Required if source PNG images change
-- Output: 9 WebP files in `images/` folder
-
-**Image Breakpoints:**
-- Mobile (≤480px): Small variants (240x180 logo, 180x135 phin, 600x400 menu)
-- Tablet (481-768px): Medium variants (320x240 logo, 237x178 phin, 900x600 menu)
-- Desktop (≥769px): Large variants (400x300 logo, 237x178 phin, 1200x800 menu)
 
 ---
 
@@ -382,7 +374,7 @@ npm run build:protect
 
 - ✅ index.html (Home)
 - ✅ menu/index.html (Menu)
-- ✅ music/spotify.html (Spotify Manager)
+- ✅ music/index.html (Spotify Manager)
 
 ### How It Works
 
@@ -513,7 +505,7 @@ git push origin main -f
 
 - **Menu Changes:** Edit `menu/index.html`
 - **Home Page:** Edit `index.html`
-- **Spotify Playlists:** Edit `music/spotify.html`
+- **Spotify Playlists:** Edit `music/index.html`
 - **Keywords:** Edit `SEO-KEYWORDS.md` and update HTML meta tags
 - **Styles:** Edit `css/style-gate7.css`
 
@@ -564,7 +556,7 @@ Curated playlists for different times of day:
 
 Click any playlist to open directly in Spotify.
 
-**Music page:** https://gate7.vn/music/spotify.html
+**Music page:** https://gate7.vn/music/index.html
 
 ---
 

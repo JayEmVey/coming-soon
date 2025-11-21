@@ -1,0 +1,4 @@
+# .htaccess intentionally removed
+# This project is a static website. Server-side runtime configuration
+# (rewrites, signed URLs, server-injected protection) has been removed
+# from the repository to ensure the site remains purely static.

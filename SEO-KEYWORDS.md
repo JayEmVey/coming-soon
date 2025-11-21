@@ -37,7 +37,7 @@ Central location for all SEO keywords, organized by page and keyword type.
 - Matcha latte coffee shop
 - Houjicha tea drinks
 
-## Music/Spotify Page (`music/spotify.html`)
+## Music/Spotify Page (`music/index.html`)
 
 ### Primary Keywords
 - Coffee shop music
@@ -70,7 +70,7 @@ Central location for all SEO keywords, organized by page and keyword type.
 | Vietnamese high quality coffee | index.html | 1-2% | Active |
 | Gate 7 Coffee | index.html | 1% | Active |
 | High quality coffee menu | menu/index.html | 1-2% | Active |
-| Coffee shop music | spotify.html | 1% | Active |
+| Coffee shop music | music/index.html | 1% | Active |
 
 ## Keyword Implementation Tips
 
