@@ -186,7 +186,7 @@ gtag('config', 'G-S72S3FXR6Z');
 (function() {
   // CDN Configuration Loader
   window.CDN_CONFIG = {
-    "primaryCdn": "jsdelivr",
+    "primaryCdn": "cloudflare",
     "cdns": {
       "cloudflare": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
       "jsdelivr": "https://cdn.jsdelivr.net/gh/JayEmVey/gate7@master/dist/",
@@ -473,6 +473,7 @@ gtag('config', 'G-S72S3FXR6Z');
 // Smooth scroll behavior (critical for UX)
 document.documentElement.style.scrollBehavior = 'smooth';
 </script>
+<script src="js/cdn-resolver.js"></script>
 <script defer src="js/responsive-images.js"></script>
 <script defer src="js/scroll-animations.js"></script>
 <script defer src="js/language-switcher.js"></script>
