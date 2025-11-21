@@ -51,3 +51,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      
+      - name: Deployment Summary
+        run: |
+          echo "✅ Build completed successfully"
+          echo "📦 Deploying to GitHub Pages..."
+          echo "🎉 Site will be available at: https://gate7.vn"

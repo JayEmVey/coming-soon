@@ -52,35 +52,8 @@ async function deploy() {
     console.log(`\n${colors.bright}${colors.cyan}🚀 Gate 7 Coffee Roastery - Complete Deployment${colors.reset}\n`);
     
     try {
-        // Step 1: SEO Validation & Build
-        log('info', '====== STEP 1: Building with SEO Validation ======');
-        await executeCommand(
-            'npm run build:seo',
-            'Building production bundle with SEO validation'
-        );
-        
-        // Step 2: Copy static assets
-        log('info', '====== STEP 2: Copying Static Assets ======');
-        const staticFiles = ['CNAME', 'robots.txt', 'sitemap.xml', '.htaccess'];
-        for (const file of staticFiles) {
-            const src = path.join(__dirname, file);
-            const dest = path.join(DIST_DIR, file);
-            if (fs.existsSync(src)) {
-                fs.copyFileSync(src, dest);
-                log('success', `Copied: ${file}`);
-            }
-        }
-        
-        // Step 3: Verify build output
-        log('info', '====== STEP 3: Verifying Build Output ======');
-        const distFiles = fs.readdirSync(DIST_DIR);
-        if (distFiles.length === 0) {
-            throw new Error('Build failed: dist directory is empty');
-        }
-        log('success', `Verified ${distFiles.length} files in dist directory`);
-        
-        // Step 4: Git deployment
-        log('info', '====== STEP 4: Committing & Pushing to GitHub ======');
+        // Step 1: Verify git status
+        log('info', '====== STEP 1: Verifying Git Status ======');
         
         // Check git status
         try {
@@ -89,43 +62,36 @@ async function deploy() {
             throw new Error('Not a git repository or git is not installed');
         }
         
-        // Stage dist directory
-        log('info', 'Staging dist directory...');
-        execSync('git add dist -f', { stdio: 'inherit' });
+        // Step 2: Get current branch
+        log('info', '====== STEP 2: Pushing to GitHub ======');
+        const branch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
+        log('success', `Current branch: ${branch}`);
         
-        // Check if there are changes to commit
-        let hasChanges = false;
-        try {
-            execSync('git diff --cached --quiet', { stdio: 'pipe' });
-            hasChanges = false; // No changes if command succeeds
-        } catch (e) {
-            hasChanges = true; // Changes exist if command fails
-        }
-        
-        if (hasChanges) {
-            const commitMsg = `chore: production build with SEO validation & responsive images (${new Date().toISOString()})`;
-            log('info', `Creating git commit: "${commitMsg}"`);
-            execSync(`git commit -m "${commitMsg}"`, { stdio: 'inherit' });
-        } else {
-            log('warning', 'No changes to commit');
+        // Check for uncommitted changes
+        const status = execSync('git status --porcelain', { encoding: 'utf8' });
+        if (status.trim().length > 0) {
+            log('error', 'Uncommitted changes detected. Please commit all changes first.');
+            log('info', 'Uncommitted files:');
+            console.log(status);
+            throw new Error('Cannot deploy with uncommitted changes');
         }
         
         // Push to repository
-        const branch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
-        log('info', `Pushing to origin/${branch}...`);
+        log('info', `Pushing source to origin/${branch}...`);
         execSync(`git push origin ${branch}`, { stdio: 'inherit' });
         
         // Success!
-        console.log(`\n${colors.bright}${colors.green}✅ Deployment Complete!${colors.reset}`);
-        console.log(`${colors.green}🎉 Site is live at: https://gate7.vn${colors.reset}\n`);
+        console.log(`\n${colors.bright}${colors.green}✅ Push Complete!${colors.reset}`);
+        console.log(`${colors.green}🚀 GitHub Actions workflow triggered automatically${colors.reset}`);
+        console.log(`${colors.green}🎉 Check: https://github.com/JayEmVey/gate7/actions${colors.reset}\n`);
         
         // Summary
         console.log(`${colors.bright}Deployment Summary:${colors.reset}`);
-        console.log(`  ✓ SEO validation passed`);
-        console.log(`  ✓ Production build completed`);
-        console.log(`  ✓ Static assets copied`);
-        console.log(`  ✓ Committed to Git`);
-        console.log(`  ✓ Pushed to GitHub (${branch})\n`);
+        console.log(`  ✓ Source pushed to origin/${branch}`);
+        console.log(`  ✓ GitHub Actions workflow triggered`);
+        console.log(`  ✓ Build and SEO validation running on GitHub`);
+        console.log(`  ✓ Deployment to gh-pages in progress`);
+        console.log(`  ✓ Site will be live at: https://gate7.vn\n`);
         
     } catch (error) {
         console.error(`\n${colors.red}${colors.bright}❌ Deployment Failed!${colors.reset}`);
