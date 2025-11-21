@@ -27,12 +27,12 @@ const CDN_CONFIGS = {
   },
   jsdelivr: {
     name: 'jsDelivr CDN',
-    baseUrl: 'https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest',
+    baseUrl: 'https://cdn.jsdelivr.net/gh/JayEmVey/gate7@master/dist/',
     provider: 'jsdelivr'
   },
   github: {
     name: 'GitHub Raw (Fallback)',
-    baseUrl: 'https://raw.githubusercontent.com/JayEmVey/coming-soon/master',
+    baseUrl: 'https://raw.githubusercontent.com/JayEmVey/gate7/ab857af6d361c52a024d8d0867f79a6530e2e764/dist/',
     provider: 'github'
   }
 };
@@ -121,8 +121,8 @@ function injectCDNLoader(htmlContent, selectedCdn) {
     "primaryCdn": "${selectedCdn}",
     "cdns": {
       "cloudflare": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
-      "jsdelivr": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
-      "github": "https://raw.githubusercontent.com/JayEmVey/coming-soon/master"
+      "jsdelivr": "https://cdn.jsdelivr.net/gh/JayEmVey/gate7@master/dist/",
+      "github": "https://raw.githubusercontent.com/JayEmVey/gate7/ab857af6d361c52a024d8d0867f79a6530e2e764/dist/"
     },
     "fallbackOrder": ["cloudflare", "jsdelivr", "github"],
     "timeout": 5000,

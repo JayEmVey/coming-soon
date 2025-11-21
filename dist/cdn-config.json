@@ -2,18 +2,18 @@
   "default": "jsdelivr",
   "cdns": {
     "cloudflare": {
-      "name": "Cloudflare CDN (via jsDelivr)",
+      "name": "Cloudflare CDN (via GitHub)",
       "baseUrl": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
       "description": "Fast Cloudflare edge with jsDelivr routing"
     },
     "jsdelivr": {
-      "name": "jsDelivr CDN",
-      "baseUrl": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
+      "name": "jsDelivr CDN (Convert from Github)",
+      "baseUrl": "https://cdn.jsdelivr.net/gh/JayEmVey/gate7@master/dist/",
       "description": "Global CDN routing optimization"
     },
     "github": {
       "name": "GitHub Raw (Fallback)",
-      "baseUrl": "https://raw.githubusercontent.com/JayEmVey/coming-soon/master",
+      "baseUrl": "https://raw.githubusercontent.com/JayEmVey/gate7/ab857af6d361c52a024d8d0867f79a6530e2e764/dist/",
       "description": "GitHub raw content fallback"
     }
   },
@@ -31,6 +31,6 @@
   "activeCdn": {
     "name": "jsDelivr CDN",
     "provider": "jsdelivr",
-    "baseUrl": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest"
+    "baseUrl": "https://cdn.jsdelivr.net/gh/JayEmVey/gate7@master/dist/"
   }
 }
