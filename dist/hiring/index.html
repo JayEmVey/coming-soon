@@ -420,6 +420,63 @@ gap: 1rem;
 }
 }
 </style>
+
+<script id="cdn-loader">
+(function() {
+  // CDN Configuration Loader
+  window.CDN_CONFIG = {
+    "primaryCdn": "jsdelivr",
+    "cdns": {
+      "cloudflare": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
+      "jsdelivr": "https://cdn.jsdelivr.net/gh/JayEmVey/coming-soon@latest",
+      "github": "https://raw.githubusercontent.com/JayEmVey/coming-soon/master"
+    },
+    "fallbackOrder": ["cloudflare", "jsdelivr", "github"],
+    "timeout": 5000,
+    "retryAttempts": 2
+  };
+  
+  // CDN Asset Helper
+  window.getCdnUrl = function(assetPath) {
+    const cdnUrl = window.CDN_CONFIG.cdns[window.CDN_CONFIG.primaryCdn];
+    return cdnUrl + assetPath;
+  };
+  
+  // CDN Fallback Resolver
+  window.resolveCdnAsset = async function(assetPath) {
+    const config = window.CDN_CONFIG;
+    const timeoutMs = config.timeout;
+    
+    for (let cdn of config.fallbackOrder) {
+      const baseUrl = config.cdns[cdn];
+      const url = baseUrl + assetPath;
+      
+      try {
+        const response = await Promise.race([
+          fetch(url, { method: 'HEAD' }),
+          new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Timeout')), timeoutMs)
+          )
+        ]);
+        
+        if (response.ok) {
+          console.log('[CDN] Using ' + cdn + ' for ' + assetPath);
+          return url;
+        }
+      } catch (error) {
+        console.warn('[CDN] Failed on ' + cdn + ': ' + error.message);
+      }
+    }
+    
+    // Fallback to current domain
+    console.warn('[CDN] All CDNs failed, using local: ' + assetPath);
+    return assetPath;
+  };
+  
+  // Store current CDN in localStorage
+  localStorage.setItem('activeCdn', window.CDN_CONFIG.primaryCdn);
+})();
+</script>
 </head>
 <body>
 <header class="header">
@@ -694,5 +751,8 @@ trackEvent('click', 'social_media', this.href);
 });
 });
 </script>
+
+<script defer src="js/cdn-resolver.js"></script>
+<script defer src="js/asset-loader.js"></script>
 </body>
 </html>
