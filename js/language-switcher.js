@@ -1,7 +1,7 @@
 // Language switcher - Enhanced with proper synchronization
 document.addEventListener('DOMContentLoaded', function() {
     const langBtns = document.querySelectorAll('.lang-btn');
-    let currentLang = 'en'; // Default to English (matching HTML default)
+    let currentLang = 'vn'; // Default to Vietnamese (primary language)
 
     function switchLanguage(lang) {
         // Validate language code
@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.lang = lang;
     }
 
-    // Load saved language preference or use default
-    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+    // Load saved language preference or use default (Vietnamese)
+    const savedLang = localStorage.getItem('selectedLanguage') || 'vn';
     switchLanguage(savedLang);
 
     // Event listeners for language buttons

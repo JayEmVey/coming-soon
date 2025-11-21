@@ -5,14 +5,16 @@ Central location for all SEO keywords, organized by page and keyword type.
 ## Home Page (`index.html`)
 
 ### Primary Keywords
-- Vietnamese specialty coffee
 - Gate 7 Coffee Roastery
+- Vietnamese high quality coffee
 - Premium coffee Ho Chi Minh City
+- Premium coffee Vietnam in Tan Phu
 
 ### Long-tail Keywords
 - Vietnamese phin coffee
-- Specialty coffee shop HCMC
-- Premium robusta coffee Vietnam
+- High quality coffee shop HCMC
+- Premium Robusta coffee Vietnam
+- Permium Arabica coffee Vietnam
 - Coffee roasting Vietnam
 
 ### Search Volume & Difficulty
@@ -26,12 +28,14 @@ Central location for all SEO keywords, organized by page and keyword type.
 - Coffee menu
 - Vietnamese coffee menu
 - Coffee drinks HCMC
+- Coffee drinks in Tan Phu
 
 ### Long-tail Keywords
-- Specialty coffee drinks
+- High quality coffee drinks
 - Traditional Vietnamese phin coffee
 - Espresso drinks menu
 - Matcha latte coffee shop
+- Houjicha tea drinks
 
 ## Music/Spotify Page (`music/spotify.html`)
 
@@ -63,9 +67,9 @@ Central location for all SEO keywords, organized by page and keyword type.
 
 | Keyword | Page | Target Density | Current Status |
 |---------|------|-----------------|-----------------|
-| Vietnamese specialty coffee | index.html | 1-2% | Active |
+| Vietnamese high quality coffee | index.html | 1-2% | Active |
 | Gate 7 Coffee | index.html | 1% | Active |
-| Specialty coffee menu | menu/index.html | 1-2% | Active |
+| High quality coffee menu | menu/index.html | 1-2% | Active |
 | Coffee shop music | spotify.html | 1% | Active |
 
 ## Keyword Implementation Tips
@@ -100,18 +104,19 @@ Central location for all SEO keywords, organized by page and keyword type.
 
 ### Recent Keyword Updates
 
-- **Last Updated:** November 19, 2025
-- **Pages Updated:** index.html, menu/index.html
-- **Keywords Added:** Vietnamese specialty coffee focus
-- **Keywords Removed:** Generic coffee keywords
+- **Last Updated:** November 21, 2025
+- **Pages Updated:** index.html
+- **Keywords Added:** Gate 7 Coffee Roastery prioritized for brand recognition
+- **Meta Tags Enhanced:** Bing compatibility, OG tags, structured data
+- **Keywords Reordered:** Brand name first for Google/Bing SERPs
 
 ## Performance Tracking
 
 ### Ranking Targets (3-6 months)
-- Vietnamese specialty coffee: Page 1
+- Vietnamese high quality coffee: Page 1
 - Gate 7 Coffee: Page 1
 - Coffee shop HCMC: Page 2-3
-- Specialty menu Vietnam: Page 2-3
+- High quality coffee menu Vietnam: Page 2-3
 
 ### Analytics to Monitor
 - Google Search Console impressions
