@@ -1,9 +1,9 @@
 // Service Worker - Offline caching & performance
-// Version: 2.0.0
+// Version: 3.1.0
 // Usage: Registered in main HTML files
 
-const CACHE_NAME = 'gate7-v3';
-const CACHE_VERSION = 'v3';
+const CACHE_NAME = 'gate7-v3.1';
+const CACHE_VERSION = 'v3.1';
 const NETWORK_TIMEOUT = 3000; // 3 second timeout for network requests
 
 // Critical assets to cache on install
