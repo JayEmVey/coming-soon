@@ -94,10 +94,15 @@ async function deploy() {
         execSync('git add dist -f', { stdio: 'inherit' });
         
         // Check if there are changes to commit
-        const hasChanges = execSync('git diff --cached --quiet', { stdio: 'pipe' })
-            .toString() === '';
+        let hasChanges = false;
+        try {
+            execSync('git diff --cached --quiet', { stdio: 'pipe' });
+            hasChanges = false; // No changes if command succeeds
+        } catch (e) {
+            hasChanges = true; // Changes exist if command fails
+        }
         
-        if (!hasChanges) {
+        if (hasChanges) {
             const commitMsg = `chore: production build with SEO validation & responsive images (${new Date().toISOString()})`;
             log('info', `Creating git commit: "${commitMsg}"`);
             execSync(`git commit -m "${commitMsg}"`, { stdio: 'inherit' });
