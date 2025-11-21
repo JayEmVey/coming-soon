@@ -2,28 +2,40 @@
 // Version: 2.0.0
 // Usage: Registered in main HTML files
 
-const CACHE_NAME = 'gate7-v2';
-const CACHE_VERSION = 'v2';
+const CACHE_NAME = 'gate7-v3';
+const CACHE_VERSION = 'v3';
+const NETWORK_TIMEOUT = 3000; // 3 second timeout for network requests
 
 // Critical assets to cache on install
 const urlsToCache = [
     '/',
     '/index.html',
-    '/menu/',
     '/menu/index.html',
-    '/hiring/',
     '/hiring/index.html',
+    '/pilot/index.html',
+    '/brand-story/index.html',
+    // CSS files
     '/css/style-gate7.css',
+    '/css/style-menu.css',
+    '/css/style-music.css',
+    '/css/style-footer.css',
+    '/css/style-global.css',
+    '/css/style-index.css',
+    // JavaScript files
     '/js/language-switcher.js',
     '/js/scroll-animations.js',
     '/js/responsive-images.js',
+    // Critical images
     '/images/logo-color-black-bg1.png',
     '/images/logo-only-white.png',
     '/images/logo-only-black.png',
     '/images/coffee-as-you-are.png',
+    '/images/coffee-as-you-are-light-gold.png',
     '/images/social-icon-instagram.png',
     '/images/social-icon-facebook.png',
-    '/images/social-icon-zalo.png'
+    '/images/social-icon-zalo.png',
+    '/images/logo.png',
+    '/images/header.png'
 ];
 
 // Install event - Pre-cache critical assets
@@ -64,7 +76,17 @@ self.addEventListener('activate', event => {
     self.clients.claim();
 });
 
-// Fetch event - Network first, fallback to cache
+// Helper function - Network with timeout
+function fetchWithTimeout(request, timeout = NETWORK_TIMEOUT) {
+    return Promise.race([
+        fetch(request),
+        new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Network timeout')), timeout)
+        )
+    ]);
+}
+
+// Fetch event - Intelligent caching strategy
 self.addEventListener('fetch', event => {
     const { request } = event;
     const url = new URL(request.url);
@@ -79,61 +101,77 @@ self.addEventListener('fetch', event => {
         return;
     }
     
-    // Cache first for images
-    if (request.destination === 'image') {
+    // Cache first for images and fonts
+    if (request.destination === 'image' || request.destination === 'font') {
         event.respondWith(
-            caches.match(request).then(response => {
-                return response || fetch(request).then(response => {
-                    // Cache successful image responses
-                    if (response && response.status === 200) {
-                        const responseClone = response.clone();
-                        caches.open(CACHE_NAME).then(cache => {
-                            cache.put(request, responseClone);
-                        });
-                    }
-                    return response;
-                }).catch(() => {
-                    // Return offline fallback
-                    return new Response('Image offline', {
-                        status: 503,
-                        statusText: 'Service Unavailable'
+            caches.match(request).then(cachedResponse => {
+                if (cachedResponse) {
+                    return cachedResponse;
+                }
+                
+                return fetchWithTimeout(request)
+                    .then(networkResponse => {
+                        // Cache successful responses
+                        if (networkResponse && networkResponse.status === 200) {
+                            const responseClone = networkResponse.clone();
+                            caches.open(CACHE_NAME).then(cache => {
+                                cache.put(request, responseClone);
+                            });
+                        }
+                        return networkResponse;
+                    })
+                    .catch(error => {
+                        console.error('[Service Worker] Fetch failed for image:', request.url, error);
+                        // No cached version and network failed - return blank image
+                        return new Response(
+                            new Blob([''], { type: 'image/png' }),
+                            { status: 404, statusText: 'Not Found' }
+                        );
                     });
-                });
             })
         );
         return;
     }
     
-    // Network first for HTML/CSS/JS
+    // Network first with short timeout for HTML/CSS/JS - fallback to cache
     event.respondWith(
-        fetch(request)
-            .then(response => {
+        fetchWithTimeout(request)
+            .then(networkResponse => {
                 // Cache successful responses
-                if (response && response.status === 200) {
-                    const responseClone = response.clone();
+                if (networkResponse && networkResponse.status === 200) {
+                    const responseClone = networkResponse.clone();
                     caches.open(CACHE_NAME).then(cache => {
                         cache.put(request, responseClone);
                     });
                 }
-                return response;
+                return networkResponse;
             })
-            .catch(() => {
-                // Fallback to cached version
-                return caches.match(request).then(response => {
-                    if (response) {
-                        return response;
+            .catch(error => {
+                console.error('[Service Worker] Network request failed:', request.url, error.message);
+                
+                // Try to serve from cache
+                return caches.match(request).then(cachedResponse => {
+                    if (cachedResponse) {
+                        console.log('[Service Worker] Serving from cache:', request.url);
+                        return cachedResponse;
                     }
                     
-                    // Return offline page for HTML requests
+                    // For HTML documents, serve the offline page
                     if (request.destination === 'document') {
-                        return caches.match('/index.html');
+                        return caches.match('/index.html').then(indexResponse => {
+                            return indexResponse || new Response(
+                                '<!DOCTYPE html><html><body><h1>Offline</h1><p>Please check your connection</p></body></html>',
+                                { status: 503, headers: { 'Content-Type': 'text/html' } }
+                            );
+                        });
                     }
                     
-                    // Return offline fallback for others
-                    return new Response('Offline - content unavailable', {
-                        status: 503,
-                        statusText: 'Service Unavailable'
-                    });
+                    // For CSS/JS, return empty/minimal response
+                    const contentType = request.destination === 'style' ? 'text/css' : 'text/javascript';
+                    return new Response(
+                        request.destination === 'style' ? '/* Offline */' : '/* Offline */',
+                        { status: 503, headers: { 'Content-Type': contentType } }
+                    );
                 });
             })
     );
